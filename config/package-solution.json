@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sp-migration-dashboard-client-side-solution",
+    "id": "c3ff2208-a787-4c00-adf3-753d320ebb4d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/sp-migration-dashboard.sppkg"
+  }
+}
