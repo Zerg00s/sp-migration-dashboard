@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.23.2007.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-24411D90E433468988D6DF3D7ECBB952">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-24411D90E433468988D6DF3D7ECBB952" Version="1" BaseSiteTemplate="STS#3" Scope="RootSite">
+      <pnp:Lists>
+        <pnp:ListInstance Title="Sites Report" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/SitesReport" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableAttachments="false" EnableFolderCreation="false" NoCrawl="true" DefaultDisplayFormUrl="{site}/Lists/SitesReport/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/SitesReport/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/SitesReport/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{E65FC8A7-E516-4C69-A432-6B51CC1160D3}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Sites" Url="{site}/Lists/SitesReport/AllSites.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="Farm" />
+                <FieldRef Name="SiteUrl" />
+                <FieldRef Name="TargetSiteUrl" />
+                <FieldRef Name="SiteSizeInMB" />
+                <FieldRef Name="NumOfWebs" />
+                <FieldRef Name="TotalItemCount" />
+                <FieldRef Name="ContentDBSizeInMB" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+              <ViewData />
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field Type="Text" DisplayName="Farm" Description="SharePoint Farm name. Used in case you have more than one Farm" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{0334b955-a2cc-48d5-a44f-e814abbdf77b}" SourceID="{{listid:Sites Report}}" StaticName="Farm" Name="Farm" ColName="nvarchar4" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Web Application URL" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{aba8cb6b-d19f-444e-8a21-0852bf033907}" SourceID="{{listid:Sites Report}}" StaticName="WebApplicationUrl" Name="WebApplicationUrl" ColName="nvarchar5" RowOrdinal="0" CustomFormatter="" Version="1" />
+            <Field Type="Text" DisplayName="SiteUrl" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{d4de15c0-c319-4bb5-b33a-4669d672773c}" SourceID="{{listid:Sites Report}}" StaticName="SiteUrl" Name="SiteUrl" ColName="nvarchar6" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Site Owner" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{6547f5da-b5c5-4861-87fe-8fcc8691c70d}" SourceID="{{listid:Sites Report}}" StaticName="SiteOwner" Name="SiteOwner" ColName="nvarchar7" RowOrdinal="0" CustomFormatter="" Version="1" />
+            <Field Type="Note" DisplayName="Site Admins" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="2" RichText="FALSE" Sortable="FALSE" ID="{a1b83e9c-26cb-4835-8c45-1f8043f367f2}" SourceID="{{listid:Sites Report}}" StaticName="SiteAdmins" Name="SiteAdmins" ColName="ntext2" RowOrdinal="0" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" Version="1" />
+            <Field Name="SiteSizeInMB" FromBaseType="FALSE" Type="Number" DisplayName="Site Size In MB" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{24daf4b2-7876-4160-a461-5408ff0dec44}" Version="2" StaticName="SiteSizeInMB" SourceID="{{listid:Sites Report}}" ColName="float2" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" />
+            <Field Name="NumOfWebs" FromBaseType="FALSE" Type="Number" DisplayName="Num Of Webs" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{4d4807b7-46ce-4e68-a59e-30ca9f7f03ae}" Version="2" StaticName="NumOfWebs" SourceID="{{listid:Sites Report}}" ColName="float3" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" />
+            <Field Type="Text" DisplayName="Content DB Name" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{eebf880a-2443-44d7-9804-1557ce029ae0}" SourceID="{{listid:Sites Report}}" StaticName="ContentDBName" Name="ContentDBName" ColName="nvarchar10" RowOrdinal="0" CustomFormatter="" Version="1" />
+            <Field Type="Text" DisplayName="Content DB Server Name" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{5e4b8111-c02e-45be-b553-8b48af172a28}" SourceID="{{listid:Sites Report}}" StaticName="ContentDBServerName" Name="ContentDBServerName" ColName="nvarchar11" RowOrdinal="0" CustomFormatter="" Version="1" />
+            <Field Name="ContentDBSizeInMB" FromBaseType="FALSE" Type="Number" DisplayName="Content DB Size In MB" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{b73c7920-ed12-4206-be98-e827bf557923}" Version="2" StaticName="ContentDBSizeInMB" SourceID="{{listid:Sites Report}}" ColName="float4" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" />
+            <Field Type="DateTime" DisplayName="Last Content Modified Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" FriendlyDisplayFormat="Disabled" ID="{63f5490f-5cdb-43fb-b47b-13d00d2fc6e2}" SourceID="{{listid:Sites Report}}" StaticName="LastContentModifiedDate" Name="LastContentModifiedDate" ColName="datetime1" RowOrdinal="0" CustomFormatter="" CalType="0" Version="1" />
+            <Field Name="TotalItemCount" FromBaseType="FALSE" Type="Number" DisplayName="Total Item Count" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{b23d1bf2-95cf-4caf-b35f-c126788fce6b}" Version="2" StaticName="TotalItemCount" SourceID="{{listid:Sites Report}}" ColName="float5" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" />
+            <Field Name="DistinctUsers" FromBaseType="FALSE" Type="Number" DisplayName="Distinct Users" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{22ec56ff-e7c3-40fb-becc-8e561f2d501a}" Version="2" StaticName="DistinctUsers" SourceID="{{listid:Sites Report}}" ColName="float6" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" />
+            <Field Name="Alerts" FromBaseType="FALSE" Type="Number" DisplayName="Alerts" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{5cf5d746-e30a-49ed-82cc-8e97ee43fcf1}" Version="1" StaticName="Alerts" SourceID="{{listid:Sites Report}}" ColName="float7" RowOrdinal="0" />
+            <Field Name="Apps" FromBaseType="FALSE" Type="Number" DisplayName="Apps" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{83472bba-c265-4582-b4e5-0236339430f8}" Version="1" StaticName="Apps" SourceID="{{listid:Sites Report}}" ColName="float8" RowOrdinal="0" />
+            <Field Name="BCSApplications" FromBaseType="FALSE" Type="Number" DisplayName="BCS Applications" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{ec17f0f1-9eb4-499a-8a95-1d128896623a}" Version="2" StaticName="BCSApplications" SourceID="{{listid:Sites Report}}" ColName="float9" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" />
+            <Field Name="BrowserFileHandling" FromBaseType="FALSE" Type="Number" DisplayName="Browser File Handling" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{91b83e11-18e1-42da-a53a-913896f5dbcd}" Version="2" StaticName="BrowserFileHandling" SourceID="{{listid:Sites Report}}" ColName="float10" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" />
+            <Field Type="Number" DisplayName="Checked Out Files" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{d62b7cbf-b67b-41d3-8891-73dfcc1feeed}" SourceID="{{listid:Sites Report}}" StaticName="CheckedOutFiles" Name="CheckedOutFiles" ColName="float1" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Customized Pages" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{414b962c-25b8-4fbf-af17-520ea2527552}" SourceID="{{listid:Sites Report}}" StaticName="CustomizedPages" Name="CustomizedPages" ColName="float11" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Custom Permission Level" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{00533e53-3dfd-4be7-a09c-1bd506a4580a}" SourceID="{{listid:Sites Report}}" StaticName="CustomPermissionLevel" Name="CustomPermissionLevel" ColName="float12" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Custom Profile Property Mappings" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{59c466f2-9583-48b1-8e08-540a8897b29b}" SourceID="{{listid:Sites Report}}" StaticName="CustomProfilePropertyMappings" Name="CustomProfilePropertyMappings" ColName="float13" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Email Enabled Lists" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{8ab28fd7-adbb-4c5f-a688-e12ca06d764c}" SourceID="{{listid:Sites Report}}" StaticName="EmailEnabledLists" Name="EmailEnabledLists" ColName="float14" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="External Lists" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{975e130e-bcec-4361-8d2a-b6de3e25e79c}" SourceID="{{listid:Sites Report}}" StaticName="ExternalLists" Name="ExternalLists" ColName="float15" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="File Versions" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{a7cb250b-9288-4ffa-9c6c-f6600f23395d}" SourceID="{{listid:Sites Report}}" StaticName="FileVersions" Name="FileVersions" ColName="float16" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="InfoPath" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{a2cae952-2b68-4d99-b3dd-84f42a7cb35c}" SourceID="{{listid:Sites Report}}" StaticName="InfoPath" Name="InfoPath" ColName="float17" RowOrdinal="0" />
+            <Field Type="Number" DisplayName="IRM Enabled Library" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{fbd64ccc-e2b4-4d1e-a4c1-f56c2173e28a}" SourceID="{{listid:Sites Report}}" StaticName="IRMEnabledLibrary" Name="IRMEnabledLibrary" ColName="float18" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Large Lists" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{d9fb86b1-4504-4062-9979-8f2f7d6fd655}" SourceID="{{listid:Sites Report}}" StaticName="LargeLists" Name="LargeLists" ColName="float19" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Large Sites" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{f5ebb016-5b61-4341-9d4b-870e7bcaff54}" SourceID="{{listid:Sites Report}}" StaticName="LargeSites" Name="LargeSites" ColName="float20" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Managed Metadata Lists" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{a77ccdd0-770b-4a70-8286-d3a3752d0c37}" SourceID="{{listid:Sites Report}}" StaticName="ManagedMetadataLists" Name="ManagedMetadataLists" ColName="float21" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Non Default Master Pages" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{67482b2a-b9de-465f-b7f0-d8f4dcf18ce9}" SourceID="{{listid:Sites Report}}" StaticName="NonDefaultMasterPages" Name="NonDefaultMasterPages" ColName="float22" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Publishing Pages" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{594497a8-4c7a-4e55-8df6-f83585fa28db}" SourceID="{{listid:Sites Report}}" StaticName="PublishingPages" Name="PublishingPages" ColName="float23" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Publishing Sites" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{06043eaa-9d34-44c2-81bf-1ee2c586d2f3}" SourceID="{{listid:Sites Report}}" StaticName="PublishingSites" Name="PublishingSites" ColName="float24" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Sandbox Solution" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{de1d9284-319c-4e47-95e6-f8e81945cd20}" SourceID="{{listid:Sites Report}}" StaticName="SandboxSolution" Name="SandboxSolution" ColName="float25" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Secure Store Applications" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{9648186a-9c32-4398-98f7-00f420a54bff}" SourceID="{{listid:Sites Report}}" StaticName="SecureStoreApplications" Name="SecureStoreApplications" ColName="float26" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Unsupported Web Template" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{634a77ad-35b5-45de-a85e-0871af1db60a}" SourceID="{{listid:Sites Report}}" StaticName="UnsupportedWebTemplate" Name="UnsupportedWebTemplate" ColName="float27" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Workflow Associations 2010" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{f151f1dd-15a4-4b76-a880-5397e8df6332}" SourceID="{{listid:Sites Report}}" StaticName="WorkflowAssociations2010" Name="WorkflowAssociations2010" ColName="float28" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Workflow Associations 2013" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{002ff10a-79b8-4f1f-a518-b85e96cead86}" SourceID="{{listid:Sites Report}}" StaticName="WorkflowAssociations2013" Name="WorkflowAssociations2013" ColName="float29" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Workflow Running 2010" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{a53a4170-4901-4643-8b4d-be5feb94efa2}" SourceID="{{listid:Sites Report}}" StaticName="WorkflowRunning2010" Name="WorkflowRunning2010" ColName="float30" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Number" DisplayName="Workflow Running 2013" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{ba0c5494-5566-4156-879e-2ce103909634}" SourceID="{{listid:Sites Report}}" StaticName="WorkflowRunning2013" Name="WorkflowRunning2013" ColName="float31" RowOrdinal="0" CustomFormatter="" Percentage="FALSE" Version="1" />
+            <Field Type="Choice" DisplayName="Target Environment" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{0df092c0-4374-4b03-936c-d8a4d9db70af}" SourceID="{{listid:Sites Report}}" StaticName="TargetEnvironment" Name="TargetEnvironment" ColName="nvarchar8" RowOrdinal="0" CustomFormatter="" Version="1">
+              <Default>SharePoint Online</Default>
+              <CHOICES>
+                <CHOICE>SharePoint 2016</CHOICE>
+                <CHOICE>SharePoint 2019</CHOICE>
+                <CHOICE>SharePoint Online</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Text" DisplayName="Target Site URL" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{eb2f94ed-94af-4e13-b8f0-fc1962943d04}" SourceID="{{listid:Sites Report}}" StaticName="TargetSiteUrl" Name="TargetSiteUrl" ColName="nvarchar9" RowOrdinal="0" CustomFormatter="" Version="1" />
+            <Field Name="MigrationStatus" FromBaseType="FALSE" Type="Choice" DisplayName="Migration Status" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{5729f7a5-5214-4358-b439-57843e4ad6ce}" Version="2" StaticName="MigrationStatus" SourceID="{{listid:Sites Report}}" ColName="nvarchar13" RowOrdinal="0" CustomFormatter="">
+              <CHOICES>
+                <CHOICE>Migrated</CHOICE>
+                <CHOICE>Scheduled</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="DateTime" DisplayName="Scheduled Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" FriendlyDisplayFormat="Disabled" ID="{2e03c0e3-b60c-4ef3-a37d-4106f781aba0}" SourceID="{{listid:Sites Report}}" StaticName="ScheduledDate" Name="ScheduledDate" ColName="datetime2" RowOrdinal="0" CustomFormatter="" CalType="0" Version="1" />
+          </pnp:Fields>
+          <pnp:Webhooks>
+            <pnp:Webhook ServerNotificationUrl="https://2-canadacentral1.pushp.svc.ms/notifications?token=w1-d7275345-e4ba-4d84-add5-067b465e86cb" ExpiresInDays="1" />
+          </pnp:Webhooks>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
