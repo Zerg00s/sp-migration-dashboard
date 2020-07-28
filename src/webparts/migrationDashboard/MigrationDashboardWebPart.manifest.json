@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "fddbce4e-9f07-466c-b6b0-bd27b2603430",
+  "alias": "MigrationDashboardWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "Migration Dashboard" },
+    "description": { "default": "Migration Dashboard description" },
+    "officeFabricIconFontName": "ViewDashboard",
+    "properties": {
+      "description": "Migration Dashboard"
+    }
+  }]
+}
