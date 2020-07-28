@@ -11,13 +11,14 @@
   "supportedHosts": ["SharePointWebPart"],
 
   "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
     "group": { "default": "Other" },
     "title": { "default": "Migration Dashboard" },
-    "description": { "default": "Migration Dashboard description" },
+    "description": { "default": "Migration Dashboard" },
     "officeFabricIconFontName": "ViewDashboard",
     "properties": {
-      "description": "Migration Dashboard"
+      "description": "Migration Dashboard Description",
+      "title": "Migration Dashboard Title"
     }
   }]
 }

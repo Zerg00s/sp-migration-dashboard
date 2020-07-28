@@ -7,13 +7,14 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'MigrationDashboardWebPartStrings';
 import MigrationDashboard from './components/MigrationDashboard';
 import { IMigrationDashboardProps } from './components/IMigrationDashboardProps';
 
 export interface IMigrationDashboardWebPartProps {
   description: string;
+  title: string;
 }
+
 
 export default class MigrationDashboardWebPart extends BaseClientSideWebPart<IMigrationDashboardWebPartProps> {
 
@@ -21,7 +22,12 @@ export default class MigrationDashboardWebPart extends BaseClientSideWebPart<IMi
     const element: React.ReactElement<IMigrationDashboardProps> = React.createElement(
       MigrationDashboard,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        title: this.properties.title,
+        displayMode: this.displayMode,
+        updateProperty: (value: string) => {
+          this.properties.title = value;
+        }
       }
     );
 
@@ -41,14 +47,14 @@ export default class MigrationDashboardWebPart extends BaseClientSideWebPart<IMi
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "Settings"
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: "General",
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('title', {
+                  label: "Title"
                 })
               ]
             }
