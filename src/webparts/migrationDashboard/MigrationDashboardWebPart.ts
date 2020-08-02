@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
+import './Overrides.module.scss';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
@@ -9,14 +10,23 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import MigrationDashboard from './components/MigrationDashboard';
 import { IMigrationDashboardProps } from './components/IMigrationDashboardProps';
+import { sp } from "@pnp/sp";
 
 export interface IMigrationDashboardWebPartProps {
   description: string;
   title: string;
 }
 
-
 export default class MigrationDashboardWebPart extends BaseClientSideWebPart<IMigrationDashboardWebPartProps> {
+
+  public onInit(): Promise<void> {
+    return super.onInit().then(_ => {
+      //  to make sure that REST calls are send to the correct relative URL:
+      sp.setup({
+        spfxContext: this.context
+      });
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IMigrationDashboardProps> = React.createElement(

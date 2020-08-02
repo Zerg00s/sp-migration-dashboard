@@ -4,7 +4,6 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import { SiteItem } from '../Interfaces/SiteItem';
 
-
 class DashboardDataProvider {
     public async getSites() {
         let siteItems = await sp.web.lists.getByTitle("Sites Report").items.getAll();
