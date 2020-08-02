@@ -58,7 +58,10 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
                 <div>
                     {this.renderSearchBox()}
                 </div>
-                <SiteInfo currentSite={this.state.currentSite} />
+                {this.state.currentSite &&
+                    <SiteInfo currentSite={this.state.currentSite} />
+                }
+
             </React.Fragment>
         );
     }

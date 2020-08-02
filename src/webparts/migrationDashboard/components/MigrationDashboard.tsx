@@ -15,6 +15,7 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { first, find, filter, orderBy, debounce, cloneDeep, sum } from 'lodash';
 import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 import SiteSearch from './SiteSearch/SiteSearch';
+import { Fabric } from 'office-ui-fabric-react';
 
 interface State {
   siteItems: SiteItem[];
@@ -57,15 +58,17 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
 
     return (
       <ErrorBoundary>
-        <Pivot linkSize={PivotLinkSize.large}>
-          <PivotItem headerText="Search sites 🔎" className={styles.pivotItem}>
-            <SiteSearch siteItems={this.state.siteItems} />
-          </PivotItem>
-          <PivotItem headerText="Statistics 📊">
-            <h2>🚧 Migration stats 🚧</h2>
-          </PivotItem>
-        </Pivot>
-      </ErrorBoundary>
+        <Fabric>
+          <Pivot linkSize={PivotLinkSize.large}>
+            <PivotItem headerText="Search sites 🔎" className={styles.pivotItem}>
+              <SiteSearch siteItems={this.state.siteItems} />
+            </PivotItem>
+            <PivotItem headerText="Statistics 📊">
+              <h2>🚧 Migration stats 🚧</h2>
+            </PivotItem>
+          </Pivot>
+        </Fabric >
+      </ErrorBoundary >
     );
   }
 
@@ -74,8 +77,8 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
       <div className={styles.migrationDashboard}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
-          updateProperty={this.props.updateProperty} 
-          className={styles.webpartTitle}/>
+          updateProperty={this.props.updateProperty}
+          className={styles.webpartTitle} />
         <this.Content />
       </div>
     );
