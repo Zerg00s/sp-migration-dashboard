@@ -35,6 +35,7 @@ export default class MigrationDashboardWebPart extends BaseClientSideWebPart<IMi
         description: this.properties.description,
         title: this.properties.title,
         displayMode: this.displayMode,
+        context: this.context,
         updateProperty: (value: string) => {
           this.properties.title = value;
         }

@@ -61,10 +61,10 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
         <Fabric>
           <Pivot linkSize={PivotLinkSize.large}>
             <PivotItem headerText="Search sites 🔎" className={styles.pivotItem}>
-              <SiteSearch siteItems={this.state.siteItems} />
+              <SiteSearch context={this.props.context} siteItems={this.state.siteItems} />
             </PivotItem>
             <PivotItem headerText="Statistics 📊">
-              <h2>🚧 Migration stats 🚧</h2>
+              <h2>🚧 Migration statistics 🚧</h2>
             </PivotItem>
           </Pivot>
         </Fabric >

@@ -6,12 +6,14 @@ import { SiteItem } from '../../Interfaces/SiteItem';
 
 import { Autocomplete } from '../Autocomplete';
 import SiteInfo from '../SiteInfo/SiteInfo';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 
 
 
 export interface SiteSearchProps {
     siteItems: SiteItem[];
+    context: WebPartContext;
 }
 export interface SiteSearchState {
     currentSite: SiteItem;
@@ -59,7 +61,7 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
                     {this.renderSearchBox()}
                 </div>
                 {this.state.currentSite &&
-                    <SiteInfo currentSite={this.state.currentSite} />
+                    <SiteInfo currentSite={this.state.currentSite} context={this.props.context}  />
                 }
 
             </React.Fragment>
