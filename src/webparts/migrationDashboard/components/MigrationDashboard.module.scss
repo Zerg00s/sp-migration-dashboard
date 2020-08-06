@@ -1,8 +1,34 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
+
+.detailsPanel {
+  :global {
+
+    .ms-Panel-scrollableContent,
+    .ms-Panel-content {
+      height: 100%;
+    }
+
+    .ms-Panel-scrollableContent {
+      overflow: hidden;
+    }
+  }
+}
+
 .migrationDashboard {
   .pivotItem {
     margin-top: 15px;
+  }
+
+  .stack {
+    padding-left: 0 !important;
+  }
+
+
+
+
+  .controlPanelButton {
+    margin-right: 20px;
   }
 
   .sectionWrapper {

@@ -145,7 +145,7 @@ export default class GeneralInfoTable extends React.Component<GeneralInfoTablePr
 
     public static _generateDocuments = (props: GeneralInfoTableProps) => {
         const items: IDocument[] = [];
-        if (!props.currentSite === undefined) {
+        if (props.currentSite === undefined) {
             return items;
         }
         items.push({

@@ -4,7 +4,7 @@ import { IMigrationDashboardProps } from './IMigrationDashboardProps';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import { Pivot, PivotItem, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { dataProvider } from '../services/DasboardDataProvider';
+import { DataProvider } from '../services/DasboardDataProvider';
 import { SiteItem } from '../Interfaces/SiteItem';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
@@ -16,6 +16,7 @@ import { first, find, filter, orderBy, debounce, cloneDeep, sum } from 'lodash';
 import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 import SiteSearch from './SiteSearch/SiteSearch';
 import { Fabric } from 'office-ui-fabric-react';
+import { Constants } from './Constants/Constants';
 
 interface State {
   siteItems: SiteItem[];
@@ -33,8 +34,8 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
   }
 
   public async componentDidMount() {
-
-    dataProvider.getSites().then(items => {
+   
+    DataProvider.getSites().then(items => {
       console.log("done");
       this.setState({
         siteItems: items,
@@ -43,6 +44,7 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
     });
 
   }
+ 
 
   private Content = () => {
     const shimmerLine = { type: ShimmerElementType.line, height: 25 };

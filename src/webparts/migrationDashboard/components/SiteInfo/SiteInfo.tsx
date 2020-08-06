@@ -30,7 +30,7 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                         <SecurityTrimmedControl context={this.props.context}
                             level={PermissionLevel.currentWeb}
                             permissions={[SPPermission.manageWeb]}>
-                            <ControlPanel currentSite={this.props.currentSite} /> 
+                            <ControlPanel currentSite={this.props.currentSite} context={this.props.context} /> 
                         </SecurityTrimmedControl>
                     <GeneralInfoTable currentSite={this.props.currentSite} />
                     </Section>

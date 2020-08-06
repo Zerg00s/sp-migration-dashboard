@@ -3,10 +3,15 @@ import { SearchBox, ISearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { debounce, first, find, filter, orderBy } from 'lodash';
 import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 import { SiteItem } from '../../Interfaces/SiteItem';
-
+import { sp } from '@pnp/sp';
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 import { Autocomplete } from '../Autocomplete';
 import SiteInfo from '../SiteInfo/SiteInfo';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { Constants } from '../Constants/Constants';
+import { DataProvider } from '../../services/DasboardDataProvider';
 
 
 
@@ -54,6 +59,28 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
             componentRef={(searchBox) => this.searchBox = searchBox}
         />;
     }
+
+    public async componentDidMount() {
+        window.addEventListener(`${Constants.Events.RefreshCurrentItem}${this.props.context.webPartTag}`, this.refreshCurrentItem);
+        window.addEventListener(`${Constants.Events.PatchCurrentItem}${this.props.context.webPartTag}`, this.patchCurrentItem);
+    }
+
+    private refreshCurrentItem = async (refreshCurrentListItem: CustomEvent) => {
+        let currentSite: SiteItem = await DataProvider.getSiteById(this.state.currentSite.ID);
+        this.setState({
+            currentSite
+        });
+    }
+
+    private patchCurrentItem = (masterItemUpdated: CustomEvent) => {
+        sp.web.lists.getByTitle(Constants.Lists.SiteReports).items.getById(this.state.currentSite.ID).update(
+            {
+                [masterItemUpdated.detail.field]: masterItemUpdated.detail.value
+            }
+        );
+        this.refreshCurrentItem(null);
+    }
+
     public render() {
         return (
             <React.Fragment>
@@ -61,7 +88,7 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
                     {this.renderSearchBox()}
                 </div>
                 {this.state.currentSite &&
-                    <SiteInfo currentSite={this.state.currentSite} context={this.props.context}  />
+                    <SiteInfo currentSite={this.state.currentSite} context={this.props.context} />
                 }
 
             </React.Fragment>
