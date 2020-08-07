@@ -44,7 +44,7 @@ export default class ViewDetailsButton extends React.Component<ViewDetailsButton
                 level={PermissionLevel.currentWeb}
                 permissions={[SPPermission.manageWeb]}>
 
-                <PrimaryButton text="View details"
+                <PrimaryButton text="View Details"
                     iconProps={{ iconName: "ReviewResponseSolid" }}
                     className={styles.controlPanelButton}
                     onClick={this.openMasterPanel}

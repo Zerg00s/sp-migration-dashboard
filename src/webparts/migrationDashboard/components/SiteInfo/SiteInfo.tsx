@@ -9,7 +9,7 @@ import GeneralInfoTable from './GeneralInfoTable/GeneralInfoTable';
 import CommunicationsTable from './CommunicationsTable/CommunicationsTable';
 import OtherTable from './OtherTable/OtherTable';
 import ChecklistTable from './ChecklistTable/ChecklistTable';
-import ControlPanel from './ControlPanel/ControlPanel';
+import GeneralControlPanel from './ControlPanel/GeneralControlPanel';
 
 interface SiteInfoProps {
     currentSite: SiteItem;
@@ -30,7 +30,7 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                         <SecurityTrimmedControl context={this.props.context}
                             level={PermissionLevel.currentWeb}
                             permissions={[SPPermission.manageWeb]}>
-                            <ControlPanel currentSite={this.props.currentSite} context={this.props.context} /> 
+                            <GeneralControlPanel currentSite={this.props.currentSite} context={this.props.context} /> 
                         </SecurityTrimmedControl>
                     <GeneralInfoTable currentSite={this.props.currentSite} />
                     </Section>
