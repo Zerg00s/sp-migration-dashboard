@@ -9,7 +9,7 @@ interface SiteSettingsProps {
     currentSite: SiteItem;
 }
 
-export default class SiteSettingsButton extends React.Component<SiteSettingsProps> {
+export default class SourceSiteSettingsButton extends React.Component<SiteSettingsProps> {
     constructor(props) {
         super(props);
         this.state = {};
@@ -22,7 +22,10 @@ export default class SiteSettingsButton extends React.Component<SiteSettingsProp
             {
                 key: 'newItem',
                 iconProps: {
-                    iconName: 'PlayerSettings',
+                    iconName: 'Signin',
+                    style: {
+                        color: 'green',
+                    },
                 },
                 text: 'Site permissions',
                 href: `${this.props.currentSite.SiteUrl}/_layouts/15/user.aspx`,
@@ -32,6 +35,9 @@ export default class SiteSettingsButton extends React.Component<SiteSettingsProp
                 key: 'newItem',
                 iconProps: {
                     iconName: 'OfflineStorage',
+                    style: {
+                        color: 'salmon',
+                    },
                 },
                 text: 'Storage metrics',
                 href: `${this.props.currentSite.SiteUrl}/_layouts/sitemanager.aspx`,
@@ -44,7 +50,7 @@ export default class SiteSettingsButton extends React.Component<SiteSettingsProp
     public render() {
         return (
             <React.Fragment>
-                <DefaultButton text="Site Settings" menuProps={this.settingsButtonProps} className={styles.controlPanelButton} />
+                <DefaultButton text="Source Site Settings" menuProps={this.settingsButtonProps} className={styles.controlPanelButton} />
             </React.Fragment>
         );
     }

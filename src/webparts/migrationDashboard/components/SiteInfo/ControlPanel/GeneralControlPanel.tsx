@@ -4,7 +4,7 @@ import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import styles from '../../MigrationDashboard.module.scss';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import ViewDetailsButton from './ViewDetailsButton';
-import SiteSettingsButton from './SiteSettingsButton';
+import SourceSiteSettingsButton from './SourceSiteSettingsButton';
 
 
 interface ControlPanelProps {
@@ -24,7 +24,7 @@ export default class GeneralControlPanel extends React.Component<ControlPanelPro
         return (
             <Stack className={styles.stack} horizontal tokens={this.wrapStackTokens}>
                 <ViewDetailsButton currentSite={this.props.currentSite} context={this.props.context} />
-                <SiteSettingsButton currentSite={this.props.currentSite} />
+                <SourceSiteSettingsButton currentSite={this.props.currentSite} />
             </Stack>
         );
     }

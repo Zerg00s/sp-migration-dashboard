@@ -1,7 +1,7 @@
 import React from 'react';
 import { DetailsList, mergeStyleSets, IColumn, FontIcon, SelectionMode, DetailsListLayoutMode } from 'office-ui-fabric-react';
 import { SiteItem } from '../../../Interfaces/SiteItem';
-
+import { RichText } from "@pnp/spfx-controls-react/lib/RichText";
 
 const classNames = mergeStyleSets({
     fileIconHeaderIcon: {
@@ -175,7 +175,7 @@ export default class CommunicationsTable extends React.Component<CommunicationsT
         return (
             <React.Fragment>
                 <div>
-                {/* <div data-is-scrollable="true"> */}
+                    {/* <div data-is-scrollable="true"> */}
                     <DetailsList
                         onRenderItemColumn={this._onRenderItemColumn}
                         items={this.state.allItems}
@@ -187,6 +187,22 @@ export default class CommunicationsTable extends React.Component<CommunicationsT
                         isHeaderVisible={true}
                     />
                 </div>
+
+                <div style={{ position: 'relative' }}>
+                    <RichText value={this.props.currentSite.PublicNotes}
+                        isEditMode={true}
+                        styleOptions={{
+                            showBold: true,
+                            showLink: true,
+                            showList: true,
+                            showStyles: true,
+                            showMore: true
+                        }}
+                    // onChange={(text) => this.props.onChange(text)}
+                    />
+                </div>
+
+
             </React.Fragment>
         );
     }
