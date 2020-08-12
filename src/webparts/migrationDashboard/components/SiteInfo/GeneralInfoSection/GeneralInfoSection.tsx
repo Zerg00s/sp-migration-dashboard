@@ -2,7 +2,6 @@ import React from 'react';
 import { DetailsList, mergeStyleSets, IColumn, FontIcon, SelectionMode, DetailsListLayoutMode } from 'office-ui-fabric-react';
 import { SiteItem } from '../../../Interfaces/SiteItem';
 
-
 const classNames = mergeStyleSets({
     fileIconHeaderIcon: {
         padding: 0,
@@ -54,29 +53,29 @@ export interface IDocument {
     iconName: string;
 }
 
-interface OtherTableState {
+interface GeneralInfoSectionState {
     allItems: IDocument[];
     columns: IColumn[];
 }
 
-interface OtherTableProps {
+interface GeneralInfoSectionProps {
     currentSite: SiteItem;
 }
 
-export default class OtherTable extends React.Component<OtherTableProps, OtherTableState>  {
+export default class GeneralInfoSection extends React.Component<GeneralInfoSectionProps, GeneralInfoSectionState>  {
 
     public _allItems: IDocument[];
 
     // DetailsList can't understand when to re-render, unless you re-create
     // Items collection. Every time new props arrive - we recreate Items array
-    public static getDerivedStateFromProps(nextProps: OtherTableProps, prevState: OtherTableProps) {
-        const _allItems = OtherTable._generateDocuments(nextProps);
+    public static getDerivedStateFromProps(nextProps: GeneralInfoSectionProps, prevState: GeneralInfoSectionProps) {
+        const _allItems = GeneralInfoSection._generateDocuments(nextProps);
         return {
             allItems: _allItems,
         };
     }
 
-    constructor(props: OtherTableProps) {
+    constructor(props: GeneralInfoSectionProps) {
         super(props);
         const columns: IColumn[] = [
             {
@@ -113,6 +112,7 @@ export default class OtherTable extends React.Component<OtherTableProps, OtherTa
                 fieldName: 'value',
                 minWidth: 120,
                 maxWidth: 300,
+                isMultiline: true,
                 isRowHeader: true,
                 isResizable: true,
                 isSorted: false,
@@ -143,24 +143,54 @@ export default class OtherTable extends React.Component<OtherTableProps, OtherTa
 
     }
 
-    public static _generateDocuments = (props: OtherTableProps) => {
+    public static _generateDocuments = (props: GeneralInfoSectionProps) => {
         const items: IDocument[] = [];
-        if (!props.currentSite === undefined) {
+        if (props.currentSite === undefined) {
             return items;
         }
         items.push({
-            key: "ContentDBServerName",
-            name: "Content DB Server Name",
-            value: props.currentSite.ContentDBServerName,
-            note: "",
-            iconName: "Server"
+            key: "SiteUrl",
+            name: "Site URL",
+            value: props.currentSite.SiteUrl,
+            note: "Old site URL",
+            iconName: "Link"
         });
         items.push({
-            key: "ContentDBName",
-            name: "Content DB Name",
-            value: props.currentSite.ContentDBName,
+            key: "TargetSiteUrl",
+            name: "Target Site URL",
+            value: props.currentSite.TargetSiteUrl,
+            note: "New site URL",
+            iconName: "SharePointLogo"
+        });
+        items.push({
+            key: "SiteSizeInMB",
+            name: "Site Size In MB",
+            value: props.currentSite.SiteSizeInMB.toString(),
             note: "",
             iconName: "Database"
+        });
+        items.push({
+            key: "ContentDBSizeInMB",
+            name: "Content DB Size In MB",
+            value: props.currentSite.ContentDBSizeInMB.toString(),
+            note: "",
+            iconName: "Database"
+        });
+        items.push({
+            key: "NumOfWebs",
+            name: "Subsites",
+            // TODO: check for NaN
+            value: (props.currentSite.NumOfWebs - 1).toString(),
+            note: "",
+            iconName: "NumberSymbol"
+        });
+        items.push({
+            key: "TotalItemCount",
+            name: "Total Items Count",
+            // TODO: check for NaN
+            value: (props.currentSite.TotalItemCount).toString(),
+            note: "",
+            iconName: "NumberSymbol" //  //
         });
 
         return items;
@@ -168,6 +198,11 @@ export default class OtherTable extends React.Component<OtherTableProps, OtherTa
 
     // Override rendering in specific rows, in specific columns:
     private _onRenderItemColumn(item: IDocument, index: number, column: IColumn): JSX.Element {
+        if (item.key === 'SiteUrl' && column.key === 'Note') {
+            return (
+                <span>{item.note}</span>
+            );
+        }
         return item[column.fieldName];
     }
 

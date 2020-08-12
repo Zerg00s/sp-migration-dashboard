@@ -1,7 +1,7 @@
 import React from 'react';
 import { DetailsList, mergeStyleSets, IColumn, FontIcon, SelectionMode, DetailsListLayoutMode } from 'office-ui-fabric-react';
 import { SiteItem } from '../../../Interfaces/SiteItem';
-import { RichText } from "@pnp/spfx-controls-react/lib/RichText";
+
 
 const classNames = mergeStyleSets({
     fileIconHeaderIcon: {
@@ -54,29 +54,29 @@ export interface IDocument {
     iconName: string;
 }
 
-interface CommunicationsTableState {
+interface ChecklistSectionState {
     allItems: IDocument[];
     columns: IColumn[];
 }
 
-interface CommunicationsTableProps {
+interface ChecklistSectionProps {
     currentSite: SiteItem;
 }
 
-export default class CommunicationsTable extends React.Component<CommunicationsTableProps, CommunicationsTableState>  {
+export default class ChecklistSection extends React.Component<ChecklistSectionProps, ChecklistSectionState>  {
 
     public _allItems: IDocument[];
 
     // DetailsList can't understand when to re-render, unless you re-create
     // Items collection. Every time new props arrive - we recreate Items array
-    public static getDerivedStateFromProps(nextProps: CommunicationsTableProps, prevState: CommunicationsTableProps) {
-        const _allItems = CommunicationsTable._generateDocuments(nextProps);
+    public static getDerivedStateFromProps(nextProps: ChecklistSectionProps, prevState: ChecklistSectionProps) {
+        const _allItems = ChecklistSection._generateDocuments(nextProps);
         return {
             allItems: _allItems,
         };
     }
 
-    constructor(props: CommunicationsTableProps) {
+    constructor(props: ChecklistSectionProps) {
         super(props);
         const columns: IColumn[] = [
             {
@@ -143,24 +143,66 @@ export default class CommunicationsTable extends React.Component<CommunicationsT
 
     }
 
-    public static _generateDocuments = (props: CommunicationsTableProps) => {
+    public static _generateDocuments = (props: ChecklistSectionProps) => {
         const items: IDocument[] = [];
         if (!props.currentSite === undefined) {
             return items;
         }
         items.push({
-            key: "SiteOwner",
-            name: "Site Owner",
-            value: props.currentSite.SiteOwner,
+            key: "Alerts",
+            name: "Alerts",
+            value: props.currentSite.Alerts ? props.currentSite.Alerts.toString() : "",
             note: "",
-            iconName: "RecruitmentManagement"
+            iconName: "MailAlert"
         });
         items.push({
-            key: "SiteAdmins",
-            name: "Site Admins",
-            value: props.currentSite.SiteOwner,
+            key: "CustomizedPages",
+            name: "Customized Pages",
+            value: props.currentSite.CustomizedPages ? props.currentSite.CustomizedPages.toString() : "",
             note: "",
-            iconName: "Admin"
+            iconName: "FileHTML"
+        });
+        items.push({
+            key: "WorkflowAssociations2010",
+            name: "2010 Workflows",
+            value: props.currentSite.WorkflowAssociations2010 ? props.currentSite.WorkflowAssociations2010.toString() : "",
+            note: "",
+            iconName: "WorkFlow"
+        });
+        items.push({
+            key: "WorkflowAssociations2013",
+            name: "2013 Workflows",
+            value: props.currentSite.WorkflowAssociations2013 ? props.currentSite.WorkflowAssociations2013.toString() : "",
+            note: "",
+            iconName: "WorkFlow"
+        });
+        items.push({
+            key: "InfoPath",
+            name: "InfoPath",
+            value: props.currentSite.InfoPath ? props.currentSite.InfoPath.toString() : "",
+            note: "",
+            iconName: "OfficeFormsLogo"
+        });
+        items.push({
+            key: "NonDefaultMasterPages",
+            name: "Custom Master Pages",
+            value: props.currentSite.NonDefaultMasterPages ? props.currentSite.NonDefaultMasterPages.toString() : "",
+            note: "",
+            iconName: "FileHTML"
+        });
+        items.push({
+            key: "CheckedOutFiles",
+            name: "Checked Out Files",
+            value: props.currentSite.CheckedOutFiles ? props.currentSite.CheckedOutFiles.toString(): "",
+            note: "",
+            iconName: "PageCheckedOut"
+        });
+        items.push({
+            key: "UnsupportedWebTemplate",
+            name: "Unsupported Web Template",
+            value: props.currentSite.UnsupportedWebTemplate? props.currentSite.UnsupportedWebTemplate.toString(): "",
+            note: "",
+            iconName: "WebTemplate"
         });
 
         return items;
@@ -187,22 +229,6 @@ export default class CommunicationsTable extends React.Component<CommunicationsT
                         isHeaderVisible={true}
                     />
                 </div>
-
-                <div style={{ position: 'relative' }}>
-                    <RichText value={this.props.currentSite.PublicNotes}
-                        isEditMode={true}
-                        styleOptions={{
-                            showBold: true,
-                            showLink: true,
-                            showList: true,
-                            showStyles: true,
-                            showMore: true
-                        }}
-                    // onChange={(text) => this.props.onChange(text)}
-                    />
-                </div>
-
-
             </React.Fragment>
         );
     }

@@ -1,6 +1,7 @@
 import React from 'react';
-import { DetailsList, mergeStyleSets, IColumn, FontIcon, SelectionMode, DetailsListLayoutMode } from 'office-ui-fabric-react';
+import { DetailsList, mergeStyleSets, IColumn, FontIcon, SelectionMode, DetailsListLayoutMode, DefaultButton, Button, PrimaryButton } from 'office-ui-fabric-react';
 import { SiteItem } from '../../../Interfaces/SiteItem';
+import TextNotes from './TextNotes';
 
 
 const classNames = mergeStyleSets({
@@ -54,29 +55,29 @@ export interface IDocument {
     iconName: string;
 }
 
-interface ChecklistTableState {
+interface CommunicationsSectionState {
     allItems: IDocument[];
     columns: IColumn[];
 }
 
-interface ChecklistTableProps {
+interface CommunicationsSectionProps {
     currentSite: SiteItem;
 }
 
-export default class ChecklistTable extends React.Component<ChecklistTableProps, ChecklistTableState>  {
+export default class CommunicationsSection extends React.Component<CommunicationsSectionProps, CommunicationsSectionState>  {
 
     public _allItems: IDocument[];
 
     // DetailsList can't understand when to re-render, unless you re-create
     // Items collection. Every time new props arrive - we recreate Items array
-    public static getDerivedStateFromProps(nextProps: ChecklistTableProps, prevState: ChecklistTableProps) {
-        const _allItems = ChecklistTable._generateDocuments(nextProps);
+    public static getDerivedStateFromProps(nextProps: CommunicationsSectionProps, prevState: CommunicationsSectionProps) {
+        const _allItems = CommunicationsSection._generateDocuments(nextProps);
         return {
             allItems: _allItems,
         };
     }
 
-    constructor(props: ChecklistTableProps) {
+    constructor(props: CommunicationsSectionProps) {
         super(props);
         const columns: IColumn[] = [
             {
@@ -143,66 +144,24 @@ export default class ChecklistTable extends React.Component<ChecklistTableProps,
 
     }
 
-    public static _generateDocuments = (props: ChecklistTableProps) => {
+    public static _generateDocuments = (props: CommunicationsSectionProps) => {
         const items: IDocument[] = [];
         if (!props.currentSite === undefined) {
             return items;
         }
         items.push({
-            key: "Alerts",
-            name: "Alerts",
-            value: props.currentSite.Alerts ? props.currentSite.Alerts.toString() : "",
+            key: "SiteOwner",
+            name: "Site Owner",
+            value: props.currentSite.SiteOwner,
             note: "",
-            iconName: "MailAlert"
+            iconName: "RecruitmentManagement"
         });
         items.push({
-            key: "CustomizedPages",
-            name: "Customized Pages",
-            value: props.currentSite.CustomizedPages ? props.currentSite.CustomizedPages.toString() : "",
+            key: "SiteAdmins",
+            name: "Site Admins",
+            value: props.currentSite.SiteOwner,
             note: "",
-            iconName: "FileHTML"
-        });
-        items.push({
-            key: "WorkflowAssociations2010",
-            name: "2010 Workflows",
-            value: props.currentSite.WorkflowAssociations2010 ? props.currentSite.WorkflowAssociations2010.toString() : "",
-            note: "",
-            iconName: "WorkFlow"
-        });
-        items.push({
-            key: "WorkflowAssociations2013",
-            name: "2013 Workflows",
-            value: props.currentSite.WorkflowAssociations2013 ? props.currentSite.WorkflowAssociations2013.toString() : "",
-            note: "",
-            iconName: "WorkFlow"
-        });
-        items.push({
-            key: "InfoPath",
-            name: "InfoPath",
-            value: props.currentSite.InfoPath ? props.currentSite.InfoPath.toString() : "",
-            note: "",
-            iconName: "OfficeFormsLogo"
-        });
-        items.push({
-            key: "NonDefaultMasterPages",
-            name: "Custom Master Pages",
-            value: props.currentSite.NonDefaultMasterPages ? props.currentSite.NonDefaultMasterPages.toString() : "",
-            note: "",
-            iconName: "FileHTML"
-        });
-        items.push({
-            key: "CheckedOutFiles",
-            name: "Checked Out Files",
-            value: props.currentSite.CheckedOutFiles ? props.currentSite.CheckedOutFiles.toString(): "",
-            note: "",
-            iconName: "PageCheckedOut"
-        });
-        items.push({
-            key: "UnsupportedWebTemplate",
-            name: "Unsupported Web Template",
-            value: props.currentSite.UnsupportedWebTemplate? props.currentSite.UnsupportedWebTemplate.toString(): "",
-            note: "",
-            iconName: "WebTemplate"
+            iconName: "Admin"
         });
 
         return items;
@@ -229,6 +188,10 @@ export default class ChecklistTable extends React.Component<ChecklistTableProps,
                         isHeaderVisible={true}
                     />
                 </div>
+
+                <TextNotes currentSite={this.props.currentSite} />
+
+
             </React.Fragment>
         );
     }

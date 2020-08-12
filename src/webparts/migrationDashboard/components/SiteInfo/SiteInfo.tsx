@@ -5,10 +5,10 @@ import Section from '../Section/Section';
 import { SecurityTrimmedControl, PermissionLevel } from "@pnp/spfx-controls-react/lib/SecurityTrimmedControl";
 import { SPPermission } from '@microsoft/sp-page-context';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import GeneralInfoTable from './GeneralInfoTable/GeneralInfoTable';
-import CommunicationsTable from './CommunicationsTable/CommunicationsTable';
-import OtherTable from './OtherTable/OtherTable';
-import ChecklistTable from './ChecklistTable/ChecklistTable';
+import GeneralInfoSection from './GeneralInfoSection/GeneralInfoSection';
+import CommunicationsSection from './CommunicationsSection/CommunicationsSection';
+import OtherSection from './OtherSection/OtherSection';
+import ChecklistSection from './ChecklistSection/ChecklistSection';
 import GeneralControlPanel from './ControlPanel/GeneralControlPanel';
 
 interface SiteInfoProps {
@@ -32,16 +32,16 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                             permissions={[SPPermission.manageWeb]}>
                             <GeneralControlPanel currentSite={this.props.currentSite} context={this.props.context} /> 
                         </SecurityTrimmedControl>
-                    <GeneralInfoTable currentSite={this.props.currentSite} />
+                    <GeneralInfoSection currentSite={this.props.currentSite} />
                     </Section>
                 <Section title="Ownership and Communications">
-                    <CommunicationsTable currentSite={this.props.currentSite} />
+                    <CommunicationsSection currentSite={this.props.currentSite} />
                 </Section>
                 <Section title="Pre-migration checklist">
-                    <ChecklistTable currentSite={this.props.currentSite} />
+                    <ChecklistSection currentSite={this.props.currentSite} />
                 </Section>
                 <Section title="Other">
-                    <OtherTable currentSite={this.props.currentSite} />
+                    <OtherSection currentSite={this.props.currentSite} />
                 </Section>
                 </div>
             </React.Fragment >

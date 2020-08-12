@@ -1,5 +1,10 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
+.richTextButton {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
 
 .detailsPanel {
   :global {
@@ -16,6 +21,15 @@
 }
 
 .migrationDashboard {
+
+  .textEditIcon {
+    min-width: 30px;
+    font-size: 12px;
+    padding: 0;
+    top: 0;
+  }
+
+
   .pivotItem {
     margin-top: 15px;
   }
@@ -23,9 +37,6 @@
   .stack {
     padding-left: 0 !important;
   }
-
-
-
 
   .controlPanelButton {
     margin-right: 20px;
