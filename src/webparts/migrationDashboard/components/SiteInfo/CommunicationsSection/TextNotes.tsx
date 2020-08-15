@@ -2,6 +2,8 @@ import React from 'react';
 import { SiteItem } from '../../../Interfaces/SiteItem';
 import { RichText } from '@pnp/spfx-controls-react/lib/controls/richText';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
+import { SecurityTrimmedControl, PermissionLevel } from "@pnp/spfx-controls-react/lib/SecurityTrimmedControl";
+import { SPPermission } from '@microsoft/sp-page-context';
 import styles from '../../MigrationDashboard.module.scss';
 import { Constants } from '../../Constants/Constants';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
@@ -74,12 +76,17 @@ export default class TextNotes extends React.Component<TextNotesProps, TextNotes
             <React.Fragment>
                 <div style={{ position: 'relative' }}>
                     <h3>{this.props.title}
-                    {!this.state.editMode &&
-                            <DefaultButton
-                                iconProps={{ iconName: "Edit" }}
-                                className={styles.textEditIcon}
-                                onClick={this.editMode} />
-                        }
+                        <SecurityTrimmedControl context={this.props.context}
+                            level={PermissionLevel.currentWeb}
+                            permissions={[SPPermission.manageWeb]}>
+                            {!this.state.editMode &&
+                                <DefaultButton
+                                    iconProps={{ iconName: "Edit" }}
+                                    className={styles.textEditIcon}
+                                    onClick={this.editMode} />
+                            }
+                        </SecurityTrimmedControl>
+
                     </h3>
                     <RichText value={this.props.currentSite[this.props.fieldName]}
                         isEditMode={this.state.editMode}
