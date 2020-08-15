@@ -12,8 +12,9 @@ import SiteInfo from '../SiteInfo/SiteInfo';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { Constants } from '../Constants/Constants';
 import { DataProvider } from '../../services/DasboardDataProvider';
+import styles from '../MigrationDashboard.module.scss';
 
-
+const logo: any = require('../../../assets/search.svg');
 
 
 export interface SiteSearchProps {
@@ -86,6 +87,9 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
                 <div>
                     {this.renderSearchBox()}
                 </div>
+                {!this.state.currentSite &&
+                    <img src={logo} alt="search" className={styles.searchImage} />
+                }
                 {this.state.currentSite &&
                     <SiteInfo currentSite={this.state.currentSite} context={this.props.context} />
                 }

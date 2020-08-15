@@ -1,9 +1,14 @@
 # SharePoint Migration Dashboard
-Planning to migrate your SharePoint Server farm to SharePoint Online? You need this dashboard.
+Planning to migrate your SharePoint Server farm to SharePoint Online? Then you need this dashboard.
+
+![](IMG/search.png)
+
 ## Why Migration Dashboard?
 
  Raw [SharePoint Migration Assessment Tool (SMAT)](https://www.microsoft.com/en-us/download/details.aspx?id=53598&WT.mc_id=rss_alldownloads_all)  reports are hard to read. Migration Dashboard presents SMAT data in a human readable form.
 
+
+![](IMG/siteInfo.png)
 ## Deploy Migration Dashboard
 
 1. Run `Install-Module SharePointPnPPowerShellOnline` in PowerShell.

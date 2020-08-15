@@ -1,5 +1,15 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
+
+.searchImage {
+  max-width: 700px;
+  margin-top: 90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
 .richTextButton {
   margin-right: 20px;
   margin-top: 10px;
