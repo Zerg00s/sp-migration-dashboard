@@ -17,9 +17,10 @@ Planning to migrate your SharePoint Server farm to SharePoint Online? Then you n
 1. Deploy `sp-migration-dashboard.sppkg` app to App Catalog.
 1. In SharePoint Online: 
    * Create an empty site collection for hosting Migration Dashboard.
-   * Add sp-migration-dashboard app the empty site collection.
+   * Add the sp-migration-dashboard app to the empty site collection.
    * Add Migration Dashboard webpart to the home page.
    * Deploy Lists and Libraries by running `Deploy-Dashboard.ps1`
 1. Download [SharePoint Migration Assessment Tool (SMAT)](https://www.microsoft.com/en-us/download/details.aspx?id=53598&WT.mc_id=rss_alldownloads_all)
-1. Run SMAT in One of the SharePoint Servers in your farm. 
+1. Run SMAT in one of the SharePoint servers in your farm. 
 1. Run `Upload_SMAT_Reports.ps1` to upload SMAT reports to the Dashboard site.
+1. Enjoy the data provided by the Migration Dashboard!
