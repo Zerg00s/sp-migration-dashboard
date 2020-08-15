@@ -42,6 +42,7 @@ export interface SiteItem extends ListItem {
     WorkflowRunning2013: number;
     TargetEnvironment: string;
     PublicNotes: string;
+    AdminNotes: string;
     TargetSiteUrl?: any;
     MigrationStatus?: any;
     ScheduledDate?: any;

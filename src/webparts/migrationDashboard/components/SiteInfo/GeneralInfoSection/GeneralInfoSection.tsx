@@ -1,6 +1,11 @@
 import React from 'react';
 import { DetailsList, mergeStyleSets, IColumn, FontIcon, SelectionMode, DetailsListLayoutMode } from 'office-ui-fabric-react';
 import { SiteItem } from '../../../Interfaces/SiteItem';
+import { SecurityTrimmedControl, PermissionLevel } from "@pnp/spfx-controls-react/lib/SecurityTrimmedControl";
+import { SPPermission } from '@microsoft/sp-page-context';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
+import TextNotes from '../CommunicationsSection/TextNotes';
+import { Constants } from '../../Constants/Constants';
 
 const classNames = mergeStyleSets({
     fileIconHeaderIcon: {
@@ -60,6 +65,7 @@ interface GeneralInfoSectionState {
 
 interface GeneralInfoSectionProps {
     currentSite: SiteItem;
+    context: WebPartContext;
 }
 
 export default class GeneralInfoSection extends React.Component<GeneralInfoSectionProps, GeneralInfoSectionState>  {
@@ -210,7 +216,6 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
         return (
             <React.Fragment>
                 <div>
-                    {/* <div data-is-scrollable="true"> */}
                     <DetailsList
                         onRenderItemColumn={this._onRenderItemColumn}
                         items={this.state.allItems}
@@ -222,6 +227,18 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
                         isHeaderVisible={true}
                     />
                 </div>
+
+                <SecurityTrimmedControl context={this.props.context}
+                    level={PermissionLevel.currentWeb}
+                    permissions={[SPPermission.manageWeb]}>
+                    <TextNotes currentSite={this.props.currentSite}
+                        context={this.props.context}
+                        key={this.props.currentSite.AdminNotes}
+                        fieldName={Constants.SiteFields.AdminNotes}
+                        placeholder="Leave notes for your migration team..."
+                        title="Notes for the migration team"
+                    />
+                </SecurityTrimmedControl>
             </React.Fragment>
         );
     }

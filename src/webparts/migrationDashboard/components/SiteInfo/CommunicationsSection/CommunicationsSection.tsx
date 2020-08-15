@@ -2,6 +2,8 @@ import React from 'react';
 import { DetailsList, mergeStyleSets, IColumn, FontIcon, SelectionMode, DetailsListLayoutMode, DefaultButton, Button, PrimaryButton } from 'office-ui-fabric-react';
 import { SiteItem } from '../../../Interfaces/SiteItem';
 import TextNotes from './TextNotes';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { Constants } from '../../Constants/Constants';
 
 
 const classNames = mergeStyleSets({
@@ -62,6 +64,7 @@ interface CommunicationsSectionState {
 
 interface CommunicationsSectionProps {
     currentSite: SiteItem;
+    context: WebPartContext;
 }
 
 export default class CommunicationsSection extends React.Component<CommunicationsSectionProps, CommunicationsSectionState>  {
@@ -189,8 +192,13 @@ export default class CommunicationsSection extends React.Component<Communication
                     />
                 </div>
 
-                <TextNotes currentSite={this.props.currentSite} />
-
+                <TextNotes currentSite={this.props.currentSite}
+                    context={this.props.context}
+                    key={this.props.currentSite.PublicNotes}
+                    fieldName={Constants.SiteFields.PublicNotes}
+                    placeholder="Leave important notes for the site stakeholders here..."
+                    title="Notes for site stakeholders"
+                />
 
             </React.Fragment>
         );

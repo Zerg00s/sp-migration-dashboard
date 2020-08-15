@@ -7,5 +7,9 @@ export class Constants {
     public static readonly Lists = {
         SiteReports:"Sites Report"
     };
+    public static readonly SiteFields = {
+      PublicNotes: "PublicNotes",
+      AdminNotes: "AdminNotes"
+    }
   }
   

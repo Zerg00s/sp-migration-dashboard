@@ -3,7 +3,7 @@
   "solution": {
     "name": "sp-migration-dashboard-client-side-solution",
     "id": "ee19878d-ba02-499b-b98e-b05188b7d599",
-    "version": "1.0.0.9",
+    "version": "1.0.0.10",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {

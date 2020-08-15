@@ -32,10 +32,10 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                             permissions={[SPPermission.manageWeb]}>
                             <GeneralControlPanel currentSite={this.props.currentSite} context={this.props.context} /> 
                         </SecurityTrimmedControl>
-                    <GeneralInfoSection currentSite={this.props.currentSite} />
+                    <GeneralInfoSection currentSite={this.props.currentSite} context={this.props.context}/>
                     </Section>
                 <Section title="Ownership and Communications">
-                    <CommunicationsSection currentSite={this.props.currentSite} />
+                    <CommunicationsSection currentSite={this.props.currentSite} context={this.props.context}/>
                 </Section>
                 <Section title="Pre-migration checklist">
                     <ChecklistSection currentSite={this.props.currentSite} />

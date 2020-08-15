@@ -72,11 +72,10 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
         });
     }
 
-    private patchCurrentItem = (masterItemUpdated: CustomEvent) => {
+    private patchCurrentItem = (itemPatchEvent: CustomEvent) => {
+        console.log(itemPatchEvent);
         sp.web.lists.getByTitle(Constants.Lists.SiteReports).items.getById(this.state.currentSite.ID).update(
-            {
-                [masterItemUpdated.detail.field]: masterItemUpdated.detail.value
-            }
+            itemPatchEvent.detail
         );
         this.refreshCurrentItem(null);
     }
