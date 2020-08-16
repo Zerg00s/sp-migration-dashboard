@@ -6,6 +6,7 @@ import { SPPermission } from '@microsoft/sp-page-context';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import TextNotes from '../CommunicationsSection/TextNotes';
 import { Constants } from '../../Constants/Constants';
+import Measures from '../../../services/Measures';
 
 const classNames = mergeStyleSets({
     fileIconHeaderIcon: {
@@ -170,34 +171,34 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
         });
         items.push({
             key: "SiteSizeInMB",
-            name: "Site Size In MB",
-            value: props.currentSite.SiteSizeInMB.toString(),
+            name: "Site Size",
+            value:  Measures.formatToDigitalSpace(props.currentSite.SiteSizeInMB),
             note: "",
             iconName: "Database"
         });
         items.push({
             key: "ContentDBSizeInMB",
-            name: "Content DB Size In MB",
-            value: props.currentSite.ContentDBSizeInMB.toString(),
+            name: "Content DB Size",
+            value: Measures.formatToDigitalSpace(props.currentSite.ContentDBSizeInMB),
             note: "",
             iconName: "Database"
         });
         items.push({
             key: "NumOfWebs",
             name: "Subsites",
-            // TODO: check for NaN
-            value: (props.currentSite.NumOfWebs - 1).toString(),
+            value: Intl.NumberFormat().format(props.currentSite.NumOfWebs - 1),
             note: "",
             iconName: "NumberSymbol"
         });
         items.push({
             key: "TotalItemCount",
             name: "Total Items Count",
-            // TODO: check for NaN
-            value: (props.currentSite.TotalItemCount).toString(),
+            value: Intl.NumberFormat().format(props.currentSite.TotalItemCount),
             note: "",
-            iconName: "NumberSymbol" //  //
+            iconName: "NumberSymbol" 
         });
+
+        
 
         return items;
     }

@@ -1,31 +1,8 @@
 @import "~office-ui-fabric-react/dist/sass/References.scss";
 
 :global {
-  //   .ms-Panel-content {
-  //     height: 100%;
-  //   }
-  //   [data-automation-id="ControlZone"] {
-  //     margin: 0 !important;
-  //   }
-  //   [class^="spNav"] {
-  //     display: none;
-  //   }
-  //   [class^="navCustom"] {
-  //     display: none;
-  //   }
-  //   [data-sp-feature-tag="Site header host"] {
-  //     display: none !important;
-
-
-  //   }
-  //   [data-automation-id="pageHeader"] {
-  //     display: none !important;
-  //   }
-  //   .ms-HubNav {
-  //     display: none !important;
-  //   }
-
-  //   [class^="commentsWrapper"] {
-  //     display: none !important;
-  //   }
+  .CanvasSection--fullWidth  [class^='migrationDashboard']{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }

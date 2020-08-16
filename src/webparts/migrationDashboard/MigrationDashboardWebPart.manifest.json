@@ -8,8 +8,8 @@
   "manifestVersion": 2,
 
   "requiresCustomScript": false,
+  "supportsFullBleed":true,
   "supportedHosts": ["SharePointWebPart"],
-
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
     "group": { "default": "Other" },
@@ -17,8 +17,8 @@
     "description": { "default": "Migration Dashboard" },
     "officeFabricIconFontName": "ViewDashboard",
     "properties": {
-      "description": "Migration Dashboard Description",
-      "title": "Migration Dashboard Title"
+      "description": "Comprehensive migration planning and tracking tool. Self-service solution for the site stakeholders.",
+      "title": "Migration Dashboard"
     }
   }]
 }

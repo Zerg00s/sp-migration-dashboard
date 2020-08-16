@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "sp-migration-dashboard-client-side-solution",
+    "name": "Migration Dashboard",
     "id": "ee19878d-ba02-499b-b98e-b05188b7d599",
-    "version": "1.0.0.10",
+    "version": "1.0.0.13",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
