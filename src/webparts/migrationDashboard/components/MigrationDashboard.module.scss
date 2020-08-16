@@ -1,12 +1,21 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
-.searchImage {
+.svgImage {
   max-width: 700px;
   margin-top: 90px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 95%;
+}
+
+.svgImageStats {
+  max-width: 700px;
+  margin-top: 90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
 }
 
 .richTextButton {

@@ -17,6 +17,7 @@ import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 import SiteSearch from './SiteSearch/SiteSearch';
 import { Fabric } from 'office-ui-fabric-react';
 import { Constants } from './Constants/Constants';
+const statsLogo: any = require("../../assets/stats.svg");
 
 interface State {
   siteItems: SiteItem[];
@@ -34,7 +35,7 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
   }
 
   public async componentDidMount() {
-   
+
     DataProvider.getSites().then(items => {
       console.log("done");
       this.setState({
@@ -44,7 +45,7 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
     });
 
   }
- 
+
 
   private Content = () => {
     const shimmerLine = { type: ShimmerElementType.line, height: 25 };
@@ -66,7 +67,8 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
               <SiteSearch context={this.props.context} siteItems={this.state.siteItems} />
             </PivotItem>
             <PivotItem headerText="Statistics" itemIcon="LineChart" color="red" >
-              <h2>🚧 Migration statistics 🚧</h2>
+              <h2>Statistics</h2>
+              <img src={statsLogo} alt="statistics" className={styles.svgImageStats} />
             </PivotItem>
           </Pivot>
         </Fabric >

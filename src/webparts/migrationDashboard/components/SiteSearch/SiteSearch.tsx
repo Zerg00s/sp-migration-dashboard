@@ -90,7 +90,7 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
                     {this.renderSearchBox()}
                 </div>
                 {!this.state.currentSite &&
-                    <img src={logo} alt="search" className={styles.searchImage} />
+                    <img src={logo} alt="search" className={styles.svgImage} />
                 }
                 {this.state.currentSite &&
                     <SiteInfo currentSite={this.state.currentSite} context={this.props.context} />
