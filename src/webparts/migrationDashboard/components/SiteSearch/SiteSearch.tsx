@@ -52,13 +52,15 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
     }
 
     private renderSearchBox = () => {
-        return <Autocomplete
-            items={this.props.siteItems}
-            searchTitle='Search SharePoint site...'
-            suggestionCallback={this.entitySelectHandler}
-            searchCallback={this.searchTextandler}
-            componentRef={(searchBox) => this.searchBox = searchBox}
-        />;
+        return (<form autoComplete="off">
+            <Autocomplete
+                items={this.props.siteItems}
+                searchTitle='Search SharePoint site...'
+                suggestionCallback={this.entitySelectHandler}
+                searchCallback={this.searchTextandler}
+                componentRef={(searchBox) => this.searchBox = searchBox}
+            />
+        </form>);
     }
 
     public async componentDidMount() {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBox, Callout, List, ISearchBox, IRefObject, DirectionalHint } from 'office-ui-fabric-react/lib/';
+import { SearchBox, Callout, List, ISearchBox, IRefObject, DirectionalHint, IList } from 'office-ui-fabric-react/lib/';
 import {
   IAutocompleteProps, IAutocompleteState,
   AutocompleteStyles, SuggestionListStyle,
@@ -12,12 +12,13 @@ import { UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 
 export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompleteState> {
   public searchBox: ISearchBox;
+  public searchList: IList;
   private _menuButtonElement = React.createRef<HTMLDivElement>();
 
   constructor(props: IAutocompleteProps) {
     super(props);
     this.state = {
-      isSuggestionDisabled: false,
+      isSuggestionDisabled: true,
       searchText: this.getDefaultSearchText(),
     };
     this.onSearch(this.getDefaultSearchText());
@@ -34,7 +35,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
   protected getComponentName(): string {
     return 'SearchSuggestions';
   }
-  public handleClick = (site: SiteItem) => {
+  public handleSiteSelect = (site: SiteItem) => {
     this.props.suggestionCallback(site);
     this.setState({
       searchText: site.SiteUrl
@@ -63,6 +64,30 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
       this.searchBox.focus();
     }
   }
+  private handleKeyDownSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // We can press down arrow key to select one of the search suggestions
+    if (event.key === "ArrowDown") {
+      const firstSiggestedSite = document.querySelector("#SitesSearchList [role='listitem'] [data-is-focusable='true']") as HTMLElement;
+      if (firstSiggestedSite) {
+        firstSiggestedSite.setAttribute("TabIndex", "0");
+        firstSiggestedSite.focus();
+      }
+    }
+  }
+  private handleKeyDownList = (event: React.KeyboardEvent<HTMLDivElement | List<SiteItem>>) => {
+    // When we press Enter against selected site suggestion
+    if (event.key === "Enter") {
+      const targetItem = event.target as HTMLElement;
+      const selectedSiteUrl = targetItem.innerText.trim();
+      this.setState({
+        searchText: targetItem.innerText.trim(),
+        isSuggestionDisabled: true
+      });
+      const selectedSite = first(filter(this.props.items, (item) => item.SiteUrl === selectedSiteUrl));
+      this.props.suggestionCallback(selectedSite);
+      this.searchBox.focus();
+    }
+  }
   private renderSearch = () => {
     return (
       <div ref={this._menuButtonElement} style={AutocompleteStyles()} >
@@ -77,6 +102,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
               return this.props.children;
             }
           }
+          onKeyDown={(event) => this.handleKeyDownSearch(event)}
           onChange={debounce((newSearchText => {
             newSearchText.trim() !== '' ? this.showSuggestionCallOut() : this.hideSuggestionCallOut();
             this.setState({ searchText: newSearchText });
@@ -96,7 +122,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
         alignTargetEdge={false}
         onDismiss={ev => this.hideSuggestionCallOut()}
         setInitialFocus={false}
-        hidden={!this.state.isSuggestionDisabled}
+        hidden={this.state.isSuggestionDisabled}
         calloutMaxHeight={300}
         target={this._menuButtonElement.current}
         directionalHint={DirectionalHint.bottomLeftEdge}
@@ -109,7 +135,13 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
   private renderSuggestionList = () => {
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
-        <List id='SearchList' tabIndex={0}
+        <List id='SitesSearchList' tabIndex={0} componentRef={
+          (searchList) => {
+            this.searchList = searchList;
+            return this.props.children;
+          }
+        }
+          onKeyDown={(event) => this.handleKeyDownList(event)}
           items={this.suggestedSitesFiltered(this.props.items)}
           onRenderCell={this.onRenderCell}
         />
@@ -124,7 +156,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
       >
         <div id={'link' + site.ID}
           style={SuggestionListStyle()}
-          onClick={() => this.handleClick(site)}>
+          onClick={() => this.handleSiteSelect(site)}>
           {site.SiteUrl}
         </div>
       </div>
@@ -132,13 +164,13 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
   }
 
   private showSuggestionCallOut() {
-    this.setState({ isSuggestionDisabled: true });
-  }
-  private hideSuggestionCallOut() {
     this.setState({ isSuggestionDisabled: false });
   }
+  private hideSuggestionCallOut() {
+    this.setState({ isSuggestionDisabled: true });
+  }
   private suggestedSitesFiltered = (fullListOfSites: SiteItem[]) => {
-    if(this.state.searchText === ''){
+    if (this.state.searchText === '') {
       return null;
     }
     let suggestedSites = fullListOfSites.filter(site =>

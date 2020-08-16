@@ -1,7 +1,5 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
-
-
 .searchImage {
   max-width: 700px;
   margin-top: 90px;
@@ -16,10 +14,8 @@
   margin-top: 10px;
 }
 
-
 .detailsPanel {
   :global {
-
     .ms-Panel-scrollableContent,
     .ms-Panel-content {
       height: 100%;
@@ -32,7 +28,6 @@
 }
 
 .migrationDashboard {
-
   .textEditIcon {
     min-width: 30px;
     font-size: 12px;
@@ -40,7 +35,6 @@
     top: 0;
     float: right;
   }
-
 
   .pivotItem {
     margin-top: 15px;
@@ -60,7 +54,7 @@
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px;
       border-bottom-style: none;
-      border-bottom-width: 0px;
+      border-bottom-width: 0;
       border-image-outset: 0;
       border-image-repeat: stretch;
       border-image-slice: 100%;
@@ -68,16 +62,16 @@
       border-image-width: 1;
       border-left-color: rgb(50, 49, 48);
       border-left-style: none;
-      border-left-width: 0px;
+      border-left-width: 0;
       border-right-color: rgb(50, 49, 48);
       border-right-style: none;
-      border-right-width: 0px;
+      border-right-width: 0;
       border-top-color: rgb(50, 49, 48);
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
       border-top-style: none;
-      border-top-width: 0px;
-      box-shadow: rgba(0, 0, 0, 0.133) 0px 1.6px 3.6px 0px, rgba(0, 0, 0, 0.11) 0px 0.3px 0.9px 0px;
+      border-top-width: 0;
+      box-shadow: rgba(0, 0, 0, 0.133) 0 1.6px 3.6px 0, rgba(0, 0, 0, 0.11) 0 0.3px 0.9px 0;
       box-sizing: border-box;
       color: rgb(50, 49, 48);
       display: block;
@@ -87,9 +81,9 @@
       font-weight: 400;
       line-height: 22.4px;
       margin-bottom: 28px;
-      margin-left: 0px;
-      margin-right: 0px;
-      margin-top: 0px;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
       opacity: 1;
       padding-bottom: 28px;
       padding-left: 28px;
@@ -106,7 +100,6 @@
           font-size: 24px;
           font-weight: 600;
           height: 24px;
-
         }
       }
     }
@@ -129,76 +122,4 @@
       font-weight: 600 !important;
     }
   }
-
-  /* WEBPART TITLE END */
-  // .container {
-  //   max-width: 700px;
-  //   margin: 0 auto;
-  //   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-  // }
-
-  // .row {
-  //   @include ms-Grid-row;
-  //   @include ms-fontColor-white;
-  //   background-color: $ms-color-themeDark;
-  //   padding: 20px;
-  // }
-
-  // .column {
-  //   @include ms-Grid-col;
-  //   @include ms-lg10;
-  //   @include ms-xl8;
-  //   @include ms-xlPush2;
-  //   @include ms-lgPush1;
-  // }
-
-  // .title {
-  //   @include ms-font-xl;
-  //   @include ms-fontColor-white;
-  // }
-
-  // .subTitle {
-  //   @include ms-font-l;
-  //   @include ms-fontColor-white;
-  // }
-
-  // .description {
-  //   @include ms-font-l;
-  //   @include ms-fontColor-white;
-  // }
-
-  // .button {
-  //   // Our button
-  //   text-decoration: none;
-  //   height: 32px;
-
-  //   // Primary Button
-  //   min-width: 80px;
-  //   background-color: $ms-color-themePrimary;
-  //   border-color: $ms-color-themePrimary;
-  //   color: $ms-color-white;
-
-  //   // Basic Button
-  //   outline: transparent;
-  //   position: relative;
-  //   font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-  //   -webkit-font-smoothing: antialiased;
-  //   font-size: $ms-font-size-m;
-  //   font-weight: $ms-font-weight-regular;
-  //   border-width: 0;
-  //   text-align: center;
-  //   cursor: pointer;
-  //   display: inline-block;
-  //   padding: 0 16px;
-
-  //   .label {
-  //     font-weight: $ms-font-weight-semibold;
-  //     font-size: $ms-font-size-m;
-  //     height: 32px;
-  //     line-height: 32px;
-  //     margin: 0 4px;
-  //     vertical-align: top;
-  //     display: inline-block;
-  //   }
-  // }
 }

@@ -10,6 +10,6 @@ export class Constants {
     public static readonly SiteFields = {
       PublicNotes: "PublicNotes",
       AdminNotes: "AdminNotes"
-    }
+    };
   }
   
