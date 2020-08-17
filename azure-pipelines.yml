@@ -1,0 +1,56 @@
+name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+
+trigger:
+- master
+- develop
+- azure-pipelines
+
+pool:
+  vmImage: 'vs2017-win2016'
+  demands:
+  - npm
+  - node.js
+  - java
+
+steps:
+- task: NodeTool@0
+  displayName: 'Install Node.Js'
+  inputs:
+    versionSpec: 10.x
+    checkLatest: true
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: false
+
+
+# - task: Gulp@0
+#  displayName: 'Set Manifest Version'
+#  inputs:
+#    targets: 'set-manifest-version'
+#    arguments: '--buildnum "$(Build.BuildNumber)"'
+
+- task: Gulp@0
+  displayName: 'Bundle project'
+  inputs:
+    targets: bundle
+    arguments: '--ship'
+
+- task: Gulp@0
+  displayName: 'Package Solution'
+  inputs:
+    targets: 'package-solution'
+    arguments: '--ship'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    Contents: |
+     config/**/*
+     sharepoint/**/*
+     deploy/**/*
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
