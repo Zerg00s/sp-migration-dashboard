@@ -48,7 +48,6 @@ steps:
   inputs:
     Contents: |
      config/package-solution.json
-     sharepoint/**/*
      sharepoint/solution/*.sppkg
      PowerShell/**/*
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
