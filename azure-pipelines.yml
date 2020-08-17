@@ -32,6 +32,11 @@ steps:
 #    arguments: '--buildnum "$(Build.BuildNumber)"'
 
 - task: Gulp@0
+  displayName: 'Increase version number in package-solution.json'
+  inputs:
+    targets: bump-version
+
+- task: Gulp@0
   displayName: 'Bundle project'
   inputs:
     targets: bundle
