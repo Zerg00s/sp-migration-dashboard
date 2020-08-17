@@ -1,10 +1,8 @@
 name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
-
 trigger:
 - master
 - develop
-- azure-pipelines
 
 pool:
   vmImage: 'ubuntu-16.04'
@@ -23,13 +21,6 @@ steps:
   displayName: 'npm install'
   inputs:
     verbose: false
-
-
-# - task: Gulp@0
-#  displayName: 'Set Manifest Version'
-#  inputs:
-#    targets: 'set-manifest-version'
-#    arguments: '--buildnum "$(Build.BuildNumber)"'
 
 - task: Gulp@0
   displayName: 'Increase version number in package-solution.json'
