@@ -34,7 +34,7 @@ function Connect-SPOnline() {
     Write-Host $Login
     Write-Host $Password
     Write-Host $securePass
-    $AdminConnection = Connect-PnPOnline -Url $global:TenantAdminUrl -Credentials $credentials -ReturnConnection
+    $AdminConnection = Connect-PnPOnline -Url "$global:TenantAdminUrl" -Credentials $credentials -ReturnConnection
     Connect-PnPOnline -Url $SiteUrl -Credentials $credentials
 
     return $AdminConnection
