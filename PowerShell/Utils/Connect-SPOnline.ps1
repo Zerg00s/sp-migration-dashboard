@@ -23,7 +23,7 @@ function Connect-SPOnline() {
     }
  
     $SiteUrl = $SiteUrl.TrimEnd('/')
-    Write-host "Connecting to $SiteUrl"
+    Write-host  "$global:TenantAdminUrl"
     $credentials = $null
     $AdminConnection = $null;
 
@@ -35,6 +35,8 @@ function Connect-SPOnline() {
     Write-Host $Password
     Write-Host $securePass
     $AdminConnection = Connect-PnPOnline -Url "$global:TenantAdminUrl" -Credentials $credentials -ReturnConnection
+    
+    Write-host "Connecting to $SiteUrl"
     Connect-PnPOnline -Url $SiteUrl -Credentials $credentials
 
     return $AdminConnection
