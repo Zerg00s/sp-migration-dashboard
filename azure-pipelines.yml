@@ -9,7 +9,6 @@ pool:
   demands:
   - npm
   - node.js
-  - java
 
 steps:
 - task: NodeTool@0
@@ -17,11 +16,9 @@ steps:
   inputs:
     versionSpec: 10.x
     checkLatest: true
-- task: Npm@1
-  displayName: 'npm install'
-  inputs:
-    verbose: false
 
+- script: npm ci
+  displayName: 'npm ci'
 - task: Gulp@0
   displayName: 'Increase version number in package-solution.json'
   inputs:
