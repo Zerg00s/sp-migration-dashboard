@@ -10,13 +10,21 @@ pool:
   - npm
   - node.js
 
+variables:
+  npm_config_cache: $(Pipeline.Workspace)/.npm
 steps:
 - task: NodeTool@0
   displayName: 'Install Node.Js'
   inputs:
     versionSpec: 10.x
     checkLatest: true
-
+- task: Cache@2
+  inputs:
+    key: 'npm | "$(Agent.OS)" | package-lock.json'
+    restoreKeys: |
+       npm | "$(Agent.OS)"
+    path: $(npm_config_cache)
+  displayName: Cache npm
 - script: npm ci
   displayName: 'npm ci'
 - task: Gulp@0
