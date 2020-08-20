@@ -23,20 +23,16 @@ function Connect-SPOnline() {
     }
  
     $SiteUrl = $SiteUrl.TrimEnd('/')
-    # Write-host  "$global:TenantAdminUrl"
     $credentials = $null
     $AdminConnection = $null;
 
     $securePass = ConvertTo-SecureString -String $Password -AsPlainText -Force
     $credentials = new-object -typename System.Management.Automation.PSCredential -argumentlist $Login, $securePass
 
-    # Write-host "Connecting to $global:TenantAdminUrl"
-    # Write-Host $Login
-    # Write-Host $Password
-    # Write-Host $securePass
+    Write-host "Connecting to $global:TenantAdminUrl"
     $AdminConnection = Connect-PnPOnline -Url "$global:TenantAdminUrl" -Credentials $credentials -ReturnConnection
     
-    # Write-host "Connecting to $SiteUrl"
+    Write-host "Connecting to $SiteUrl"
     Connect-PnPOnline -Url $SiteUrl -Credentials $credentials
 
     return $AdminConnection
