@@ -18,11 +18,8 @@ build.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not came
 gulp.task('bump-version', () => {
   const packageSolution = JSON.parse(fs.readFileSync("config/package-solution.json"));
   var now = new Date();
-  const buildNumber = now.getFullYear().toString().substr(2, 2) + "" + String(now.getMonth()).padStart(2, '0') + "" + String(now.getDate()).padStart(2, '0') + "" + String(now.getHours()).padStart(2, '0') + "" + String(now.getMinutes()).padStart(2, '0')
-  let versionParts = packageSolution.solution.version.split(".");
-  versionParts.pop();
-  versionParts.push(buildNumber);
-  packageSolution.solution.version = versionParts.join(".")
+  const buildNumber = now.getFullYear().toString().substr(2, 2) + "." + String(now.getMonth()).padStart(2, '0') + "." + String(now.getDate()).padStart(2, '0') + "." + String(now.getHours()).padStart(2, '0') + "" + String(now.getMinutes()).padStart(2, '0')
+  packageSolution.solution.version = buildNumber;
 
   fs.writeFile("config/package-solution.json", JSON.stringify(packageSolution, null, 2), err => {
     console.log(`Latest version: ${packageSolution.solution.version}`);

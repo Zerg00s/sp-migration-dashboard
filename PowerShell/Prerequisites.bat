@@ -3,6 +3,5 @@ Powershell.exe -NoProfile -ExecutionPolicy Unrestricted -Command "& {Set-Executi
 ECHO Execution Policy was set to 'Unrestricted'
 Powershell.exe -NoProfile -ExecutionPolicy Unrestricted -Command "& {Get-ChildItem -Recurse | Unblock-File}"
 ECHO Script files in this folder are unblocked
+PowerShell.exe -Command "& '%~dpn0.ps1' -path '%~dp0'"
 PAUSE
-
-REM TODO:Install-Module SharePointPnPPowerShellOnline

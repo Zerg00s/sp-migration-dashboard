@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.23.2007.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+    <pnp:Tenant>
+        <pnp:AppCatalog>
+            <pnp:Package Src="..\..\sharepoint\solution\sp-migration-dashboard.sppkg" Action="UploadAndPublish" SkipFeatureDeployment="false" Overwrite="true" />
+        </pnp:AppCatalog>
+    </pnp:Tenant>
+    <pnp:Templates ID="CONTAINER-TENANT-APP">
+        <pnp:ProvisioningTemplate ID="TENANT-APP">
+        </pnp:ProvisioningTemplate>
+    </pnp:Templates>
+</pnp:Provisioning>

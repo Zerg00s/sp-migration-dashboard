@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema">
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.23.2007.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
-  <pnp:Templates ID="CONTAINER-TEMPLATE-BC5AB3F45BCC41FBBC419C6CC2058094">
-    <pnp:ProvisioningTemplate ID="TEMPLATE-BC5AB3F45BCC41FBBC419C6CC2058094" Version="1" BaseSiteTemplate="STS#3" Scope="RootSite">
+  <pnp:Templates ID="CONTAINER-TEMPLATE-DASHBOARD-LISTS">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-DASHBOARD-LISTS" Version="1" BaseSiteTemplate="STS#3" Scope="RootSite">
       <pnp:Lists>
         <pnp:ListInstance Title="Sites Report" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/SitesReport" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableAttachments="false" EnableFolderCreation="false" NoCrawl="true" DefaultDisplayFormUrl="{site}/Lists/SitesReport/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/SitesReport/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/SitesReport/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
