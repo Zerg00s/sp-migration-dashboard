@@ -21,19 +21,6 @@ export default class SiteSettingsButton extends React.Component<SiteSettingsProp
         shouldFocusOnMount: false,
         items: [
             {
-                key: 'SiteUsers',
-                iconProps: {
-                    iconName: 'Group',
-                    style: {
-                        color: 'green',
-                    },
-                },
-                text: 'Site users',
-                href: `${this.props.SiteUrl}/_layouts/simple.aspx`,
-                target: "_blank",
-            },
-
-            {
                 key: 'SitePermissions',
                 iconProps: {
                     iconName: 'Signin',
