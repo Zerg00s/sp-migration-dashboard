@@ -6,10 +6,11 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/components/Button/Defa
 import { IContextualMenuProps } from 'office-ui-fabric-react/lib/components/ContextualMenu';
 
 interface SiteSettingsProps {
-    currentSite: SiteItem;
+    Title: string;
+    SiteUrl: string;
 }
 
-export default class SourceSiteSettingsButton extends React.Component<SiteSettingsProps> {
+export default class SiteSettingsButton extends React.Component<SiteSettingsProps> {
     constructor(props) {
         super(props);
         this.state = {};
@@ -20,7 +21,20 @@ export default class SourceSiteSettingsButton extends React.Component<SiteSettin
         shouldFocusOnMount: false,
         items: [
             {
-                key: 'newItem',
+                key: 'SiteUsers',
+                iconProps: {
+                    iconName: 'Group',
+                    style: {
+                        color: 'green',
+                    },
+                },
+                text: 'Site users',
+                href: `${this.props.SiteUrl}/_layouts/simple.aspx`,
+                target: "_blank",
+            },
+
+            {
+                key: 'SitePermissions',
                 iconProps: {
                     iconName: 'Signin',
                     style: {
@@ -28,19 +42,79 @@ export default class SourceSiteSettingsButton extends React.Component<SiteSettin
                     },
                 },
                 text: 'Site permissions',
-                href: `${this.props.currentSite.SiteUrl}/_layouts/15/user.aspx`,
+                href: `${this.props.SiteUrl}/_layouts/user.aspx`,
                 target: "_blank",
             },
             {
-                key: 'newItem',
+                key: 'SiteManager',
+                iconProps: {
+                    iconName: 'ViewListTree',
+                    style: {
+                        color: 'salmon',
+                    },
+                },
+                text: 'Site Manager',
+                href: `${this.props.SiteUrl}/_layouts/sitemanager.aspx`,
+                target: "_blank",
+            },
+            {
+                key: 'StorageMetrics',
                 iconProps: {
                     iconName: 'OfflineStorage',
                     style: {
                         color: 'salmon',
                     },
                 },
-                text: 'Storage metrics',
-                href: `${this.props.currentSite.SiteUrl}/_layouts/sitemanager.aspx`,
+                text: 'Storage Metrics',
+                href: `${this.props.SiteUrl}/_layouts/storman.aspx`,
+                target: "_blank",
+            },
+            {
+                key: 'SiteContents',
+                iconProps: {
+                    iconName: 'FolderList',
+                    style: {
+                        color: 'green',
+                    },
+                },
+                text: 'Site Contents',
+                href: `${this.props.SiteUrl}/_layouts/viewlsts.aspx`,
+                target: "_blank",
+            },
+            {
+                key: 'SiteSettings',
+                iconProps: {
+                    iconName: 'Settings',
+                    style: {
+                        color: 'black',
+                    },
+                },
+                text: 'Site Settings',
+                href: `${this.props.SiteUrl}/_layouts/settings.aspx`,
+                target: "_blank",
+            },
+            {
+                key: 'SiteFeatures',
+                iconProps: {
+                    iconName: 'Settings',
+                    style: {
+                        color: 'green',
+                    },
+                },
+                text: 'Site Features',
+                href: `${this.props.SiteUrl}/_layouts/ManageFeatures.aspx`,
+                target: "_blank",
+            },
+            {
+                key: 'SiteCollectionFeatures',
+                iconProps: {
+                    iconName: 'Settings',
+                    style: {
+                        color: 'green',
+                    },
+                },
+                text: 'Site Collection Features',
+                href: `${this.props.SiteUrl}/_layouts/ManageFeatures.aspx?Scope=Site`,
                 target: "_blank",
             },
         ]
@@ -50,7 +124,7 @@ export default class SourceSiteSettingsButton extends React.Component<SiteSettin
     public render() {
         return (
             <React.Fragment>
-                <DefaultButton text="Source Site Settings" menuProps={this.settingsButtonProps} className={styles.controlPanelButton} />
+                <DefaultButton text={this.props.Title} menuProps={this.settingsButtonProps} className={styles.controlPanelButton} />
             </React.Fragment>
         );
     }

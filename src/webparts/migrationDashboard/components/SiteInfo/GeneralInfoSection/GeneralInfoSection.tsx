@@ -172,7 +172,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
         items.push({
             key: "SiteSizeInMB",
             name: "Site Size",
-            value:  Measures.formatToDigitalSpace(props.currentSite.SiteSizeInMB),
+            value: Measures.formatToDigitalSpace(props.currentSite.SiteSizeInMB),
             note: "",
             iconName: "Database"
         });
@@ -195,19 +195,21 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             name: "Total Items Count",
             value: Intl.NumberFormat().format(props.currentSite.TotalItemCount),
             note: "",
-            iconName: "NumberSymbol" 
+            iconName: "NumberSymbol"
         });
 
-        
+
 
         return items;
     }
 
     // Override rendering in specific rows, in specific columns:
+    // item.key is the Row key. column.key is the Column Key
     private _onRenderItemColumn(item: IDocument, index: number, column: IColumn): JSX.Element {
-        if (item.key === 'SiteUrl' && column.key === 'Note') {
+        if (['SiteUrl', 'TargetSiteUrl'].indexOf(item.key) > -1 && column.key == "Value") {
             return (
-                <span>{item.note}</span>
+                // Render a hyperlink
+                <a href={item.value} data-interception="off">{item.value}</a>
             );
         }
         return item[column.fieldName];

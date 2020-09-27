@@ -11,6 +11,28 @@ $SmatLogsFolder = Read-Host
 $SmatFiles = Get-ChildItem $SmatLogsFolder
 
 
+#=========================================================
+#                GET SHAREPOINT VERSION
+#=========================================================
+$SmatLogPath = Join-Path -Path $SmatLogsFolder -ChildPath "SMAT.log"
+$A = Get-Content -LiteralPath $SmatLogPath  | Select-String -Pattern 'Sharepoint Version (.*)$'
+$SPPatchVersion = $A[0].matches[0].Groups[1].Value
+$SPMajorVersion = $SPPatchVersion.Split(".")[0]
+
+switch($SPMajorVersion){
+    14{
+        Write-Host "SharePoint 2010"
+    }
+    15{
+        Write-Host "SharePoint 2013"
+    }
+    16{
+        Write-Host "SharePoint 2016 or SharePoint 2019 or SP2021?"
+    }
+}
+#======================================================================
+
+
 $ReportSummaryPath = Join-Path -Path $SmatLogsFolder -ChildPath "SiteAssessmentReport.csv"
 if (Test-Path $ReportSummaryPath -PathType leaf) {
     Write-Host [Success] $SmatLogsFolder folder is a valid SMAT logs folder -ForegroundColor Green
