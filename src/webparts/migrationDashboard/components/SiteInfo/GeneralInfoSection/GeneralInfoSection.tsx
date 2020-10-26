@@ -1,5 +1,5 @@
 import React from 'react';
-import { DetailsList, mergeStyleSets, IColumn, FontIcon, SelectionMode, DetailsListLayoutMode } from 'office-ui-fabric-react';
+import { DetailsList, mergeStyleSets, IColumn, FontIcon, SelectionMode, DetailsListLayoutMode, PrimaryButton } from 'office-ui-fabric-react';
 import { SiteItem } from '../../../Interfaces/SiteItem';
 import { SecurityTrimmedControl, PermissionLevel } from "@pnp/spfx-controls-react/lib/SecurityTrimmedControl";
 import { SPPermission } from '@microsoft/sp-page-context';
@@ -7,6 +7,9 @@ import { WebPartContext } from '@microsoft/sp-webpart-base';
 import TextNotes from '../CommunicationsSection/TextNotes';
 import { Constants } from '../../Constants/Constants';
 import Measures from '../../../services/Measures';
+import styles from '../../MigrationDashboard.module.scss';
+import MarkAsMigratedButton from '../DashboardButtons/MarkAsMigratedButton';
+import { ConsoleListener } from '@pnp/pnpjs';
 
 const classNames = mergeStyleSets({
     fileIconHeaderIcon: {
@@ -197,19 +200,58 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             note: "",
             iconName: "NumberSymbol"
         });
-
-
+        items.push({
+            key: "AccessStatus",
+            name: "Access Status",
+            value: props.currentSite.AccessStatus,
+            note: "Source site's status",
+            iconName: "Permissions"
+        });
+        items.push({
+            key: "MigrationStatus",
+            name: "Migration Status",
+            value: props.currentSite.MigrationStatus,
+            note: "",
+            iconName: "StatusCircleQuestionMark"
+        });
+        items.push({
+            key: "ScheduledDate",
+            name: "Migration Date",
+            value: props.currentSite.ScheduledDate,
+            note: "",
+            iconName: "Calendar"
+        });
 
         return items;
     }
 
     // Override rendering in specific rows, in specific columns:
     // item.key is the Row key. column.key is the Column Key
-    private _onRenderItemColumn(item: IDocument, index: number, column: IColumn): JSX.Element {
+    private _onRenderItemColumn = (item: IDocument, index: number, column: IColumn): JSX.Element => {
         if (['SiteUrl', 'TargetSiteUrl'].indexOf(item.key) > -1 && column.key == "Value") {
             return (
                 // Render a hyperlink
-                <a href={item.value} data-interception="off">{item.value}</a>
+                <a href={item.value} data-interception="off" target="_blank">{item.value}</a>
+            );
+        }
+        if (['ScheduledDate', '____'].indexOf(item.key) > -1 && column.key == "Value") {
+            const date = new Date(item.value);
+            return (
+                <span>{date.toLocaleString()}</span>
+            );
+        }
+        if (['MigrationStatus', '____'].indexOf(item.key) > -1 && column.key == "Value") {
+            return (
+                <>
+                    <span>{item.value}</span>
+                </>
+            );
+        }
+        if (['MigrationStatus', '____'].indexOf(item.key) > -1 && column.key == "Note") {
+            return (
+                <>
+                    {<MarkAsMigratedButton context={this.props.context} migrationStatus={item.value} />}
+                </>
             );
         }
         return item[column.fieldName];

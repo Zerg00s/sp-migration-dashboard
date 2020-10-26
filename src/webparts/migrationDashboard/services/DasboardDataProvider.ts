@@ -4,6 +4,7 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import { SiteItem } from '../Interfaces/SiteItem';
 import { Constants } from '../components/Constants/Constants';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 class DashboardDataProvider {
     public async getSites() {
@@ -21,6 +22,15 @@ class DashboardDataProvider {
         return siteItem;
     }
 
+    public patchCurrentSiteItem(context: WebPartContext, patchData: any) {
+        const itemPatchEventName = `${Constants.Events.PatchCurrentItem}${context.webPartTag}`;
+        console.log("itemPatchEventName", itemPatchEventName);
+        var itemPatchEvent = new CustomEvent(itemPatchEventName, {
+            detail: patchData
+        });
+        console.log(itemPatchEvent);
+        window.dispatchEvent(itemPatchEvent);
+    }
 }
 
 export const DataProvider = new DashboardDataProvider();

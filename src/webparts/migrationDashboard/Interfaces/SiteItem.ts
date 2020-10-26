@@ -14,6 +14,7 @@ export interface SiteItem extends ListItem {
     LastContentModifiedDate: Date;
     TotalItemCount: number;
     DistinctUsers: number;
+    AccessStatus: string;
     Alerts: number;
     Apps: number;
     BCSApplications: number;
@@ -46,6 +47,6 @@ export interface SiteItem extends ListItem {
     TargetSiteUrl?: any;
     MigrationStatus?: any;
     ScheduledDate?: any;
-    SiteId?: any;
+    SiteId?: any;    
   }
   

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../MigrationDashboard.module.scss';
 
+// Section component for wrapping General info, Ownership, Other, etc.
+
 interface SectionProps {
     title: string;
 }

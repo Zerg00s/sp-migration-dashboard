@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema">
-  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.23.2007.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
-  <pnp:Templates ID="CONTAINER-TEMPLATE-DASHBOARD-LISTS">
-    <pnp:ProvisioningTemplate ID="TEMPLATE-DASHBOARD-LISTS" Version="1" BaseSiteTemplate="STS#3" Scope="RootSite">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.25.2009.1, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-AB473056B7C5454BB93A55AE921A1815">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-AB473056B7C5454BB93A55AE921A1815" Version="1" BaseSiteTemplate="STS#3" Scope="RootSite">
       <pnp:Lists>
         <pnp:ListInstance Title="Sites Report" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/SitesReport" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableAttachments="false" EnableFolderCreation="false" NoCrawl="true" DefaultDisplayFormUrl="{site}/Lists/SitesReport/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/SitesReport/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/SitesReport/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
@@ -10,7 +10,7 @@
             <pnp:ContentTypeBinding ContentTypeID="0x0120" />
           </pnp:ContentTypeBindings>
           <pnp:Views>
-            <View Name="{3A15480A-630A-4B17-9E2A-BA2ED6088D23}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Sites" Url="{site}/Lists/SitesReport/AllSites.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+            <View Name="{8B09FDA5-409C-44FB-9868-619EB443B70F}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Sites" Url="{site}/Lists/SitesReport/AllSites.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
               <Query>
                 <OrderBy>
                   <FieldRef Name="ID" />
@@ -25,6 +25,8 @@
                 <FieldRef Name="NumOfWebs" />
                 <FieldRef Name="TotalItemCount" />
                 <FieldRef Name="ContentDBSizeInMB" />
+                <FieldRef Name="AccessStatus" />
+                <FieldRef Name="Stakeholders" />
               </ViewFields>
               <RowLimit Paged="TRUE">30</RowLimit>
               <Aggregations Value="Off" />
@@ -91,9 +93,18 @@
             <Field Type="Text" DisplayName="Site ID" Description="Unique ID of a site" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{4a6636fc-1ae8-4f22-94cf-76b6bb42b651}" SourceID="{{listid:Sites Report}}" StaticName="SiteId" Name="SiteId" ColName="nvarchar12" RowOrdinal="0" CustomFormatter="" Version="1" />
             <Field Type="Note" DisplayName="Public Notes" Description="Notes visible to all users" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="2" RichText="TRUE" RichTextMode="FullHtml" IsolateStyles="TRUE" Sortable="FALSE" ID="{40bd45ce-8ea1-4186-a00e-f38981526c51}" SourceID="{{listid:Sites Report}}" StaticName="PublicNotes" Name="PublicNotes" ColName="ntext3" RowOrdinal="0" CustomFormatter="" RestrictedMode="TRUE" AppendOnly="FALSE" Version="1" />
             <Field Type="Note" DisplayName="Admin Notes" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="2" RichText="TRUE" RichTextMode="FullHtml" IsolateStyles="TRUE" Sortable="FALSE" ID="{6d499c00-ba04-42d4-9061-f7c553745eb7}" SourceID="{{listid:Sites Report}}" StaticName="AdminNotes" Name="AdminNotes" ColName="ntext4" RowOrdinal="0" CustomFormatter="" RestrictedMode="TRUE" AppendOnly="FALSE" Version="1" />
+            <Field Type="Choice" DisplayName="Access Status" Description="Source site Access status" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{ca4f6f0c-ab46-4fed-800f-71ed77e9dc49}" SourceID="{{listid:Sites Report}}" StaticName="AccessStatus" Name="AccessStatus" ColName="nvarchar14" RowOrdinal="0" CustomFormatter="" Version="1">
+              <Default>Not locked</Default>
+              <CHOICES>
+                <CHOICE>Not locked</CHOICE>
+                <CHOICE>Read-only</CHOICE>
+                <CHOICE>No access</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Note" DisplayName="Stakeholders" Description="Stakeholder emails, separated with a semicolon" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="3" RichText="FALSE" Sortable="FALSE" ID="{ef810921-335e-4c49-bc72-b4695e476be4}" SourceID="{{listid:Sites Report}}" StaticName="Stakeholders" Name="Stakeholders" ColName="ntext5" RowOrdinal="0" />
           </pnp:Fields>
           <pnp:Webhooks>
-            <pnp:Webhook ServerNotificationUrl="https://0-canadacentral1.pushp.svc.ms/notifications?token=w0-9b3169e6-817e-4be8-916e-4276933fb910" ExpiresInDays="1" />
+            <pnp:Webhook ServerNotificationUrl="https://canadacentral1.pushnp.svc.ms/notifications?token=6c89d0d2-c219-41ba-b4f0-a02d2de53e56" ExpiresInDays="1" />
           </pnp:Webhooks>
         </pnp:ListInstance>
       </pnp:Lists>

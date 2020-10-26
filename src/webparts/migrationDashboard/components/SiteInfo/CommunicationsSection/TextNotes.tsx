@@ -7,6 +7,7 @@ import { SPPermission } from '@microsoft/sp-page-context';
 import styles from '../../MigrationDashboard.module.scss';
 import { Constants } from '../../Constants/Constants';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { DataProvider } from '../../../services/DasboardDataProvider';
 
 interface TextNotesProps {
     currentSite: SiteItem;
@@ -58,12 +59,9 @@ export default class TextNotes extends React.Component<TextNotesProps, TextNotes
     }
 
     private saveChanges = () => {
-        var itemPatchEvent = new CustomEvent(`${Constants.Events.PatchCurrentItem}${this.props.context.webPartTag}`, {
-            detail: {
-                [this.props.fieldName]: this.text
-            }
+        DataProvider.patchCurrentSiteItem(this.props.context, {
+            [this.props.fieldName]: this.text
         });
-        window.dispatchEvent(itemPatchEvent);
 
         this.setState({
             editMode: false
