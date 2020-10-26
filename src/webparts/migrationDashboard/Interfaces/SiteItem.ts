@@ -36,6 +36,7 @@ export interface SiteItem extends ListItem {
     PublishingSites: number;
     SandboxSolution: number;
     SecureStoreApplications: number;
+    Stakeholders: string;
     UnsupportedWebTemplate: number;
     WorkflowAssociations2010: number;
     WorkflowAssociations2013: number;

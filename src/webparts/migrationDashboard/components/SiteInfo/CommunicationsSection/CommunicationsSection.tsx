@@ -4,6 +4,8 @@ import { SiteItem } from '../../../Interfaces/SiteItem';
 import TextNotes from './TextNotes';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { Constants } from '../../Constants/Constants';
+import Stakeholders from './Stakeholders';
+import { StakeholderProps } from './Stakeholders';
 
 
 const classNames = mergeStyleSets({
@@ -192,12 +194,21 @@ export default class CommunicationsSection extends React.Component<Communication
                     />
                 </div>
 
+                <Stakeholders
+                    title="Stakeholders"
+                    currentSite={this.props.currentSite}
+                    context={this.props.context}
+                    key={this.props.currentSite.Stakeholders}
+                    fieldName={Constants.SiteFields.Stakeholders}
+                    placeholder="Stakeholders responsible for the site"
+                />
+
                 <TextNotes currentSite={this.props.currentSite}
+                    title="Notes for site stakeholders"
                     context={this.props.context}
                     key={this.props.currentSite.PublicNotes}
                     fieldName={Constants.SiteFields.PublicNotes}
                     placeholder="Leave important notes for the site stakeholders here..."
-                    title="Notes for site stakeholders"
                 />
 
             </React.Fragment>

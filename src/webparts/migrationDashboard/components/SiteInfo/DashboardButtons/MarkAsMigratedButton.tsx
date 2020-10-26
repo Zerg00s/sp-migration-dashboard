@@ -21,13 +21,13 @@ export default class MarkAsMigratedButton extends React.Component<Props, State> 
     constructor(props: Props) {
         super(props);
         this.state = {
-            isClicked:false
-        }
+            isClicked: false
+        };
     }
     private setStatusToMigrated = () => {
         this.setState({
             isClicked: true
-        })
+        });
         DataProvider.patchCurrentSiteItem(this.props.context, {
             "MigrationStatus": "Migrated"
         });

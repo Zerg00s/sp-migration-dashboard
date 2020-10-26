@@ -1,3 +1,5 @@
+import Stakeholders from "../SiteInfo/CommunicationsSection/Stakeholders";
+
 export class Constants {
     public static readonly Events = {
       MasterListItemUpdated: "MASTER_LIST_ITEM_UPDATED",
@@ -9,7 +11,8 @@ export class Constants {
     };
     public static readonly SiteFields = {
       PublicNotes: "PublicNotes",
-      AdminNotes: "AdminNotes"
+      AdminNotes: "AdminNotes",
+      Stakeholders: "Stakeholders"
     };
   }
   

@@ -10,6 +10,7 @@ import Measures from '../../../services/Measures';
 import styles from '../../MigrationDashboard.module.scss';
 import MarkAsMigratedButton from '../DashboardButtons/MarkAsMigratedButton';
 import { ConsoleListener } from '@pnp/pnpjs';
+import Dates from '../../../services/Dates';
 
 const classNames = mergeStyleSets({
     fileIconHeaderIcon: {
@@ -218,7 +219,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             key: "ScheduledDate",
             name: "Migration Date",
             value: props.currentSite.ScheduledDate,
-            note: "",
+            note: "Migration start date and time",
             iconName: "Calendar"
         });
 
@@ -235,9 +236,9 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             );
         }
         if (['ScheduledDate', '____'].indexOf(item.key) > -1 && column.key == "Value") {
-            const date = new Date(item.value);
+            const scheduledMigrationDate = Dates.getUserFriendlyDate(item.value);
             return (
-                <span>{date.toLocaleString()}</span>
+                <span>{scheduledMigrationDate}</span>
             );
         }
         if (['MigrationStatus', '____'].indexOf(item.key) > -1 && column.key == "Value") {
