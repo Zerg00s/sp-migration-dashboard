@@ -151,58 +151,114 @@ export default class ChecklistSection extends React.Component<ChecklistSectionPr
         items.push({
             key: "Alerts",
             name: "Alerts",
-            value: props.currentSite.Alerts ? props.currentSite.Alerts.toString() : "",
+            value: Intl.NumberFormat().format(props.currentSite.Alerts),
             note: "",
             iconName: "MailAlert"
         });
         items.push({
             key: "CustomizedPages",
             name: "Customized Pages",
-            value: props.currentSite.CustomizedPages ? props.currentSite.CustomizedPages.toString() : "",
-            note: "",
+            value: Intl.NumberFormat().format(props.currentSite.CustomizedPages),
+            note: "Pages customized in SharePoint Designer",
             iconName: "FileHTML"
         });
         items.push({
             key: "WorkflowAssociations2010",
             name: "2010 Workflows",
-            value: props.currentSite.WorkflowAssociations2010 ? props.currentSite.WorkflowAssociations2010.toString() : "",
+            value: Intl.NumberFormat().format(props.currentSite.WorkflowAssociations2010),
             note: "",
             iconName: "WorkFlow"
+        });
+        items.push({
+            key: "WorkflowRunning2010",
+            name: "WorkflowRunning 2010 Running",
+            value: Intl.NumberFormat().format(props.currentSite.WorkflowRunning2010),
+            note: "",
+            iconName: "Running"
         });
         items.push({
             key: "WorkflowAssociations2013",
             name: "2013 Workflows",
-            value: props.currentSite.WorkflowAssociations2013 ? props.currentSite.WorkflowAssociations2013.toString() : "",
+            value: Intl.NumberFormat().format(props.currentSite.WorkflowAssociations2013),
             note: "",
             iconName: "WorkFlow"
         });
         items.push({
+            key: "WorkflowRunning2013",
+            name: "WorkflowRunning 2013 Running",
+            value: Intl.NumberFormat().format(props.currentSite.WorkflowRunning2013),
+            note: "",
+            iconName: "Running"
+        });
+        items.push({
             key: "InfoPath",
             name: "InfoPath",
-            value: props.currentSite.InfoPath ? props.currentSite.InfoPath.toString() : "",
+            value: Intl.NumberFormat().format(props.currentSite.InfoPath),
             note: "",
             iconName: "OfficeFormsLogo"
         });
         items.push({
             key: "NonDefaultMasterPages",
             name: "Custom Master Pages",
-            value: props.currentSite.NonDefaultMasterPages ? props.currentSite.NonDefaultMasterPages.toString() : "",
+            value: Intl.NumberFormat().format(props.currentSite.NonDefaultMasterPages),
             note: "",
             iconName: "FileHTML"
         });
         items.push({
             key: "CheckedOutFiles",
             name: "Checked Out Files",
-            value: props.currentSite.CheckedOutFiles ? props.currentSite.CheckedOutFiles.toString(): "",
+            value: Intl.NumberFormat().format(props.currentSite.CheckedOutFiles),
             note: "",
             iconName: "PageCheckedOut"
         });
         items.push({
             key: "UnsupportedWebTemplate",
             name: "Unsupported Web Template",
-            value: props.currentSite.UnsupportedWebTemplate? props.currentSite.UnsupportedWebTemplate.toString(): "",
+            value: Intl.NumberFormat().format(props.currentSite.UnsupportedWebTemplate),
             note: "",
             iconName: "WebTemplate"
+        });
+        items.push({
+            key: "ManagedMetadataLists",
+            name: "Managed Metadata Lists",
+            value: Intl.NumberFormat().format(props.currentSite.ManagedMetadataLists),
+            note: "",
+            iconName: "DOM"
+        });
+        items.push({
+            key: "BCSApplications",
+            name: "BCS Applications",
+            value: Intl.NumberFormat().format(props.currentSite.BCSApplications),
+            note: "",
+            iconName: "Database"
+        });
+        items.push({
+            key: "SandboxSolution",
+            name: "Sandbox Solutions",
+            value: Intl.NumberFormat().format(props.currentSite.SandboxSolution),
+            note: "",
+            iconName: "CubeShape"
+        });
+        items.push({
+            key: "SecureStoreApplications",
+            name: "Secure Store Applications",
+            value: Intl.NumberFormat().format(props.currentSite.SecureStoreApplications),
+            note: "",
+            iconName: "AuthenticatorApp"
+        });
+        items.push({
+            key: "EmailEnabledLists",
+            name: "Email Enabled Lists",
+            value: Intl.NumberFormat().format(props.currentSite.EmailEnabledLists),
+            note: "",
+            iconName: "MailReplyMirrored"
+        });
+        items.push({
+            key: "CustomPermissionLevel",
+            name: "Custom Permission Levels",
+            value: Intl.NumberFormat().format(props.currentSite.CustomPermissionLevel),
+            note: "",
+            iconName: "PermissionsSolid"
         });
 
         return items;

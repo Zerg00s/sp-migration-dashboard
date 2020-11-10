@@ -27,8 +27,10 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
         return (
             <React.Fragment>
                 <div className={styles.sectionWrapper}>
-                    <Pivot linkSize={PivotLinkSize.normal}>
-                        <PivotItem headerText="General" className={styles.pivotItem}>
+                    {/* TODO: Remove SelectedKey */}
+                    <Pivot linkSize={PivotLinkSize.normal} >  {/* selectedKey="1" */}
+                  
+                        <PivotItem headerText="General" className={styles.pivotItem} itemKey="0">
                             <Section title="General Information">
                                 <SecurityTrimmedControl context={this.props.context}
                                     level={PermissionLevel.currentWeb}
@@ -39,19 +41,18 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                             </Section>
 
                         </PivotItem>
-                        <PivotItem headerText="Ownership" className={styles.pivotItem}>
+                        <PivotItem headerText="Ownership" className={styles.pivotItem} itemKey="1">
                             <Section title="Ownership and Communications">
                                 <CommunicationsSection currentSite={this.props.currentSite} context={this.props.context} />
                             </Section>
-
                         </PivotItem>
-                        <PivotItem headerText="Checklist" className={styles.pivotItem}>
+                        <PivotItem headerText="Checklist" className={styles.pivotItem} itemKey="2">
                             <Section title="Pre-migration checklist">
                                 <ChecklistSection currentSite={this.props.currentSite} />
                             </Section>
 
                         </PivotItem>
-                        <PivotItem headerText="Other" className={styles.pivotItem}>
+                        <PivotItem headerText="Other" className={styles.pivotItem} itemKey="3">
                             <Section title="Other">
                                 <OtherSection currentSite={this.props.currentSite} />
                             </Section>

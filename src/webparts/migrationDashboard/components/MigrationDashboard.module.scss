@@ -1,6 +1,6 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
-.sectionButton{
+.sectionButton {
   font-size: small;
   background-color: green;
 }
@@ -30,6 +30,7 @@
 
 .detailsPanel {
   :global {
+
     .ms-Panel-scrollableContent,
     .ms-Panel-content {
       height: 100%;
@@ -39,6 +40,10 @@
       overflow: hidden;
     }
   }
+}
+
+.stakeholdersContainer{
+  font-size: 14px;
 }
 
 .migrationDashboard {

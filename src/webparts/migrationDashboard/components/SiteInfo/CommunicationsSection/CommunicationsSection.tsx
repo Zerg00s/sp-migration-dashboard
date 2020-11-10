@@ -164,7 +164,7 @@ export default class CommunicationsSection extends React.Component<Communication
         items.push({
             key: "SiteAdmins",
             name: "Site Admins",
-            value: props.currentSite.SiteOwner,
+            value: props.currentSite.SiteAdmins,
             note: "",
             iconName: "Admin"
         });
@@ -196,10 +196,10 @@ export default class CommunicationsSection extends React.Component<Communication
 
                 <Stakeholders
                     title="Stakeholders"
-                    currentSite={this.props.currentSite}
+                    siteItem={this.props.currentSite}
                     context={this.props.context}
                     key={this.props.currentSite.Stakeholders}
-                    fieldName={Constants.SiteFields.Stakeholders}
+                    stakeholderFieldName={Constants.SiteFields.Stakeholders}
                     placeholder="Stakeholders responsible for the site"
                 />
 
