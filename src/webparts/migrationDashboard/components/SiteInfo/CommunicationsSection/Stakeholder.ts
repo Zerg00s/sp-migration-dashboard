@@ -1,3 +1,5 @@
+import { stringIsNullOrEmpty } from "@pnp/pnpjs";
+
 export default interface Stakeholder {
     email: string;
     name: string;
@@ -17,4 +19,10 @@ export function convertToStakeholders(stakeholdersString: string): Stakeholder[]
         .filter(stakeholder => stakeholder.length != 0)
         .map(convertStringToStakeholder);
     return stakeholders;
+}
+export function convertStakeholdersToString(stakeholders: Stakeholder[]): string {
+    if (!stakeholders || stakeholders.length === 0) {
+        return "";
+    }
+    return stakeholders.map(stakeholder => `${stakeholder.name} <${stakeholder.email}>`).join(";");
 }

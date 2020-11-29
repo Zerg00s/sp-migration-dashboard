@@ -1,5 +1,13 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
+.stakeholderPersona {
+  padding: 15px;
+  margin: 10px;
+  border: dotted #444 1px;
+  background: #ddd;
+  height: 25px;
+}
+
 .sectionButton {
   font-size: small;
   background-color: green;
@@ -30,7 +38,6 @@
 
 .detailsPanel {
   :global {
-
     .ms-Panel-scrollableContent,
     .ms-Panel-content {
       height: 100%;
@@ -42,8 +49,9 @@
   }
 }
 
-.stakeholdersContainer{
+.stakeholdersContainer {
   font-size: 14px;
+  margin: 20px;
 }
 
 .migrationDashboard {
