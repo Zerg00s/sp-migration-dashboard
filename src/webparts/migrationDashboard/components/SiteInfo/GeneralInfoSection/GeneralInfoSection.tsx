@@ -248,7 +248,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
                 </>
             );
         }
-        if (['MigrationStatus', '____'].indexOf(item.key) > -1 && column.key == "Note") {
+        if (['MigrationStatus'].indexOf(item.key) > -1 && column.key == "Note") {
             return (
                 <>
                     {<MarkAsMigratedButton context={this.props.context} migrationStatus={item.value} />}

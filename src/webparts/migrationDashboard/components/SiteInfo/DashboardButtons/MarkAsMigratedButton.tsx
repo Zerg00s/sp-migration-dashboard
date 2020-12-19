@@ -7,8 +7,9 @@ import styles from '../../MigrationDashboard.module.scss';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { Constants } from '../../Constants/Constants';
 import { DataProvider } from '../../../services/DasboardDataProvider';
-import { SiteItem } from "../../../Interfaces/SiteItem";
-// const soundFile : any = require("../../../../assets/ding-sound-effect.mp3");
+
+// renamed .mp3 file to .svg to piggy-back on the existing webpack loader
+const soundFile: any = require<string>( "../../../../assets/ding-sound-effect.MP3.svg");
 
 interface Props {
     context: WebPartContext;
@@ -19,7 +20,7 @@ interface State {
 }
 
 export default class MarkAsMigratedButton extends React.Component<Props, State> {
-    private audio = new Audio("/ding-sound-effect.mp3");
+    private audio = new Audio(soundFile);
     private playSound = () => {
         this.audio.play();
     }
@@ -30,13 +31,11 @@ export default class MarkAsMigratedButton extends React.Component<Props, State> 
         this.state = {
             isClicked: false
         };
-
     }
-
-
 
     private setStatusToMigrated = () => {
         this.playSound();
+ 
         this.setState({
             isClicked: true
         });
@@ -52,7 +51,6 @@ export default class MarkAsMigratedButton extends React.Component<Props, State> 
 
         return (
             <React.Fragment>
-                <audio></audio>
                 <SecurityTrimmedControl context={this.props.context}
                     level={PermissionLevel.currentWeb}
                     permissions={[SPPermission.manageWeb]}>
