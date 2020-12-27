@@ -1,5 +1,3 @@
-import { stringIsNullOrEmpty } from "@pnp/pnpjs";
-
 export default interface Stakeholder {
     email: string;
     name: string;

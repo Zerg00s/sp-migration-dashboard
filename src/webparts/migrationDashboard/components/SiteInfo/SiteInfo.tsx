@@ -7,7 +7,7 @@ import { Pivot, PivotItem, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivo
 import { SPPermission } from '@microsoft/sp-page-context';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import GeneralInfoSection from './GeneralInfoSection/GeneralInfoSection';
-import CommunicationsSection from './CommunicationsSection/CommunicationsSection';
+import OwnershipSection from './OwnershipSection/OwnershipSection';
 import OtherSection from './OtherSection/OtherSection';
 import ChecklistSection from './ChecklistSection/ChecklistSection';
 import GeneralControlPanel from './ControlPanel/GeneralControlPanel';
@@ -28,7 +28,7 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
             <React.Fragment>
                 <div className={styles.sectionWrapper}>
                     {/* TODO: Remove SelectedKey */}
-                    <Pivot linkSize={PivotLinkSize.normal}  >
+                    <Pivot linkSize={PivotLinkSize.normal} selectedKey="1"  >
 
                         <PivotItem headerText="General" className={styles.pivotItem} itemKey="0">
                             <Section title="General Information">
@@ -43,7 +43,7 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                         </PivotItem>
                         <PivotItem headerText="Ownership" className={styles.pivotItem} itemKey="1">
                             <Section title="Ownership and Communications">
-                                <CommunicationsSection currentSite={this.props.currentSite} context={this.props.context} />
+                                <OwnershipSection currentSite={this.props.currentSite} context={this.props.context} />
                             </Section>
                         </PivotItem>
                         <PivotItem headerText="Checklist" className={styles.pivotItem} itemKey="2">

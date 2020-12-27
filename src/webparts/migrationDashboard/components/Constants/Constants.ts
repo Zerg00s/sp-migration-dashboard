@@ -1,5 +1,3 @@
-import Stakeholders from "../SiteInfo/CommunicationsSection/Stakeholders";
-
 export class Constants {
     public static readonly Events = {
       MasterListItemUpdated: "MASTER_LIST_ITEM_UPDATED",

@@ -59,30 +59,30 @@ export interface IDocument {
     iconName: string;
 }
 
-interface CommunicationsSectionState {
+interface OwnershipSectionState {
     allItems: IDocument[];
     columns: IColumn[];
 }
 
-interface CommunicationsSectionProps {
+interface OwnershipSectionProps {
     currentSite: SiteItem;
     context: WebPartContext;
 }
 
-export default class CommunicationsSection extends React.Component<CommunicationsSectionProps, CommunicationsSectionState>  {
+export default class OwnershipSection extends React.Component<OwnershipSectionProps, OwnershipSectionState>  {
 
     public _allItems: IDocument[];
 
     // DetailsList can't understand when to re-render, unless you re-create
     // Items collection. Every time new props arrive - we recreate Items array
-    public static getDerivedStateFromProps(nextProps: CommunicationsSectionProps, prevState: CommunicationsSectionProps) {
-        const _allItems = CommunicationsSection._generateDocuments(nextProps);
+    public static getDerivedStateFromProps(nextProps: OwnershipSectionProps, prevState: OwnershipSectionProps) {
+        const _allItems = OwnershipSection._generateDocuments(nextProps);
         return {
             allItems: _allItems,
         };
     }
 
-    constructor(props: CommunicationsSectionProps) {
+    constructor(props: OwnershipSectionProps) {
         super(props);
         const columns: IColumn[] = [
             {
@@ -149,7 +149,7 @@ export default class CommunicationsSection extends React.Component<Communication
 
     }
 
-    public static _generateDocuments = (props: CommunicationsSectionProps) => {
+    public static _generateDocuments = (props: OwnershipSectionProps) => {
         const items: IDocument[] = [];
         if (!props.currentSite === undefined) {
             return items;
@@ -180,7 +180,7 @@ export default class CommunicationsSection extends React.Component<Communication
     public render() {
         return (
             <React.Fragment>
-                <div>
+                <div style={{ paddingBottom: "30px" }}>
                     {/* <div data-is-scrollable="true"> */}
                     <DetailsList
                         onRenderItemColumn={this._onRenderItemColumn}
@@ -195,7 +195,7 @@ export default class CommunicationsSection extends React.Component<Communication
                 </div>
 
                 <Stakeholders
-                    title="Stakeholders"
+                    title="Site Stakeholders"
                     siteItem={this.props.currentSite}
                     context={this.props.context}
                     key={this.props.currentSite.Stakeholders}

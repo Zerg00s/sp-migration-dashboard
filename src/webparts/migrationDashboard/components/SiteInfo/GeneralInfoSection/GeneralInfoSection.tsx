@@ -4,7 +4,7 @@ import { SiteItem } from '../../../Interfaces/SiteItem';
 import { SecurityTrimmedControl, PermissionLevel } from "@pnp/spfx-controls-react/lib/SecurityTrimmedControl";
 import { SPPermission } from '@microsoft/sp-page-context';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import TextNotes from '../CommunicationsSection/TextNotes';
+import TextNotes from '../OwnershipSection/TextNotes';
 import { Constants } from '../../Constants/Constants';
 import Measures from '../../../services/Measures';
 import styles from '../../MigrationDashboard.module.scss';

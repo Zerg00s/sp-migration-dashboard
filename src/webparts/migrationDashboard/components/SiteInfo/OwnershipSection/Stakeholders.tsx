@@ -9,6 +9,9 @@ import styles from '../../MigrationDashboard.module.scss';
 import Stakeholder, { convertToStakeholders, convertStakeholdersToString } from './Stakeholder';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import StakeholderPersona from './StakeholderPersona';
+import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/components/Persona';
+
+import CopyEmailsButton, { CopyEmailsButtonProps } from './CopyEmailsButton';
 
 
 export interface StakeholderProps {
@@ -24,11 +27,14 @@ interface State {
 }
 export default class Stakeholders extends React.Component<StakeholderProps, State> {
     constructor(props: StakeholderProps) {
+
         super(props);
         this.state = {
             editMode: false,
             stakeholders: convertToStakeholders(this.props.siteItem[this.props.stakeholderFieldName])
         };
+
+        let copyTooltipText = "false";
     }
 
     private cancel = () => {
@@ -39,7 +45,7 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
 
     private saveChanges = () => {
         DataProvider.patchCurrentSiteItem(this.props.context, {
-            [this.props.stakeholderFieldName]:convertStakeholdersToString(this.state.stakeholders)
+            [this.props.stakeholderFieldName]: convertStakeholdersToString(this.state.stakeholders)
         });
 
         this.setState({
@@ -52,34 +58,18 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
         this.setState({
             editMode: true
         });
-
-        const g = {
-            source: {
-                droppableId: "1",
-                index: 1
-            },
-            destination: {
-                droppableId: "1",
-                index: 0
-            },
-
-            droppableId: "1",
-            draggableId: "denis2.molodtsov2@gocleverpoint.com",
-            reason: "DROP"
-        };
-
     }
 
 
     private onDragEnd = result => {
         const { destination, source, draggableId } = result;
-        if(!destination){
+        if (!destination) {
             return;
         }
-        if(
+        if (
             destination.droppableId === source.droppableId &&
             destination.index === source.index
-        ){
+        ) {
             return;
         }
 
@@ -88,44 +78,58 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
         newStakeholders.splice(destination.index, 0, this.state.stakeholders[source.index]);
 
         this.setState({
-            stakeholders:newStakeholders
+            stakeholders: newStakeholders
         });
-
     }
+
+
 
     public render() {
         return (
-            <React.Fragment>
+            <div style={{ paddingBottom: "30px" }}>
                 <h3>{this.props.title}
                     <SecurityTrimmedControl context={this.props.context}
                         level={PermissionLevel.currentWeb}
                         permissions={[SPPermission.manageWeb]}>
+
+                        <CopyEmailsButton stakeholders={this.state.stakeholders} />
+
                         {!this.state.editMode &&
                             <DefaultButton
                                 iconProps={{ iconName: "Edit" }}
                                 className={styles.textEditIcon}
+                                text="Edit stakeholders"
                                 onClick={this.editMode} />
                         }
                     </SecurityTrimmedControl>
                 </h3>
 
+
                 {!this.state.editMode &&
                     <div className={styles.stakeholdersContainer}>
                         {this.props.siteItem[this.props.stakeholderFieldName] &&
-                            <>
+                            <div className={styles.flexContainer}>
                                 {convertToStakeholders(this.props.siteItem[this.props.stakeholderFieldName])
-                                    .map(stakeholder => <span>
-                                        <span>{stakeholder.name}</span>
-                                        {" <"}<span>{stakeholder.email}</span>{">; "}
-                                    </span>)
+                                    .map((stakeholder: Stakeholder, index) => (
+                                        <>
+                                            <span className={styles.PersonaWrapper}>
+                                                <Persona text={stakeholder.name} secondaryText={stakeholder.email} size={PersonaSize.size40} />
+                                            </span>
+                                            {/* <span>
+                                                <span>{stakeholder.name}</span>
+                                                {" <"}<span>{stakeholder.email}</span>{">; "}
+                                            </span> */}
+                                        </>
+                                    ))
                                 }
-                            </>
+
+                            </div>
                         }
                     </div>
                 }
                 {this.state.editMode &&
                     <React.Fragment>
-                        <div className={styles.stakeholdersContainer} style={{overflow:'auto'}}>
+                        <div className={styles.stakeholdersContainer} style={{ overflow: 'auto' }}>
                             {this.props.siteItem[this.props.stakeholderFieldName] &&
                                 <DragDropContext onDragEnd={this.onDragEnd}>
                                     <Droppable droppableId="1">
@@ -135,7 +139,9 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                                                 {...provided.droppableProps}>
                                                 <>
                                                     {this.state.stakeholders.map(
-                                                        (stakeholder, index) => <StakeholderPersona key={stakeholder.email} {...stakeholder} index={index} />
+                                                        (stakeholder: Stakeholder, index) =>
+                                                            <StakeholderPersona key={stakeholder.email} {...stakeholder} index={index} />
+
                                                     )}
 
                                                     {provided.placeholder}
@@ -145,13 +151,13 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                                     </Droppable >
                                 </DragDropContext>
                             }
-                      
+
                         </div>
                         <PrimaryButton text="Save" className={styles.richTextButton} onClick={this.saveChanges} />
                         <DefaultButton text="Cancel" className={styles.richTextButton} onClick={this.cancel} />
                     </React.Fragment>
                 }
-            </React.Fragment>
+            </div>
         );
     }
 }
