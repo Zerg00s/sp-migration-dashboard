@@ -8,6 +8,7 @@ import styles from '../../MigrationDashboard.module.scss';
 import { Constants } from '../../Constants/Constants';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { DataProvider } from '../../../services/DasboardDataProvider';
+import { TooltipHost } from 'office-ui-fabric-react/lib/components/Tooltip';
 
 interface TextNotesProps {
     currentSite: SiteItem;
@@ -20,6 +21,14 @@ interface TextNotesState {
     editMode: boolean;
 
 }
+const tooltipStyles = {
+    root: {
+        width: "30px",
+        float: "right",
+        marginLeft: "10px",
+    }
+};
+
 export default class TextNotes extends React.Component<TextNotesProps, TextNotesState> {
     public richText: RichText;
     private text: string = this.props.currentSite.PublicNotes;
@@ -78,10 +87,12 @@ export default class TextNotes extends React.Component<TextNotesProps, TextNotes
                             level={PermissionLevel.currentWeb}
                             permissions={[SPPermission.manageWeb]}>
                             {!this.state.editMode &&
-                                <DefaultButton
-                                    iconProps={{ iconName: "Edit" }}
-                                    className={styles.textEditIcon}
-                                    onClick={this.editMode} />
+                                <TooltipHost content="Edit notes" id="editStakeholdersNotesID" styles={tooltipStyles} >
+                                    <DefaultButton
+                                        iconProps={{ iconName: "Edit" }}
+                                        className={styles.textEditIcon}
+                                        onClick={this.editMode} />
+                                </TooltipHost>
                             }
                         </SecurityTrimmedControl>
 

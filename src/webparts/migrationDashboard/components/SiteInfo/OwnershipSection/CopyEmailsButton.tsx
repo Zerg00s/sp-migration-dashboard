@@ -9,6 +9,10 @@ export interface CopyEmailsButtonProps {
 import { useId } from '@uifabric/react-hooks';
 import styles from '../../MigrationDashboard.module.scss';
 
+/* 
+ Copies all stakeholders to the clipboard.
+ Useful if we want to send an email via a mail agent
+*/
 const CopyEmailsButton: React.FC<CopyEmailsButtonProps> = (props) => {
     let [tooltipText, setTooltipText] = useState("Copy emails to clipboard");
     const tooltipId = useId('emails2clipboardTooltip');
@@ -34,7 +38,7 @@ const CopyEmailsButton: React.FC<CopyEmailsButtonProps> = (props) => {
             float: "right",
             marginLeft: "10px",
         }
-    }
+    };
 
     return (
         <TooltipHost content={tooltipText} id={tooltipId} styles={tooltipStyles} >

@@ -27,8 +27,8 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
         return (
             <React.Fragment>
                 <div className={styles.sectionWrapper}>
-                    {/* TODO: Remove SelectedKey */}
-                    <Pivot linkSize={PivotLinkSize.normal} selectedKey="1"  >
+                    {/* selectedKey="1" */}
+                    <Pivot linkSize={PivotLinkSize.normal}  >
 
                         <PivotItem headerText="General" className={styles.pivotItem} itemKey="0">
                             <Section title="General Information">

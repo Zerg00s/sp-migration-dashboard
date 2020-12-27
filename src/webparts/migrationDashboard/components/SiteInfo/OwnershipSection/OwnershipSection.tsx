@@ -74,7 +74,7 @@ export default class OwnershipSection extends React.Component<OwnershipSectionPr
     public _allItems: IDocument[];
 
     // DetailsList can't understand when to re-render, unless you re-create
-    // Items collection. Every time new props arrive - we recreate Items array
+    // Items collection. Therefore every time new props arrive - we recreate Items array
     public static getDerivedStateFromProps(nextProps: OwnershipSectionProps, prevState: OwnershipSectionProps) {
         const _allItems = OwnershipSection._generateDocuments(nextProps);
         return {

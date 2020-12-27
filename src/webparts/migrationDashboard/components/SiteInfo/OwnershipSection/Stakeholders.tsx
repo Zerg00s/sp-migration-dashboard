@@ -12,7 +12,7 @@ import StakeholderPersona from './StakeholderPersona';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/components/Persona';
 
 import CopyEmailsButton, { CopyEmailsButtonProps } from './CopyEmailsButton';
-
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 export interface StakeholderProps {
     siteItem: SiteItem;
@@ -25,6 +25,15 @@ interface State {
     editMode: boolean;
     stakeholders: Stakeholder[];
 }
+
+const tooltipStyles = {
+    root: {
+        width: "30px",
+        float: "right",
+        marginLeft: "10px",
+    }
+};
+
 export default class Stakeholders extends React.Component<StakeholderProps, State> {
     constructor(props: StakeholderProps) {
 
@@ -95,17 +104,19 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                         <CopyEmailsButton stakeholders={this.state.stakeholders} />
 
                         {!this.state.editMode &&
-                            <DefaultButton
-                                iconProps={{ iconName: "Edit" }}
-                                className={styles.textEditIcon}
-                                text="Edit stakeholders"
-                                onClick={this.editMode} />
+                            <TooltipHost content="Edit stakeholders" id="editStakeholdersTooltipID" styles={tooltipStyles} >
+                                <DefaultButton
+                                    iconProps={{ iconName: "Edit" }}
+                                    className={styles.textEditIcon}
+                                    onClick={this.editMode} />
+                            </TooltipHost>
                         }
                     </SecurityTrimmedControl>
                 </h3>
 
 
-                {!this.state.editMode &&
+                {
+                    !this.state.editMode &&
                     <div className={styles.stakeholdersContainer}>
                         {this.props.siteItem[this.props.stakeholderFieldName] &&
                             <div className={styles.flexContainer}>
@@ -115,10 +126,6 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                                             <span className={styles.PersonaWrapper}>
                                                 <Persona text={stakeholder.name} secondaryText={stakeholder.email} size={PersonaSize.size40} />
                                             </span>
-                                            {/* <span>
-                                                <span>{stakeholder.name}</span>
-                                                {" <"}<span>{stakeholder.email}</span>{">; "}
-                                            </span> */}
                                         </>
                                     ))
                                 }
@@ -127,7 +134,8 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                         }
                     </div>
                 }
-                {this.state.editMode &&
+                {
+                    this.state.editMode &&
                     <React.Fragment>
                         <div className={styles.stakeholdersContainer} style={{ overflow: 'auto' }}>
                             {this.props.siteItem[this.props.stakeholderFieldName] &&
@@ -157,7 +165,7 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                         <DefaultButton text="Cancel" className={styles.richTextButton} onClick={this.cancel} />
                     </React.Fragment>
                 }
-            </div>
+            </div >
         );
     }
 }
