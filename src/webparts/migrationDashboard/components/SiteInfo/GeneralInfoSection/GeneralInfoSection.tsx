@@ -251,7 +251,11 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
         if (['MigrationStatus'].indexOf(item.key) > -1 && column.key == "Note") {
             return (
                 <>
-                    {<MarkAsMigratedButton context={this.props.context} migrationStatus={item.value} />}
+                    {<MarkAsMigratedButton
+                        context={this.props.context}
+                        migrationStatus={item.value}
+                        key={this.props.currentSite.SiteUrl}
+                    />}
                 </>
             );
         }
@@ -260,7 +264,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
 
     public render() {
         return (
-            <React.Fragment>
+            <>
                 <div>
                     <DetailsList
                         onRenderItemColumn={this._onRenderItemColumn}
@@ -285,7 +289,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
                         title="Notes for the migration team"
                     />
                 </SecurityTrimmedControl>
-            </React.Fragment>
+            </>
         );
     }
 }

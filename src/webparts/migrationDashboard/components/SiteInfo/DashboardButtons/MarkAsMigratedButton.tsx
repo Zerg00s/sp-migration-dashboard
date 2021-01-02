@@ -6,9 +6,10 @@ import React from 'react';
 import styles from '../../MigrationDashboard.module.scss';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { DataProvider } from '../../../services/DasboardDataProvider';
+import { DefaultButton } from 'office-ui-fabric-react';
 
 // renamed .mp3 file to .svg to piggy-back on the existing webpack loader
-const soundFile: any = require<string>( "../../../../assets/ding-sound-effect.MP3.svg");
+const soundFile: any = require<string>("../../../../assets/ding-sound-effect.MP3.svg");
 
 interface Props {
     context: WebPartContext;
@@ -34,7 +35,7 @@ export default class MarkAsMigratedButton extends React.Component<Props, State> 
 
     private setStatusToMigrated = () => {
         this.playSound();
- 
+
         this.setState({
             isClicked: true
         });
@@ -42,14 +43,34 @@ export default class MarkAsMigratedButton extends React.Component<Props, State> 
             "MigrationStatus": "Migrated"
         });
     }
+    private setStatusToScheduled = () => {
+
+        this.setState({
+            isClicked: false
+        });
+        DataProvider.patchCurrentSiteItem(this.props.context, {
+            "MigrationStatus": "Scheduled"
+        });
+    }
 
     public render() {
         if (this.state.isClicked || this.props.migrationStatus === "Migrated") {
-            return <></>;
+            return <>
+                <>
+                    <SecurityTrimmedControl context={this.props.context}
+                        level={PermissionLevel.currentWeb}
+                        permissions={[SPPermission.manageWeb]}>
+                        <DefaultButton text="Mark as Scheduled"
+                            iconProps={{ iconName: "Calendar" }}
+                            onClick={this.setStatusToScheduled}
+                        />
+                    </SecurityTrimmedControl>
+                </>
+            </>;
         }
 
         return (
-            <React.Fragment>
+            <>
                 <SecurityTrimmedControl context={this.props.context}
                     level={PermissionLevel.currentWeb}
                     permissions={[SPPermission.manageWeb]}>
@@ -59,7 +80,7 @@ export default class MarkAsMigratedButton extends React.Component<Props, State> 
                         onClick={this.setStatusToMigrated}
                     />
                 </SecurityTrimmedControl>
-            </React.Fragment>
+            </>
         );
     }
 }

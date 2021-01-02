@@ -15,6 +15,7 @@ import styles from '../../MigrationDashboard.module.scss';
 */
 const CopyEmailsButton: React.FC<CopyEmailsButtonProps> = (props) => {
     let [tooltipText, setTooltipText] = useState("Copy emails to clipboard");
+    let [iconName, setIconName] = useState("Copy");
     const tooltipId = useId('emails2clipboardTooltip');
 
     const copyEmails2Clipboard = async () => {
@@ -26,6 +27,14 @@ const CopyEmailsButton: React.FC<CopyEmailsButtonProps> = (props) => {
             }).join(" ;");
             await navigator.clipboard.writeText(stakeholdersAsString);
             setTooltipText("Copied");
+            setIconName("Accept");
+            
+            // reset the state in a few seconds:
+            setTimeout(() => {
+                setTooltipText("Copy emails to clipboard");
+                setIconName("Copy");
+            }, 3500);
+
         } catch (err) {
             console.error('Failed to copy emails to clipboard: ', err);
             setTooltipText("Failed to copy");
@@ -43,7 +52,7 @@ const CopyEmailsButton: React.FC<CopyEmailsButtonProps> = (props) => {
     return (
         <TooltipHost content={tooltipText} id={tooltipId} styles={tooltipStyles} >
             <DefaultButton
-                iconProps={{ iconName: "Copy" }}
+                iconProps={{ iconName: iconName }}
                 className={styles.textEditIcon}
                 onClick={copyEmails2Clipboard} />
         </TooltipHost>
