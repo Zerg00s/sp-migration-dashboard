@@ -1,7 +1,7 @@
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import React from 'react';
 import { SiteItem } from '../../../Interfaces/SiteItem';
-import { DataProvider } from '../../../services/DasboardDataProvider';
+import { DataProvider } from '../../../services/DashboardDataProvider';
 import { SecurityTrimmedControl, PermissionLevel } from "@pnp/spfx-controls-react/lib/SecurityTrimmedControl";
 import { SPPermission } from '@microsoft/sp-page-context';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
@@ -9,9 +9,8 @@ import styles from '../../MigrationDashboard.module.scss';
 import Stakeholder, { convertToStakeholders, convertStakeholdersToString } from './Stakeholder';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import StakeholderPersona from './StakeholderPersona';
-import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/components/Persona';
 
-import CopyEmailsButton, { CopyEmailsButtonProps } from './CopyEmailsButton';
+import CopyEmailsButton from './CopyEmailsButton';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import { StakeholderDialog } from './StakeholderDialog';
 import { ReadOnlyStakeholders } from './ReadOnlyStakeholders';
@@ -115,6 +114,19 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
 
         const newStakeholders = Array.from(this.state.stakeholders) as Stakeholder[];
 
+        if (this.state.stakeholders.length === 0) {
+            this.setState({
+                stakeholders: [stakeholder],
+                dialogHidden: true
+            });
+            this.setState({
+                stakeholders: [stakeholder],
+            });
+            return;
+        }
+
+        console.log("newStakeholders", newStakeholders);
+
         if (this.state.isNewStakeholder) {
             // Add new stakeholder
             newStakeholders.splice(this.state.currentStakeholderIndex + 1, 0, stakeholder);
@@ -123,11 +135,13 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
             // Update existing stakeholder
             newStakeholders[this.state.currentStakeholderIndex] = stakeholder;
         }
+
         this.setState({
             stakeholders: newStakeholders,
             dialogHidden: true
         });
 
+        console.log("this.state.stakeholders", this.state.stakeholders);
     }
 
     public editStakeholderClicked = (index: number) => {
@@ -154,7 +168,7 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
         });
     }
 
-    public plusStakeholderClicked = (index: number) => {
+    public newStakeholderClicked = (index: number) => {
         this.setState({
             dialogHidden: false,
             currentStakeholderIndex: index,
@@ -185,14 +199,21 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                 </h3>
 
 
-                {
-                    !this.state.editMode && // READ ONLY MODE
+                { // READ ONLY MODE
+                    !this.state.editMode &&
                     <ReadOnlyStakeholders
                         stakeholdersAsString={this.props.siteItem[this.props.stakeholderFieldName]} />
                 }
                 {
                     this.state.editMode && // EDIT MODE
                     <React.Fragment>
+                        {this.state.stakeholders.length === 0 && <>
+                            <DefaultButton
+                                text="Add stakeholder"
+                                onClick={() => { this.newStakeholderClicked(0); }} />
+                        </>
+                        }
+
                         <StakeholderDialog dialogHidden={this.state.dialogHidden}
                             isNewStakeholder={this.state.isNewStakeholder}
                             onDialogClosed={() => { this.dialogClosed(); }}
@@ -202,7 +223,10 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                             }} />
 
                         <div className={styles.stakeholdersContainer} style={{ overflow: 'auto' }}>
-                            {this.props.siteItem[this.props.stakeholderFieldName] &&
+                            {
+                                // this.props.siteItem[this.props.stakeholderFieldName]
+                                this.state.stakeholders.length > 0
+                                &&
                                 <DragDropContext onDragEnd={this.onDragEnd}>
                                     <Droppable droppableId="1">
                                         {provided => (
@@ -220,7 +244,7 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                                                                 />
 
                                                                 <div className={styles.plusButtonContainer}
-                                                                    onClick={() => { this.plusStakeholderClicked(index); }}>
+                                                                    onClick={() => { this.newStakeholderClicked(index); }}>
                                                                     <i aria-hidden="true" className={styles.plusButton}>+</i>
                                                                 </div>
                                                             </>

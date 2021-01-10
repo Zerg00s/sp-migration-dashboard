@@ -16,6 +16,9 @@ function convertStringToStakeholder(stakeholderAsString: string) {
 }
 
 export function convertToStakeholders(stakeholdersString: string): Stakeholder[] {
+    if (!stakeholdersString) {
+        return [];
+    }
     stakeholdersString = stakeholdersString.trim().replace(/^\;+|\;+$/g, '');
     let uniqueStakeholderStrings = stakeholdersString.split(";").filter((item, pos, self) => {
         return self.indexOf(item) == pos;

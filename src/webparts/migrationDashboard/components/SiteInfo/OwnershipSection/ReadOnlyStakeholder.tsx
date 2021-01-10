@@ -4,7 +4,7 @@ import { TooltipHost } from 'office-ui-fabric-react/lib/components/Tooltip';
 import React, { useState } from 'react';
 import { useId } from '@uifabric/react-hooks';
 import styles from '../../MigrationDashboard.module.scss';
-import Stakeholder, { convertToStakeholders } from './Stakeholder';
+import Stakeholder from './Stakeholder';
 export interface Props {
     stakeholder: Stakeholder;
 }

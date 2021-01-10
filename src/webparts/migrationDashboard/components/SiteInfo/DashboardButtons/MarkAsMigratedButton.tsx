@@ -5,7 +5,7 @@ import { SPPermission } from '@microsoft/sp-page-context';
 import React from 'react';
 import styles from '../../MigrationDashboard.module.scss';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import { DataProvider } from '../../../services/DasboardDataProvider';
+import { DataProvider } from '../../../services/DashboardDataProvider';
 import { DefaultButton } from 'office-ui-fabric-react';
 
 // renamed .mp3 file to .svg to piggy-back on the existing webpack loader

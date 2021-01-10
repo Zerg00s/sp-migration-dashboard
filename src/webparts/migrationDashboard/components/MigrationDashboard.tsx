@@ -3,7 +3,7 @@ import styles from './MigrationDashboard.module.scss';
 import { IMigrationDashboardProps } from './IMigrationDashboardProps';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import { Pivot, PivotItem, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot';
-import { DataProvider } from '../services/DasboardDataProvider';
+import { DataProvider } from '../services/DashboardDataProvider';
 import { SiteItem } from '../Interfaces/SiteItem';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
@@ -59,10 +59,10 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
             <PivotItem headerText="Search sites" className={styles.pivotItem} itemIcon="Search" itemKey="0" >
               <SiteSearch context={this.props.context} siteItems={this.state.siteItems} />
             </PivotItem>
-            <PivotItem headerText="Statistics" itemIcon="LineChart" color="red"  itemKey="1" >
+            {/* <PivotItem headerText="Statistics" itemIcon="LineChart" color="red"  itemKey="1" >
               <h2>Statistics</h2>
               <img src={statsLogo} alt="statistics" className={styles.svgImageStats} />
-            </PivotItem>
+            </PivotItem> */}
           </Pivot>
         </Fabric >
       </ErrorBoundary >

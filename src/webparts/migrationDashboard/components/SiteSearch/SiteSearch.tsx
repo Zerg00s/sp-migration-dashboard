@@ -11,7 +11,7 @@ import { Autocomplete } from '../Autocomplete';
 import SiteInfo from '../SiteInfo/SiteInfo';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { Constants } from '../Constants/Constants';
-import { DataProvider } from '../../services/DasboardDataProvider';
+import { DataProvider } from '../../services/DashboardDataProvider';
 import styles from '../MigrationDashboard.module.scss';
 
 const logo: any = require('../../../assets/search.svg');

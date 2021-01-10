@@ -198,7 +198,7 @@ export default class OwnershipSection extends React.Component<OwnershipSectionPr
                     title="Site Stakeholders"
                     siteItem={this.props.currentSite}
                     context={this.props.context}
-                    key={this.props.currentSite.Stakeholders}
+                    key={this.props.currentSite.SiteUrl}
                     stakeholderFieldName={Constants.SiteFields.Stakeholders}
                     placeholder="Stakeholders responsible for the site"
                 />

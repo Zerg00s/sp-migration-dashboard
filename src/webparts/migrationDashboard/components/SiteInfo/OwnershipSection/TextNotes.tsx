@@ -7,7 +7,7 @@ import { SPPermission } from '@microsoft/sp-page-context';
 import styles from '../../MigrationDashboard.module.scss';
 import { Constants } from '../../Constants/Constants';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import { DataProvider } from '../../../services/DasboardDataProvider';
+import { DataProvider } from '../../../services/DashboardDataProvider';
 import { TooltipHost } from 'office-ui-fabric-react/lib/components/Tooltip';
 
 interface TextNotesProps {
