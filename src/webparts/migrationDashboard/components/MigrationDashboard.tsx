@@ -31,7 +31,6 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
   public async componentDidMount() {
 
     DataProvider.getSites().then(items => {
-      console.log("done");
       this.setState({
         siteItems: items,
         loading: false

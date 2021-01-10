@@ -13,6 +13,8 @@ import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/components/Pers
 
 import CopyEmailsButton, { CopyEmailsButtonProps } from './CopyEmailsButton';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { StakeholderDialog } from './StakeholderDialog';
+import { ReadOnlyStakeholders } from './ReadOnlyStakeholders';
 
 export interface StakeholderProps {
     siteItem: SiteItem;
@@ -24,6 +26,10 @@ export interface StakeholderProps {
 interface State {
     editMode: boolean;
     stakeholders: Stakeholder[];
+    currentStakeholder: Stakeholder;
+    currentStakeholderIndex: number;
+    isNewStakeholder: boolean;
+    dialogHidden: boolean;
 }
 
 const tooltipStyles = {
@@ -40,10 +46,12 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
         super(props);
         this.state = {
             editMode: false,
-            stakeholders: convertToStakeholders(this.props.siteItem[this.props.stakeholderFieldName])
+            stakeholders: convertToStakeholders(this.props.siteItem[this.props.stakeholderFieldName]),
+            dialogHidden: true,
+            currentStakeholder: { name: "", email: "" },
+            currentStakeholderIndex: 0,
+            isNewStakeholder: true
         };
-
-        let copyTooltipText = "false";
     }
 
     private cancel = () => {
@@ -63,7 +71,7 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
 
     }
 
-    private editMode = () => {
+    private setEditMode = () => {
         this.setState({
             editMode: true
         });
@@ -91,7 +99,69 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
         });
     }
 
+    public StakeholderSaved = (stakeholder: Stakeholder) => {
+        // Detect duplicate stakeholders
+        const duplicateStakeholders = this.state.stakeholders.filter((currentStakeholder => {
+            return stakeholder.email.toLowerCase().trim() ===
+                currentStakeholder.email.toLowerCase().trim();
+        }));
 
+        if (duplicateStakeholders.length > 0) {
+            this.setState({
+                dialogHidden: true
+            });
+            return;
+        }
+
+        const newStakeholders = Array.from(this.state.stakeholders) as Stakeholder[];
+
+        if (this.state.isNewStakeholder) {
+            // Add new stakeholder
+            newStakeholders.splice(this.state.currentStakeholderIndex + 1, 0, stakeholder);
+
+        } else {
+            // Update existing stakeholder
+            newStakeholders[this.state.currentStakeholderIndex] = stakeholder;
+        }
+        this.setState({
+            stakeholders: newStakeholders,
+            dialogHidden: true
+        });
+
+    }
+
+    public editStakeholderClicked = (index: number) => {
+        this.setState({
+            currentStakeholderIndex: index,
+            currentStakeholder: this.state.stakeholders[index],
+            dialogHidden: false,
+            isNewStakeholder: false
+        });
+    }
+
+    public deleteStakeholderClicked = (index: number) => {
+        const newStakeholders = Array.from(this.state.stakeholders) as Stakeholder[];
+        newStakeholders.splice(index, 1);
+
+        this.setState({
+            stakeholders: newStakeholders
+        });
+    }
+
+    public dialogClosed = () => {
+        this.setState({
+            dialogHidden: true
+        });
+    }
+
+    public plusStakeholderClicked = (index: number) => {
+        this.setState({
+            dialogHidden: false,
+            currentStakeholderIndex: index,
+            isNewStakeholder: true,
+            currentStakeholder: { name: '', email: '' }
+        });
+    }
 
     public render() {
         return (
@@ -107,8 +177,8 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                             <TooltipHost content="Edit stakeholders" id="editStakeholdersTooltipID" styles={tooltipStyles} >
                                 <DefaultButton
                                     iconProps={{ iconName: "Edit" }}
-                                    className={styles.textEditIcon}
-                                    onClick={this.editMode} />
+                                    className={styles.textIcon}
+                                    onClick={this.setEditMode} />
                             </TooltipHost>
                         }
                     </SecurityTrimmedControl>
@@ -116,27 +186,21 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
 
 
                 {
-                    !this.state.editMode &&
-                    <div className={styles.stakeholdersContainer}>
-                        {this.props.siteItem[this.props.stakeholderFieldName] &&
-                            <div className={styles.flexContainer}>
-                                {convertToStakeholders(this.props.siteItem[this.props.stakeholderFieldName])
-                                    .map((stakeholder: Stakeholder, index) => (
-                                        <>
-                                            <span className={styles.PersonaWrapper}>
-                                                <Persona text={stakeholder.name} secondaryText={stakeholder.email} size={PersonaSize.size40} />
-                                            </span>
-                                        </>
-                                    ))
-                                }
-
-                            </div>
-                        }
-                    </div>
+                    !this.state.editMode && // READ ONLY MODE
+                    <ReadOnlyStakeholders
+                        stakeholdersAsString={this.props.siteItem[this.props.stakeholderFieldName]} />
                 }
                 {
-                    this.state.editMode &&
+                    this.state.editMode && // EDIT MODE
                     <React.Fragment>
+                        <StakeholderDialog dialogHidden={this.state.dialogHidden}
+                            isNewStakeholder={this.state.isNewStakeholder}
+                            onDialogClosed={() => { this.dialogClosed(); }}
+                            stakeholder={this.state.currentStakeholder}
+                            onStakeholderSaved={(savedStakeholder: Stakeholder) => {
+                                this.StakeholderSaved(savedStakeholder);
+                            }} />
+
                         <div className={styles.stakeholdersContainer} style={{ overflow: 'auto' }}>
                             {this.props.siteItem[this.props.stakeholderFieldName] &&
                                 <DragDropContext onDragEnd={this.onDragEnd}>
@@ -148,8 +212,18 @@ export default class Stakeholders extends React.Component<StakeholderProps, Stat
                                                 <>
                                                     {this.state.stakeholders.map(
                                                         (stakeholder: Stakeholder, index) =>
-                                                            <StakeholderPersona key={stakeholder.email} {...stakeholder} index={index} />
+                                                            <>
+                                                                <StakeholderPersona key={stakeholder.email} {...stakeholder}
+                                                                    index={index}
+                                                                    onEditClick={() => { this.editStakeholderClicked(index); }}
+                                                                    onDeleteClick={() => { this.deleteStakeholderClicked(index); }}
+                                                                />
 
+                                                                <div className={styles.plusButtonContainer}
+                                                                    onClick={() => { this.plusStakeholderClicked(index); }}>
+                                                                    <i aria-hidden="true" className={styles.plusButton}>+</i>
+                                                                </div>
+                                                            </>
                                                     )}
 
                                                     {provided.placeholder}

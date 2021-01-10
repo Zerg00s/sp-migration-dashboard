@@ -14,7 +14,7 @@ import styles from '../../MigrationDashboard.module.scss';
  Useful if we want to send an email via a mail agent
 */
 const CopyEmailsButton: React.FC<CopyEmailsButtonProps> = (props) => {
-    let [tooltipText, setTooltipText] = useState("Copy emails to clipboard");
+    let [tooltipText, setTooltipText] = useState("Copy all emails to clipboard");
     let [iconName, setIconName] = useState("Copy");
     const tooltipId = useId('emails2clipboardTooltip');
 
@@ -24,14 +24,14 @@ const CopyEmailsButton: React.FC<CopyEmailsButtonProps> = (props) => {
         try {
             const stakeholdersAsString = props.stakeholders.map(stakeholder => {
                 return `${stakeholder.name} <${stakeholder.email}>`;
-            }).join(" ;");
+            }).join("; ");
             await navigator.clipboard.writeText(stakeholdersAsString);
             setTooltipText("Copied");
             setIconName("Accept");
-            
+
             // reset the state in a few seconds:
             setTimeout(() => {
-                setTooltipText("Copy emails to clipboard");
+                setTooltipText("Copy all emails to clipboard");
                 setIconName("Copy");
             }, 3500);
 
@@ -53,7 +53,7 @@ const CopyEmailsButton: React.FC<CopyEmailsButtonProps> = (props) => {
         <TooltipHost content={tooltipText} id={tooltipId} styles={tooltipStyles} >
             <DefaultButton
                 iconProps={{ iconName: iconName }}
-                className={styles.textEditIcon}
+                className={styles.textIcon}
                 onClick={copyEmails2Clipboard} />
         </TooltipHost>
     );

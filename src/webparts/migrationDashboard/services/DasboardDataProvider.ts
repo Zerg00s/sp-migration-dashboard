@@ -24,11 +24,9 @@ class DashboardDataProvider {
 
     public patchCurrentSiteItem(context: WebPartContext, patchData: any) {
         const itemPatchEventName = `${Constants.Events.PatchCurrentItem}${context.webPartTag}`;
-        console.log("itemPatchEventName", itemPatchEventName);
         var itemPatchEvent = new CustomEvent(itemPatchEventName, {
             detail: patchData
         });
-        console.log(itemPatchEvent);
         window.dispatchEvent(itemPatchEvent);
     }
 }

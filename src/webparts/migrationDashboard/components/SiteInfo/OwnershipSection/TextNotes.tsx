@@ -90,7 +90,7 @@ export default class TextNotes extends React.Component<TextNotesProps, TextNotes
                                 <TooltipHost content="Edit notes" id="editStakeholdersNotesID" styles={tooltipStyles} >
                                     <DefaultButton
                                         iconProps={{ iconName: "Edit" }}
-                                        className={styles.textEditIcon}
+                                        className={styles.textIcon}
                                         onClick={this.editMode} />
                                 </TooltipHost>
                             }

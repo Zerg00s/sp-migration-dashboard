@@ -65,7 +65,6 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
 
     public async componentDidMount() {
         window.addEventListener(`${Constants.Events.RefreshCurrentItem}${this.props.context.webPartTag}`, this.refreshCurrentItem);
-        console.log("eventName subscription", `${Constants.Events.PatchCurrentItem}${this.props.context.webPartTag}`);
         window.addEventListener(`${Constants.Events.PatchCurrentItem}${this.props.context.webPartTag}`, this.patchCurrentItem);
     }
 
@@ -77,7 +76,6 @@ export default class SiteSearch extends React.Component<SiteSearchProps, SiteSea
     }
 
     private patchCurrentItem = async (itemPatchEvent: CustomEvent) => {
-        console.log("Patch event fired!", itemPatchEvent);
         await sp.web.lists.getByTitle(Constants.Lists.SiteReports).items.getById(this.state.currentSite.ID).update(
             itemPatchEvent.detail
         );

@@ -1,5 +1,35 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
+div.plusButtonContainer {
+  display: flex;
+  justify-content: center;
+  padding: 0 0;
+  background: #eee;
+  height: 6px;
+  opacity: 0;
+  -webkit-transition: opacity 0.367s ease;
+  transition: opacity 0.367s ease;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  i.plusButton {
+    font-size: 12px;
+    background-color: #004e8c;
+    color: #fff;
+    border-radius: 50%;
+    margin-top: -7px;
+    width: 16px;
+    height: 16px;
+    padding-left: 8px;
+    padding-bottom: 8px;
+    cursor: pointer;
+  }
+}
+
 span.drag {
   cursor: move !important;
   margin: 0 10px 0 0;
@@ -8,18 +38,19 @@ span.drag {
 
 .flexContainer {
   display: flex;
-  max-width: 600px;
   flex-wrap: wrap;
 }
 
 .PersonaWrapper {
   margin: 10px 10px;
-  width: 250px;
+  width: 320px;
+  display: flex;
+  align-items: center;
 }
 
 .stakeholderPersona {
   padding: 10px 0;
-  margin: 10px;
+  margin: 1px 0;
   border: dashed #444 1px;
   background: #fff;
   display: flex;
@@ -56,6 +87,7 @@ span.drag {
 
 .detailsPanel {
   :global {
+
     .ms-Panel-scrollableContent,
     .ms-Panel-content {
       height: 100%;
@@ -70,10 +102,11 @@ span.drag {
 .stakeholdersContainer {
   font-size: 14px;
   margin: 20px;
+  padding-bottom: 14px;
 }
 
 .migrationDashboard {
-  .textEditIcon {
+  .textIcon {
     min-width: 30px;
     font-size: 12px;
     padding: 0;
