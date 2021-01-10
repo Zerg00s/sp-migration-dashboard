@@ -45,7 +45,15 @@ export const ReadOnlyStakeholder: React.FC<Props> = props => {
     return (
         <>
             <span className={styles.PersonaWrapper}>
-                <Persona text={props.stakeholder.name} secondaryText={props.stakeholder.email} size={PersonaSize.size40} />
+                <Persona text={props.stakeholder.name}
+                    secondaryText={props.stakeholder.email}
+                    size={PersonaSize.size40}
+                    styles={{
+                        root: {
+                            width: 320
+                        }
+                    }}
+                />
                 <TooltipHost content={tooltipText} id={tooltipId} styles={tooltipStyles} >
                     <DefaultButton
                         iconProps={{ iconName: iconName }}
