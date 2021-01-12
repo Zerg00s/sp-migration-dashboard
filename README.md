@@ -7,7 +7,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
  - SharePoint migrations to Microsoft 365 can be a nightmare to plan and organize.
  - You want to keep track of your migration progress.
  - Dashboard is a self-service portal designed to provide SharePoint site owners with all migration-related questions.
- - Raw [SharePoint Migration Assessment Tool (SMAT)](https://www.microsoft.com/en-us/download/details.aspx?id=53598&WT.mc_id=rss_alldownloads_all) reports are very hard to analyze. Migration Dashboard presents SMAT data in a human readable form that will be available both for the migration team and site owners.
+ - Save time on reading [SharePoint Migration Assessment Tool (SMAT)](https://www.microsoft.com/en-us/download/details.aspx?id=53598&WT.mc_id=rss_alldownloads_all) reports. Migration Dashboard presents SMAT data in a human readable form that will be available both for the migration team and site owners.
 
 
 ![](IMG/siteInfo.png)
@@ -44,4 +44,6 @@ The Dashboard is a lightweight solution that includes the following components
 - Your migration-related data will stay in your SharePoint Online tenant.
 - Dashboard does not send any data to the outside world.
 - Source code is available in this open source repository.
+
+![](IMG/tabs.gif)
  

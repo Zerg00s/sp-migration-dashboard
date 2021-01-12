@@ -54,18 +54,14 @@ export const ReadOnlyStakeholder: React.FC<Props> = props => {
                         }
                     }}
                 />
-                <TooltipHost content={tooltipText} id={tooltipId} styles={tooltipStyles} >
+                <TooltipHost content={tooltipText} id={tooltipId} styles={tooltipStyles}  >
                     <DefaultButton
                         iconProps={{ iconName: iconName }}
                         className={styles.textIcon}
                         onClick={() => { copyEmailClipboard(props.stakeholder); }} />
                 </TooltipHost>
             </span>
-            {/* <span style={{ marginLeft: "auto", marginRight: "15px" }}>
-               
-            </span> */}
         </>
-
 
     );
 }; 

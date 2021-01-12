@@ -46,6 +46,14 @@ span.drag {
   width: 320px;
   display: flex;
   align-items: center;
+
+  .textIcon {
+    visibility: hidden;
+  }
+
+  &:hover .textIcon {
+    visibility: visible;
+  }
 }
 
 .stakeholderPersona {
