@@ -53,4 +53,11 @@ The Dashboard is a lightweight solution that includes the following components
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 
+## Preview
 ![](IMG/tabs.gif)
+
+
+
+
+## Watch a short demo 
+[![](IMG/video.png)](https://youtu.be/6FwCIA-aaPM)
