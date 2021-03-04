@@ -109,6 +109,7 @@ Navigate to the folder `\sp-migration-dashboard\sharepoint\solution\` and confir
 
  <br/>
 ## Migration Dashboard in action
+
 ![](IMG/tabs.gif)
 
 
