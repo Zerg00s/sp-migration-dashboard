@@ -108,8 +108,8 @@ Navigate to the folder `\sp-migration-dashboard\sharepoint\solution\` and confir
 ![](IMG/package.png)
 
  <br/>
- 
-## Migration Dashboard in action
+
+## Migration Dashboard in Action
 
 ![](IMG/tabs.gif)
 
