@@ -16,22 +16,38 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 ### Prerequisites
 
 - Microsoft 365 subscription
-- SharePoint Online Administrator role
-- SharePoint App Catalog
+- SharePoint Online Administrator role (for creating the App Catalog)
+- SharePoint Site Administrator (for deploying the package)
+- [SharePoint App Catalog](https://docs.microsoft.com/en-us/sharepoint/use-app-catalog)
 
 ### Deployment steps
 
+1. Download the [latest release](https://github.com/Zerg00s/sp-migration-dashboard/releases/tag/1.0)
 1. Run `Install-Module SharePointPnPPowerShellOnline` in PowerShell.
 1. Navigate to \PowerShell\ Folder and run `Prerequisites.bat`
 1. [Create App Catalog Site Collection](https://docs.microsoft.com/en-us/sharepoint/use-app-catalog#step-1-create-the-app-catalog-site-collection) in SharePoint Online if not created.
+1. Navigate to the SharePoint App catalog. 
+1. Drag and drop the `sp-migration-dashboard.sppkg` file to the app catalog's folder
+
+![](IMG/drag-and-drop.png)
 1. Deploy `sp-migration-dashboard.sppkg` app to App Catalog.
 1. In SharePoint Online: 
    * Create an empty site collection for hosting Migration Dashboard.
-   * Add the sp-migration-dashboard app to the empty site collection.
+   * Add the "Migration Dashboard" app to this site collection.
+
+   ![](IMG/add-app.png)
    * Add Migration Dashboard webpart to the home page.
+
+   ![](IMG/webpart.png)
    * Deploy Lists and Libraries by running `Deploy-Dashboard.ps1`
+
+
+
+
+#### Populate the dashboard with the SMAT reports
+
 1. Download [SharePoint Migration Assessment Tool (SMAT)](https://www.microsoft.com/en-us/download/details.aspx?id=53598&WT.mc_id=rss_alldownloads_all)
-1. Run SMAT in one of the SharePoint servers in your farm. 
+1. Run SMAT in one of the SharePoint servers in your farm.
 1. Run `Upload_SMAT_Reports.ps1` to upload SMAT reports to the Dashboard site.
 1. Enjoy the data provided by the Migration Dashboard!
 
@@ -52,6 +68,28 @@ The Dashboard is a lightweight solution that includes the following components
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+
+
+## How to build the package
+
+### Prerequisites
+
+- Install [Node.js LTS 10.x](https://nodejs.org/dist/latest-v10.x/)
+- Install gulp by running `npm install gulp -g`
+
+
+### Build the webpart package
+
+```
+npm install
+gulp bundle --ship
+gulp package-solution --ship
+```
+
+Navigate to the folder `\sp-migration-dashboard\sharepoint\solution\` and confirm that the .sppg file is there:
+
+![](IMG/package.png)
+
 
 ## Preview
 ![](IMG/tabs.gif)
