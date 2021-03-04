@@ -15,7 +15,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 
 <br/>
 
-## Watch a demo 
+## Watch a Dmo 
 [![](IMG/video.png)](https://youtu.be/6FwCIA-aaPM)
 
 <br/>
@@ -32,7 +32,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 <br/>
 
 
-### Deployment steps
+### Deployment Steps
 
 1. Download the and unzip [latest release](https://github.com/Zerg00s/sp-migration-dashboard/releases/download/1.0/sp-migration-dashboard.Release.zip)
 1. Open PowerShell and run `Install-Module SharePointPnPPowerShellOnline`
@@ -54,7 +54,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 
 
 
-#### Populate the dashboard with the SMAT reports
+#### Populate the Migration Dashboard with the SMAT Reports
 
 1. Download [SharePoint Migration Assessment Tool (SMAT)](https://www.microsoft.com/en-us/download/details.aspx?id=53598&WT.mc_id=rss_alldownloads_all)
 1. Run SMAT in one of the SharePoint servers in your farm.
@@ -65,7 +65,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 <br/>
 
 
-## Architecture
+## Migration Dashboard Architecture
 
 The Dashboard is a lightweight solution that includes the following components
 - Communication SharePoint site.
@@ -87,7 +87,7 @@ The Dashboard is a lightweight solution that includes the following components
 
  <br/>
 
-## Build the package
+## Build the Package
 You can always take the [latest release from here](https://github.com/Zerg00s/sp-migration-dashboard/releases/download/1.0/sp-migration-dashboard.Release.zip). But you can also build the package manually.
 
 ### Prerequisites
@@ -95,7 +95,7 @@ You can always take the [latest release from here](https://github.com/Zerg00s/sp
 - Install [Node.js LTS 10.x](https://nodejs.org/dist/latest-v10.x/)
 - Install gulp by running `npm install gulp -g`
 
-### Build the webpart package
+### Build the Migration Dashboard Package
 
 ```
 npm install
