@@ -22,7 +22,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 
 ### Deployment steps
 
-1. Download the [latest release](https://github.com/Zerg00s/sp-migration-dashboard/releases/download/1.0/sp-migration-dashboard.Release.zip)
+1. Download the [latest release](https://github.com/Zerg00s/sp-migration-dashboard/releases/download/1.0/sp-migration-dashboard.Release.zip).
 1. Run `Install-Module SharePointPnPPowerShellOnline` in PowerShell.
 1. Navigate to \PowerShell\ Folder and run `Prerequisites.bat`
 1. [Create App Catalog Site Collection](https://docs.microsoft.com/en-us/sharepoint/use-app-catalog#step-1-create-the-app-catalog-site-collection) in SharePoint Online if not created.
