@@ -15,7 +15,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 
 <br/>
 
-## Watch a Dmo 
+## Watch a Demo 
 [![](IMG/video.png)](https://youtu.be/6FwCIA-aaPM)
 
 <br/>
