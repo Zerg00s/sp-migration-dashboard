@@ -22,7 +22,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 
 ### Deployment steps
 
-1. Download the [latest release](https://github.com/Zerg00s/sp-migration-dashboard/releases/tag/1.0)
+1. Download the [latest release](https://github.com/Zerg00s/sp-migration-dashboard/releases/download/1.0/sp-migration-dashboard.Release.zip)
 1. Run `Install-Module SharePointPnPPowerShellOnline` in PowerShell.
 1. Navigate to \PowerShell\ Folder and run `Prerequisites.bat`
 1. [Create App Catalog Site Collection](https://docs.microsoft.com/en-us/sharepoint/use-app-catalog#step-1-create-the-app-catalog-site-collection) in SharePoint Online if not created.
@@ -70,13 +70,13 @@ The Dashboard is a lightweight solution that includes the following components
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 
 
-## How to build the package
+## Build the package
+You can always take the [latest release from here](https://github.com/Zerg00s/sp-migration-dashboard/releases/download/1.0/sp-migration-dashboard.Release.zip). But you can also build the package manually.
 
 ### Prerequisites
 
 - Install [Node.js LTS 10.x](https://nodejs.org/dist/latest-v10.x/)
 - Install gulp by running `npm install gulp -g`
-
 
 ### Build the webpart package
 
@@ -91,10 +91,8 @@ Navigate to the folder `\sp-migration-dashboard\sharepoint\solution\` and confir
 ![](IMG/package.png)
 
 
-## Preview
+## How the deployed webpart looks like
 ![](IMG/tabs.gif)
-
-
 
 
 ## Watch a short demo 
