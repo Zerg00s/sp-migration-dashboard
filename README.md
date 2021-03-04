@@ -2,7 +2,7 @@
 # SharePoint Migration Dashboard
 Planning to migrate your SharePoint server farm to SharePoint Online? Then you absolutely must install this dashboard.
 
-<br/><br/>
+<br/>
 
 ## Reasons for Setting up the Migration Dashboard
 
