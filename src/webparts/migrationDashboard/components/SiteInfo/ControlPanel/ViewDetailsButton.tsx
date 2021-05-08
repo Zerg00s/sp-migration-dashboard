@@ -50,6 +50,7 @@ export default class ViewDetailsButton extends React.Component<ViewDetailsButton
                     onClick={this.openMasterPanel}
                 />
                 <Panel
+                    isLightDismiss
                     className={styles.detailsPanel}
                     isOpen={this.state.panelOpen}
                     onDismiss={this.closeMasterPanel}
