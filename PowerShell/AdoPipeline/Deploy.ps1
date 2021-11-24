@@ -1,9 +1,9 @@
 Param (
     [Parameter(Mandatory = $True)]
-    [String] $Login,
+    [String] $AppId,
     
     [Parameter(Mandatory = $True)]
-    [String] $Password,
+    [String] $AppSecret,
 
     [Parameter(Mandatory = $True)]
     [String] $SiteUrl,
@@ -33,7 +33,7 @@ Get-ChildItem -Path "Utils\*.ps1" -Recurse | ForEach-Object {
     . $_.FullName 
 }
 
-$AdminConnection = Connect-SPOnline -Login $Login -Password $Password -SiteUrl $SiteUrl
+$AdminConnection = Connect-SPOnline -ClientId $AppId -ClientSecret $AppSecret -SiteUrl $SiteUrl
 
 Write-host Deploying tenant App...
 Apply-PnPProvisioningTemplate -Path ".\Provisioning_Templates\Dashboard_TenantApp.xml" -Connection $AdminConnection
