@@ -40,10 +40,16 @@ Connect-PnPOnline -Url $SiteUrl -ClientId $ClientId -ClientSecret $ClientSecret 
 
 try{
     Write-host Deploying tenant App...
-    Add-PnPApp -Path "..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish
+    # windows
+    Add-PnPApp -Path "..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish    
 }
 catch{
-    Get-PnPException 
+    # ubuntu: 
+    try{
+        Add-PnPApp -Path "..\..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish
+    }catch{
+        Get-PnPException 
+    }
 }
 
 if($AppOnlyDeploy){
