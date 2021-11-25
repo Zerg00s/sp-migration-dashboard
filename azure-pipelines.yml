@@ -5,14 +5,13 @@ trigger:
 - develop
 
 pool:
-  # vmImage: 'ubuntu-16.04'
+  vmImage: 'ubuntu-latest'
   demands:
   - npm
   - node.js
 
 variables:
-  npm_config_cache: $(Pipeline.Workspace)/.npm
-  vmImageName: 'ubuntu-latest'
+  npm_config_cache: $(Pipeline.Workspace)/.npm 
 steps:
 - task: NodeTool@0
   displayName: 'Install Node.Js'
