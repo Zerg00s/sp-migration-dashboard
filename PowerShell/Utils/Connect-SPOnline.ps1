@@ -1,17 +1,17 @@
 function Connect-SPOnline() {
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory = $true, Position = 0)]
+        [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [String]$SiteUrl,
 
-        [Parameter(Mandatory = $true, Position = 1)]
-        [String]$Login,
+        [Parameter(Mandatory = $true)]
+        [String]$ClientId,
 
-        [Parameter(Mandatory = $true, Position = 2)]
-        [String]$Password,
+        [Parameter(Mandatory = $true)]
+        [String]$ClientSecret,
 
-        [Parameter(Position = 3, Mandatory = $false)]
+        [Parameter(Mandatory = $false)]
         [String]$SpTenantAdminUrl # Some O365 tenants have custom host name URLs
 
     )
@@ -26,14 +26,14 @@ function Connect-SPOnline() {
     $credentials = $null
     $AdminConnection = $null;
 
-    $securePass = ConvertTo-SecureString -String $Password -AsPlainText -Force
-    $credentials = new-object -typename System.Management.Automation.PSCredential -argumentlist $Login, $securePass
+    # $securePass = ConvertTo-SecureString -String $Password -AsPlainText -Force
+    # $credentials = new-object -typename System.Management.Automation.PSCredential -argumentlist $Login, $securePass
 
     Write-host "Connecting to $global:TenantAdminUrl"
-    $AdminConnection = Connect-PnPOnline -Url "$global:TenantAdminUrl" -Credentials $credentials -ReturnConnection
+    $AdminConnection = Connect-PnPOnline -Url "$global:TenantAdminUrl" -ClientId $ClientId -ClientSecret $ClientSecret -ReturnConnection
     
     Write-host "Connecting to $SiteUrl"
-    Connect-PnPOnline -Url $SiteUrl -Credentials $credentials
+    Connect-PnPOnline -Url $SiteUrl -ClientId $ClientId -ClientSecret $ClientSecret
 
     return $AdminConnection
 
