@@ -37,7 +37,12 @@ $AdminConnection = Connect-SPOnline -ClientId $ClientId -ClientSecret $ClientSec
 
 Write-host Deploying tenant App...
 
-Add-PnPApp -Path "..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish -Connection $AdminConnection
+try{
+    Add-PnPApp -Path "..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish -Connection $AdminConnection
+}
+catch{
+    Get-PnPException 
+}
 
 if($AppOnlyDeploy){
     return
