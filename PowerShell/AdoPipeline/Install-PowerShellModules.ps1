@@ -1,7 +1,7 @@
 Param (
     [Parameter()]
     [String]
-    $PnPVersion = "1.8.0" # ! We might want to get the latest version each time.
+    $PnPVersion = "1.8.0" # ! We might want to get the latest PnP version by default.
 )
 try{
     Install-PackageProvider -Name NuGet -Force -Scope "CurrentUser"

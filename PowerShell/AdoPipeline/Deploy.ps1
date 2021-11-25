@@ -44,13 +44,7 @@ try {
     Add-PnPApp -Path "..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish    
 }
 catch {
-    # ubuntu: 
-    try {
-        Add-PnPApp -Path "..\..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish
-    }
-    catch {
-        Get-PnPException 
-    }
+    Get-PnPException 
 }
 
 if ($AppOnlyDeploy) {

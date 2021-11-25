@@ -112,7 +112,7 @@ foreach ($SmatRecord in $SmatSites) {
         Write-Host Updated List item for $SiteUrl site. -ForegroundColor Green
     }
     else {
-        Write-Host Could not find $SiteUrl Adding new record -ForegroundColor Yellow
+        Write-Host Adding List item for $SiteUrl site -ForegroundColor Yellow
         $suppress = Add-PnPListItem -List Lists/SitesReport -Values $RecordFieldValues
     }
 }
