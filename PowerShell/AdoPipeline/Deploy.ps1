@@ -49,6 +49,15 @@ if($AppOnlyDeploy){
 Write-host Deploying Lists and Libraries...
 Invoke-PnPSiteTemplate -Path ".\Provisioning_Templates\Dashboard_Lists.xml"
 
-Install-PnPApp -Identity ee19878d-ba02-499b-b98e-b05188b7d599
+$appID = "991a382a-e20d-4929-acdd-3c9f798e85c1"
+
+$installedApp = Get-PnPApp | Where-Object {$_.Id -eq  $appID  }
+if($installedApp){
+    if($installedApp.CanUpgrade){
+        Update-PnPApp $appID
+    }    
+}else{
+    Install-PnPApp -Identity $appID
+}
 
 Pop-Location
