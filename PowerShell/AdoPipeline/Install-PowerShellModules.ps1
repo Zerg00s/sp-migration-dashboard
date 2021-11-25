@@ -1,7 +1,7 @@
 Param (
     [Parameter()]
     [String]
-    $PnPVersion = "3.23.2007.1"
+    $PnPVersion = "1.8.0"
 )
 Install-PackageProvider -Name NuGet -Force -Scope "CurrentUser"
 if ($PnPVersion -ne $null -and $PnPVersion -ne "") {
