@@ -38,21 +38,22 @@ Connect-PnPOnline -Url $SiteUrl -ClientId $ClientId -ClientSecret $ClientSecret 
 
 # $global:TenantAdminUrl = "https://" + (([System.Uri]$SiteUrl).Host -replace '.sharepoint.com') + "-admin.sharepoint.com"
 
-try{
+try {
     Write-host Deploying tenant App...
     # windows
     Add-PnPApp -Path "..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish    
 }
-catch{
+catch {
     # ubuntu: 
-    try{
+    try {
         Add-PnPApp -Path "..\..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish
-    }catch{
+    }
+    catch {
         Get-PnPException 
     }
 }
 
-if($AppOnlyDeploy){
+if ($AppOnlyDeploy) {
     return
 }
 
@@ -64,12 +65,13 @@ Invoke-PnPSiteTemplate -Path ".\Provisioning_Templates\Dashboard_Lists.xml"
 
 $appID = "991a382a-e20d-4929-acdd-3c9f798e85c1"
 
-$installedApp = Get-PnPApp | Where-Object {$_.Id -eq  $appID  }
-if($installedApp){
-    if($installedApp.CanUpgrade){
+$installedApp = Get-PnPApp | Where-Object { $_.Id -eq $appID }
+if ($installedApp) {
+    if ($installedApp.CanUpgrade) {
         Update-PnPApp $appID
     }    
-}else{
+}
+else {
     Install-PnPApp -Identity $appID
 }
 
