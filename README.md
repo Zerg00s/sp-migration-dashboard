@@ -52,7 +52,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
    * Create an empty site collection for hosting Migration Dashboard.
    * Add the "Migration Dashboard" app to this site collection.
    ![](IMG/add-app.png)
-   * Add Migration Dashboard webpart to the home page.
+   * Add Migration Dashboard webpart to the home page.   
    ![](IMG/webpart.png)
 
 4. Deploy Dashboard Lists and Libraries by running `Deploy-Dashboard.ps1`
