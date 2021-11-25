@@ -33,12 +33,14 @@ Get-ChildItem -Path "Utils\*.ps1" -Recurse | ForEach-Object {
     . $_.FullName 
 }
 
-$AdminConnection = Connect-SPOnline -ClientId $ClientId -ClientSecret $ClientSecret -SiteUrl $SiteUrl
+Write-host "Connecting to $SiteUrl"
+Connect-PnPOnline -Url $SiteUrl -ClientId $ClientId -ClientSecret $ClientSecret -WarningAction Ignore
 
-Write-host Deploying tenant App...
+# $global:TenantAdminUrl = "https://" + (([System.Uri]$SiteUrl).Host -replace '.sharepoint.com') + "-admin.sharepoint.com"
 
 try{
-    Add-PnPApp -Path "..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish -Connection $AdminConnection
+    Write-host Deploying tenant App...
+    Add-PnPApp -Path "..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish
 }
 catch{
     Get-PnPException 
