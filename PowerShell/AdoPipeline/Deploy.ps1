@@ -19,7 +19,7 @@ Param (
 $ErrorActionPreference = "Stop"
 
 # ===================================================
-# Load all SharePoint PnP PowersShell Module
+# Load PnP PowersShell Module
 # ===================================================
 
 # Import-Module PnP.PowerShell -Scope "Local"
@@ -37,7 +37,7 @@ $AdminConnection = Connect-SPOnline -ClientId $ClientId -ClientSecret $ClientSec
 
 Write-host Deploying tenant App...
 
-Add-PnPApp -Path "..\..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish -Connection $AdminConnection
+Add-PnPApp -Path "..\sharepoint\solution\sp-migration-dashboard.sppkg" -Overwrite -SkipFeatureDeployment:$false -Publish -Connection $AdminConnection
 
 if($AppOnlyDeploy){
     return
