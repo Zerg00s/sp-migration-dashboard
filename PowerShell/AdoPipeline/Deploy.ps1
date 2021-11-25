@@ -22,7 +22,7 @@ $ErrorActionPreference = "Stop"
 # Load all SharePoint PnP PowersShell Module
 # ===================================================
 
-Import-Module SharePointPnPPowerShellOnline -Scope "Local"
+Import-Module PnP.PowerShell -Scope "Local"
 
 Push-Location "..\"
 
