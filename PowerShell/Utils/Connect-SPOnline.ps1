@@ -33,7 +33,7 @@ function Connect-SPOnline() {
     $AdminConnection = Connect-PnPOnline -Url "$global:TenantAdminUrl" -ClientId $ClientId -ClientSecret $ClientSecret -ReturnConnection
     
     Write-host "Connecting to $SiteUrl"
-    Connect-PnPOnline -Url $SiteUrl -ClientId $ClientId -ClientSecret $ClientSecret
+    Connect-PnPOnline -Url $SiteUrl -ClientId $ClientId -ClientSecret $ClientSecret -WarningAction Ignore
 
     return $AdminConnection
 

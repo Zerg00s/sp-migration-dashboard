@@ -48,7 +48,7 @@ Write-Host " for uploading SMAT logs: " -NoNewline
 $TargetSiteCollectionUrl = Read-Host
 if ($null -eq $TargetSiteCollectionUrl) { exit; }
 
-Connect-PnPOnline -UseWebLogin -Url $TargetSiteCollectionUrl
+Connect-PnPOnline -UseWebLogin -Url $TargetSiteCollectionUrl -WarningAction Ignore
 Write-Host [Success] Connected to $TargetSiteCollectionUrl -ForegroundColor Green
 
 $SmatSites = Import-Csv $ReportSummaryPath
