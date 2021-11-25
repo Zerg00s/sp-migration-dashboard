@@ -2,7 +2,7 @@
 ![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
-![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+[![Build Status](https://dev.azure.com/zergs/Migration%20Dashboard/_apis/build/status/Build.sp-migration-dashboard?branchName=master)](https://dev.azure.com/zergs/Migration%20Dashboard/_build/latest?definitionId=5&branchName=master)
  
 ![](IMG/search.png)
 # SharePoint Migration Dashboard
