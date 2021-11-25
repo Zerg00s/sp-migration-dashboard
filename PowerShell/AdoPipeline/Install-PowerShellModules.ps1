@@ -5,8 +5,8 @@ Param (
 )
 Install-PackageProvider -Name NuGet -Force -Scope "CurrentUser"
 if ($PnPVersion -ne $null -and $PnPVersion -ne "") {
-    Install-Module SharePointPnPPowerShellOnline -Scope "CurrentUser" -RequiredVersion $PnPVersion -Verbose -AllowClobber -Force
+    Install-Module PnP.PowerShell -Scope "CurrentUser" -RequiredVersion $PnPVersion -Verbose -AllowClobber -Force
 }
 else {
-    Install-Module SharePointPnPPowerShellOnline -Scope "CurrentUser" -Verbose -AllowClobber -Force
+    Install-Module PnP.PowerShell -Scope "CurrentUser" -Verbose -AllowClobber -Force
 }

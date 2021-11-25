@@ -1,1 +1,1 @@
-Install-Module SharePointPnPPowerShellOnline -Scope "CurrentUser" -Verbose -AllowClobber -Force
+Install-Module PnP.PowerShell -Scope "CurrentUser" -Verbose -AllowClobber -Force

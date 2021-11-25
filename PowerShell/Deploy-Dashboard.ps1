@@ -16,6 +16,6 @@ $TargetSiteCollectionUrl = Read-Host
 if ($null -eq $TargetSiteCollectionUrl) { exit; }
 
 Connect-PnPOnline -UseWebLogin -Url $TargetSiteCollectionUrl
-Apply-PnPProvisioningTemplate -Path ".\Provisioning_Templates\Dashboard_Lists.xml"
+Invoke-PnPSiteTemplate -Path ".\Provisioning_Templates\Dashboard_Lists.xml"
 
 Write-Host "Lists and Libraries have been deployed" -ForegroundColor Green
