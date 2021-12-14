@@ -1,1 +1,1 @@
-Install-Module PnP.PowerShell -Scope "CurrentUser" -AllowClobber -Force
+Install-Module PnP.Powershell -Scope "CurrentUser" -AllowClobber -Force
