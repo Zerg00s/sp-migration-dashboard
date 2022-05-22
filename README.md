@@ -67,6 +67,16 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 
 <br/>
 
+## 💡 Known issue: Details View does not show fields ⚠️
+If the "View Details" does not show any fields except for Title. Apply the following fix:
+
+- Go to Site Contents
+- Next to Sites Report click on the three dots (...) > Settings
+- Under Content Type, click "Item" Content type 
+- Add from existing site or list columns
+- Select all columns by pressing SHIFT and Left Mouse click
+- Click Ad
+
 
 ## Migration Dashboard Architecture
 
