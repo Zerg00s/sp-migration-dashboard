@@ -73,7 +73,7 @@ interface GeneralInfoSectionProps {
     context: WebPartContext;
 }
 
-export default class GeneralInfoSection extends React.Component<GeneralInfoSectionProps, GeneralInfoSectionState>  {
+export default class GeneralInfoSection extends React.Component<GeneralInfoSectionProps, GeneralInfoSectionState> {
 
     public _allItems: IDocument[];
 
@@ -159,12 +159,20 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
         if (props.currentSite === undefined) {
             return items;
         }
+        let name = "Site URL";
+        let note = "Old site URL"
+        let iconName = "Link"
+        if (props.currentSite.SiteUrl.indexOf("\\") === 0) {
+            name = "UNC Path";
+            note = "Old UNC Path";
+            iconName = "FabricFolderLink"
+        }
         items.push({
             key: "SiteUrl",
-            name: "Site URL",
+            name: name,
             value: props.currentSite.SiteUrl,
-            note: "Old site URL",
-            iconName: "Link"
+            note: note,
+            iconName: iconName
         });
         items.push({
             key: "TargetSiteUrl",

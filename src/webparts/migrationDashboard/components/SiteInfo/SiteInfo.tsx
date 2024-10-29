@@ -11,6 +11,7 @@ import OwnershipSection from './OwnershipSection/OwnershipSection';
 import OtherSection from './OtherSection/OtherSection';
 import ChecklistSection from './ChecklistSection/ChecklistSection';
 import GeneralControlPanel from './ControlPanel/GeneralControlPanel';
+import DocumentLocatorSection from './DocumentLocatorSection/DocumentLocatorSection';
 
 interface SiteInfoProps {
     currentSite: SiteItem;
@@ -55,6 +56,12 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                         <PivotItem headerText="Other" className={styles.pivotItem} itemKey="3">
                             <Section title="Other">
                                 <OtherSection currentSite={this.props.currentSite} />
+                            </Section>
+                        </PivotItem>
+
+                        <PivotItem headerText="Document Locator" itemIcon='Search' className={styles.pivotItem} itemKey="4">
+                            <Section title="Document Locator">
+                                <DocumentLocatorSection currentSite={this.props.currentSite} />
                             </Section>
                         </PivotItem>
                     </Pivot>

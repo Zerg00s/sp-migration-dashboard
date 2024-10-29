@@ -75,7 +75,7 @@ If the "View Details" does not show any fields except for Title. Apply the follo
 - Under Content Type, click "Item" Content type 
 - Add from existing site or list columns
 - Select all columns by pressing SHIFT and Left Mouse click
-- Click Ad
+- Click Add
 
 
 ## Migration Dashboard Architecture
