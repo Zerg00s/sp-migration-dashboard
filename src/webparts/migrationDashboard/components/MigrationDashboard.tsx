@@ -56,7 +56,7 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
       <ErrorBoundary>
         <Fabric>
           <Pivot linkSize={PivotLinkSize.large} >
-            <PivotItem headerText="Search sites" className={styles.pivotItem} itemIcon="Search" itemKey="0" >
+            <PivotItem headerText="Hello search" className={styles.pivotItem} itemIcon="Search" itemKey="0" >
               <SiteSearch context={this.props.context} siteItems={this.state.siteItems} />
             </PivotItem>
 
