@@ -168,6 +168,13 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             iconName = "FabricFolderLink"
         }
         items.push({
+            key: "Title",
+            name: "Title",
+            value: props.currentSite.Title,
+            note: "",
+            iconName: "BoldT"
+        });
+        items.push({
             key: "SiteUrl",
             name: name,
             value: props.currentSite.SiteUrl,
@@ -190,7 +197,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
         });
         items.push({
             key: "SiteSizeInMB",
-            name: "Site Size",
+            name: "Size",
             value: Measures.formatToDigitalSpace(props.currentSite.SiteSizeInMB),
             note: "",
             iconName: "Database"
@@ -250,7 +257,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
                 <a href={item.value} data-interception="off" target="_blank">{item.value}</a>
             );
         }
-        if (['ScheduledDate', '____'].indexOf(item.key) > -1 && column.key == "Value") {
+        if (['ScheduledDate', '____'].indexOf(item.key) > -1 && column.key == "Value" && item.value) {
             const scheduledMigrationDate = Dates.getUserFriendlyDate(item.value);
             return (
                 <span>{scheduledMigrationDate}</span>
