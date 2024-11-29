@@ -46,6 +46,7 @@ export interface SiteItem extends ListItem {
     PublicNotes: string;
     AdminNotes: string;
     TargetSiteUrl?: any;
+    TargetLibraryUrl?: any;
     MigrationStatus?: any;
     ScheduledDate?: any;
     SiteId?: any;    
