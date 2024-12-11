@@ -71,6 +71,7 @@ interface GeneralInfoSectionState {
 interface GeneralInfoSectionProps {
     currentSite: SiteItem;
     context: WebPartContext;
+    dataSourceIsSharePoint: boolean;
 }
 
 export default class GeneralInfoSection extends React.Component<GeneralInfoSectionProps, GeneralInfoSectionState> {
@@ -195,20 +196,22 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             note: "",
             iconName: "Database"
         });
-        items.push({
-            key: "ContentDBSizeInMB",
-            name: "Content DB Size",
-            value: Measures.formatToDigitalSpace(props.currentSite.ContentDBSizeInMB),
-            note: "",
-            iconName: "Database"
-        });
-        items.push({
-            key: "NumOfWebs",
-            name: "Subsites",
-            value: Intl.NumberFormat().format(props.currentSite.NumOfWebs - 1),
-            note: "",
-            iconName: "NumberSymbol"
-        });
+        if(props.dataSourceIsSharePoint) { 
+            items.push({
+                key: "ContentDBSizeInMB",
+                name: "Content DB Size",
+                value: Measures.formatToDigitalSpace(props.currentSite.ContentDBSizeInMB),
+                note: "",
+                iconName: "Database"
+            });
+            items.push({
+                key: "NumOfWebs",
+                name: "Subsites",
+                value: Intl.NumberFormat().format(props.currentSite.NumOfWebs - 1),
+                note: "",
+                iconName: "NumberSymbol"
+            });
+        };
         items.push({
             key: "TotalItemCount",
             name: "Total Items Count",
