@@ -27,8 +27,8 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
         }
 
         let dataSourceType = "SharePoint";
-        if (!this.props.currentSite.SiteUrl.startsWith('http')){
-            dataSourceType = "File Share"
+        if (this.props.currentSite.SiteUrl.startsWith('\\')){
+            dataSourceType = "FileShare"
             // or other third type TBD
         };
 
@@ -76,7 +76,7 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                         { otherSection }
                         <PivotItem headerText="Document Locator" itemIcon='Search' className={styles.pivotItem} itemKey="4">
                             <Section title="Document Locator">
-                                <DocumentLocatorSection currentSite={this.props.currentSite} />
+                                <DocumentLocatorSection currentSite={this.props.currentSite}/>
                             </Section>
                         </PivotItem>
                     </Pivot>

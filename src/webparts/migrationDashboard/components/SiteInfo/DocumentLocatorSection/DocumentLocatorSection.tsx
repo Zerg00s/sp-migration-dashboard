@@ -41,7 +41,8 @@ export default class DocumentLocatorSection extends React.Component<DocumentLoca
         this.props.currentSite.SiteUrl
         this.props.currentSite.TargetSiteUrl
 
-        let fullTargetUrl = newValue.replace(this.props.currentSite.SiteUrl, this.props.currentSite.TargetSiteUrl);
+        let relativeUrl = newValue.replace(this.props.currentSite.SiteUrl, "");
+        let fullTargetUrl = this.props.currentSite.TargetSiteUrl.concat("/Shared Documents", relativeUrl);
         fullTargetUrl = fullTargetUrl.replace(/\\/g, '/');
 
         this.setState({
