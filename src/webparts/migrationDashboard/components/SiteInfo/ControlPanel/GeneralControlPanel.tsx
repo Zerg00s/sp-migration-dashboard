@@ -10,7 +10,7 @@ import SiteSettingsButton from './SourceSiteSettingsButton';
 interface ControlPanelProps {
     currentSite: SiteItem;
     context: WebPartContext;
-    dataSourceIsSharePoint: boolean;
+    dataSourceType: string;
 }
 
 export default class GeneralControlPanel extends React.Component<ControlPanelProps, {}> {
@@ -23,7 +23,7 @@ export default class GeneralControlPanel extends React.Component<ControlPanelPro
 
     public render() {
         let currentSiteSettingsButton = null;
-        if(this.props.dataSourceIsSharePoint){ 
+        if(this.props.dataSourceType == "SharePoint"){ 
             currentSiteSettingsButton = <SiteSettingsButton key={this.props.currentSite.SiteUrl} SiteUrl={this.props.currentSite.SiteUrl} Title="Source Site Settings" />};
         return (
             <Stack className={styles.stack} horizontal tokens={this.wrapStackTokens}>

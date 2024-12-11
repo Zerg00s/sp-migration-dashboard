@@ -71,7 +71,7 @@ interface GeneralInfoSectionState {
 interface GeneralInfoSectionProps {
     currentSite: SiteItem;
     context: WebPartContext;
-    dataSourceIsSharePoint: boolean;
+    dataSourceType: string;
 }
 
 export default class GeneralInfoSection extends React.Component<GeneralInfoSectionProps, GeneralInfoSectionState> {
@@ -196,7 +196,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             note: "",
             iconName: "Database"
         });
-        if(props.dataSourceIsSharePoint) { 
+        if(props.dataSourceType == "SharePoint") { 
             items.push({
                 key: "ContentDBSizeInMB",
                 name: "Content DB Size",

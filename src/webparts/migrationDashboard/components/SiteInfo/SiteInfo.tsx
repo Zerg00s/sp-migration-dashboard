@@ -26,11 +26,16 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
             return <React.Fragment></React.Fragment>;
         }
 
-        let dataSourceIsSharePoint = this.props.currentSite.SiteUrl.startsWith('http');
+        let dataSourceType = "SharePoint";
+        if (!this.props.currentSite.SiteUrl.startsWith('http')){
+            dataSourceType = "File Share"
+            // or other third type TBD
+        };
 
         let checkListSection = null;
         let otherSection = null;
-        if(dataSourceIsSharePoint) {
+
+        if(dataSourceType == "SharePoint") {
             checkListSection = 
                 <PivotItem headerText="Checklist" className={styles.pivotItem} itemKey="2">
                     <Section title="Pre-migration checklist">
@@ -56,9 +61,9 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                                 <SecurityTrimmedControl context={this.props.context}
                                     level={PermissionLevel.currentWeb}
                                     permissions={[SPPermission.manageWeb]}>
-                                    <GeneralControlPanel currentSite={this.props.currentSite} context={this.props.context} dataSourceIsSharePoint={dataSourceIsSharePoint} />
+                                    <GeneralControlPanel currentSite={this.props.currentSite} context={this.props.context} dataSourceType = {dataSourceType} />
                                 </SecurityTrimmedControl>
-                                <GeneralInfoSection currentSite={this.props.currentSite} context={this.props.context} dataSourceIsSharePoint={dataSourceIsSharePoint} />
+                                <GeneralInfoSection currentSite={this.props.currentSite} context={this.props.context} dataSourceType = {dataSourceType} />
                             </Section>
 
                         </PivotItem>
