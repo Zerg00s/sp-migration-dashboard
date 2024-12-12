@@ -42,7 +42,7 @@ export default class DocumentLocatorSection extends React.Component<DocumentLoca
         this.props.currentSite.TargetSiteUrl
 
         let relativeUrl = newValue.replace(this.props.currentSite.SiteUrl, "");
-        let fullTargetUrl = this.props.currentSite.TargetLibraryUrl.concat(relativeUrl);
+        let fullTargetUrl = this.props.currentSite.TargetSiteUrl.concat("/",this.props.currentSite.TargetLibrary,relativeUrl);
         fullTargetUrl = fullTargetUrl.replace(/\\/g, '/');
 
         this.setState({

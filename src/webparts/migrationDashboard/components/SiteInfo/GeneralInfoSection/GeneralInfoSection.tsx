@@ -183,10 +183,10 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             iconName: "SharePointLogo"
         });
         items.push({
-            key: "TargetLibraryUrl",
-            name: "Target Library Url",
-            value: props.currentSite.TargetLibraryUrl,
-            note: "New library URL",
+            key: "TargetLibrary",
+            name: "Target Library",
+            value: props.currentSite.TargetLibrary,
+            note: "",
             iconName: "Library"
         });
         items.push({
