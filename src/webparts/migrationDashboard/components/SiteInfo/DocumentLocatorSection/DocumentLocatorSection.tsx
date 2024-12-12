@@ -34,16 +34,21 @@ export default class DocumentLocatorSection extends React.Component<DocumentLoca
 
     }
 
+    composeUrl = (urlParts: string[] ) => {
+        const resultUrl = urlParts
+            .filter(Boolean) // Remove falsy values (null, undefined, empty string, etc.)
+            .map(part => part.replace(/\\/g, '/').replace(/^\/|\/$/g, '')) // Normalize each part
+            .join('/'); // Join parts with a single slash
+        return resultUrl
+    }
+
     handleNewSearchValue = (newValue: string) => {
         // TODO: Determine if the source is a UNC Path
         // TODO: Determine if target has a document library and/or folder as a target
-
-        this.props.currentSite.SiteUrl
-        this.props.currentSite.TargetSiteUrl
-
+           
         let relativeUrl = newValue.replace(this.props.currentSite.SiteUrl, "");
-        let fullTargetUrl = this.props.currentSite.TargetSiteUrl.concat("/",this.props.currentSite.TargetLibrary,relativeUrl);
-        fullTargetUrl = fullTargetUrl.replace(/\\/g, '/');
+
+        let fullTargetUrl = this.composeUrl([this.props.currentSite.TargetSiteUrl, this.props.currentSite.TargetLibrary, relativeUrl]);
 
         this.setState({
             searchValue: newValue,
