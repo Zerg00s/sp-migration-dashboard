@@ -71,6 +71,7 @@ interface GeneralInfoSectionState {
 interface GeneralInfoSectionProps {
     currentSite: SiteItem;
     context: WebPartContext;
+    dataSourceType: string;
 }
 
 export default class GeneralInfoSection extends React.Component<GeneralInfoSectionProps, GeneralInfoSectionState> {
@@ -189,10 +190,10 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             iconName: "SharePointLogo"
         });
         items.push({
-            key: "TargetLibraryUrl",
-            name: "Target Library Url",
-            value: props.currentSite.TargetLibraryUrl,
-            note: "New library URL",
+            key: "TargetLibrary",
+            name: "Target Library",
+            value: props.currentSite.TargetLibrary,
+            note: "",
             iconName: "Library"
         });
         items.push({
@@ -202,20 +203,22 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             note: "",
             iconName: "Database"
         });
-        items.push({
-            key: "ContentDBSizeInMB",
-            name: "Content DB Size",
-            value: Measures.formatToDigitalSpace(props.currentSite.ContentDBSizeInMB),
-            note: "",
-            iconName: "Database"
-        });
-        items.push({
-            key: "NumOfWebs",
-            name: "Subsites",
-            value: Intl.NumberFormat().format(props.currentSite.NumOfWebs - 1),
-            note: "",
-            iconName: "NumberSymbol"
-        });
+        if(props.dataSourceType == "SharePoint") { 
+            items.push({
+                key: "ContentDBSizeInMB",
+                name: "Content DB Size",
+                value: Measures.formatToDigitalSpace(props.currentSite.ContentDBSizeInMB),
+                note: "",
+                iconName: "Database"
+            });
+            items.push({
+                key: "NumOfWebs",
+                name: "Subsites",
+                value: Intl.NumberFormat().format(props.currentSite.NumOfWebs - 1),
+                note: "",
+                iconName: "NumberSymbol"
+            });
+        };
         items.push({
             key: "TotalItemCount",
             name: "Total Items Count",

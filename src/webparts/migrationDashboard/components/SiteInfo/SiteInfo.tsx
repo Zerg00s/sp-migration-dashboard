@@ -25,6 +25,31 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
         if (!this.props.currentSite) {
             return <React.Fragment></React.Fragment>;
         }
+
+        let dataSourceType = "SharePoint";
+        if (this.props.currentSite.SiteUrl.startsWith('\\')){
+            dataSourceType = "FileShare"
+            // or other third type TBD
+        };
+
+        let checkListSection = null;
+        let otherSection = null;
+
+        if(dataSourceType == "SharePoint") {
+            checkListSection = 
+                <PivotItem headerText="Checklist" className={styles.pivotItem} itemKey="2">
+                    <Section title="Pre-migration checklist">
+                        <ChecklistSection currentSite={this.props.currentSite} />
+                    </Section>
+                </PivotItem>;
+            otherSection =
+            <PivotItem headerText="Other" className={styles.pivotItem} itemKey="3">
+                <Section title="Other">
+                    <OtherSection currentSite={this.props.currentSite} />
+                </Section>
+            </PivotItem>;
+        }
+
         return (
             <React.Fragment>
                 <div className={styles.sectionWrapper}>
@@ -36,9 +61,9 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                                 <SecurityTrimmedControl context={this.props.context}
                                     level={PermissionLevel.currentWeb}
                                     permissions={[SPPermission.manageWeb]}>
-                                    <GeneralControlPanel currentSite={this.props.currentSite} context={this.props.context} />
+                                    <GeneralControlPanel currentSite={this.props.currentSite} context={this.props.context} dataSourceType = {dataSourceType} />
                                 </SecurityTrimmedControl>
-                                <GeneralInfoSection currentSite={this.props.currentSite} context={this.props.context} />
+                                <GeneralInfoSection currentSite={this.props.currentSite} context={this.props.context} dataSourceType = {dataSourceType} />
                             </Section>
 
                         </PivotItem>
@@ -47,21 +72,11 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
                                 <OwnershipSection currentSite={this.props.currentSite} context={this.props.context} />
                             </Section>
                         </PivotItem>
-                        <PivotItem headerText="Checklist" className={styles.pivotItem} itemKey="2">
-                            <Section title="Pre-migration checklist">
-                                <ChecklistSection currentSite={this.props.currentSite} />
-                            </Section>
-
-                        </PivotItem>
-                        <PivotItem headerText="Other" className={styles.pivotItem} itemKey="3">
-                            <Section title="Other">
-                                <OtherSection currentSite={this.props.currentSite} />
-                            </Section>
-                        </PivotItem>
-
+                        { checkListSection }
+                        { otherSection }
                         <PivotItem headerText="Document Locator" itemIcon='Search' className={styles.pivotItem} itemKey="4">
                             <Section title="Document Locator">
-                                <DocumentLocatorSection currentSite={this.props.currentSite} />
+                                <DocumentLocatorSection currentSite={this.props.currentSite}/>
                             </Section>
                         </PivotItem>
                     </Pivot>

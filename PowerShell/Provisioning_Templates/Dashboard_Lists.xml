@@ -21,7 +21,7 @@
                 <FieldRef Name="Farm" />
                 <FieldRef Name="SiteUrl" />
                 <FieldRef Name="TargetSiteUrl" />
-                <FieldRef Name="TargetLibraryUrl" />
+                <FieldRef Name="TargetLibrary" />
                 <FieldRef Name="SiteSizeInMB" />
                 <FieldRef Name="NumOfWebs" />
                 <FieldRef Name="TotalItemCount" />
@@ -84,7 +84,7 @@
               </CHOICES>
             </Field>
             <Field Type="Text" DisplayName="Target Site URL" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{eb2f94ed-94af-4e13-b8f0-fc1962943d04}" SourceID="{{listid:Sites Report}}" StaticName="TargetSiteUrl" Name="TargetSiteUrl" ColName="nvarchar9" RowOrdinal="0" CustomFormatter="" Version="1" />
-            <Field Type="Text" DisplayName="Target Library URL" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{eb1f11ed-94af-4e13-b8f0-fc1962943d11}" SourceID="{{listid:Sites Report}}" StaticName="TargetLibraryUrl" Name="TargetLibraryUrl" ColName="nvarchar15" RowOrdinal="0" CustomFormatter="" Version="1" />
+            <Field Type="Text" DisplayName="Target Library" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{eb1f11ed-94af-4e13-b8f0-fc1962943d11}" SourceID="{{listid:Sites Report}}" StaticName="TargetLibrary" Name="TargetLibrary" ColName="nvarchar15" RowOrdinal="0" CustomFormatter="" Version="1" />
             <Field Name="MigrationStatus" FromBaseType="FALSE" Type="Choice" DisplayName="Migration Status" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{5729f7a5-5214-4358-b439-57843e4ad6ce}" Version="2" StaticName="MigrationStatus" SourceID="{{listid:Sites Report}}" ColName="nvarchar13" RowOrdinal="0" CustomFormatter="">
               <CHOICES>
                 <CHOICE>Migrated</CHOICE>
