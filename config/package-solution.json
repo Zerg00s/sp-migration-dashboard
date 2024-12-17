@@ -3,7 +3,7 @@
   "solution": {
     "name": "Migration Dashboard",
     "id": "ee19878d-ba02-499b-b98e-b05188b7d599",
-    "version": "12.13.3.2024",
+    "version": "12.13.6.2024",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {

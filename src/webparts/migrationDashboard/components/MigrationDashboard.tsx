@@ -11,6 +11,7 @@ import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 
 import SiteSearch from './SiteSearch/SiteSearch';
 import { Fabric } from 'office-ui-fabric-react';
+import MigrationProgress from './MigrationProgress/MigrationProgress';
 const statsLogo: any = require("../../assets/stats.svg");
 
 interface State {
@@ -58,6 +59,10 @@ export default class MigrationDashboard extends React.Component<IMigrationDashbo
           <Pivot linkSize={PivotLinkSize.large} >
             <PivotItem headerText="Search sites" className={styles.pivotItem} itemIcon="Search" itemKey="0" >
               <SiteSearch context={this.props.context} siteItems={this.state.siteItems} />
+            </PivotItem>
+
+            <PivotItem headerText="Migration Progress" className={styles.pivotItem} itemIcon="Slider" itemKey="1" >
+              <MigrationProgress context={this.props.context} siteItems={this.state.siteItems} />
             </PivotItem>
 
           

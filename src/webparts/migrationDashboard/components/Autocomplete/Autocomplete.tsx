@@ -29,6 +29,8 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
     let defaultSiteUrl: string = "";
     if (queryParameters.getValue("SiteUrl")) {
       defaultSiteUrl = queryParameters.getValue("SiteUrl");
+      // Unescape the URL
+      defaultSiteUrl = decodeURIComponent(defaultSiteUrl);
     }
     return defaultSiteUrl;
   }
