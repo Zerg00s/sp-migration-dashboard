@@ -176,7 +176,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
       return null;
     }
     let suggestedSites = fullListOfSites.filter(site =>
-      site.SiteUrl.toLowerCase().includes(this.state.searchText.toLowerCase().trim()));
+      site.SiteUrl && site.SiteUrl.toLowerCase().includes(this.state.searchText.toLowerCase().trim()));
 
     suggestedSites = suggestedSites.sort((a, b) => a.SiteUrl.localeCompare(b.SiteUrl));
     if (suggestedSites.length === 0) {
@@ -189,7 +189,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
 
     // No sites found. Maybe users entered a very long URL that includes subsites and document libraries:
     const matchedItemsLongUrl = filter(fullListOfSites, (site: SiteItem) => {
-      return this.state.searchText.toLowerCase().trim().indexOf(site.SiteUrl.trim().toLowerCase()) != -1;
+      return site.SiteUrl && this.state.searchText.toLowerCase().trim().indexOf(site.SiteUrl.trim().toLowerCase()) != -1;
     });
 
     return orderBy(matchedItemsLongUrl, site => site.SiteUrl.length, "desc");

@@ -30,7 +30,9 @@ export default class SiteInfo extends React.Component<SiteInfoProps> {
         if (this.props.currentSite.SiteUrl.startsWith('\\')){
             dataSourceType = "FileShare"
             // or other third type TBD
-        };
+        }else if (this.props.currentSite.SiteUrl.indexOf('http') != 0){
+            dataSourceType = "OneDrive"
+        }
 
         let checkListSection = null;
         let otherSection = null;

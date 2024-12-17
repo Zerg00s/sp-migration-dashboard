@@ -161,12 +161,19 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             return items;
         }
         let name = "Site URL";
-        let note = "Old site URL"
+        let note = "Source site URL"
         let iconName = "Link"
-        if (props.currentSite.SiteUrl.indexOf("\\") === 0) {
+
+        if (props.dataSourceType === "FileShare") {
             name = "UNC Path";
-            note = "Old UNC Path";
+            note = "Source UNC Path";
             iconName = "FabricFolderLink"
+        }
+
+        if (props.dataSourceType === "OneDrive") {
+            name = "User's Mail";
+            note = "Source Google Drive, Box or Dropbox";
+            iconName = "ArrangeByFrom"
         }
         items.push({
             key: "Title",
@@ -203,7 +210,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             note: "",
             iconName: "Database"
         });
-        if(props.dataSourceType == "SharePoint") { 
+        if (props.dataSourceType == "SharePoint") {
             items.push({
                 key: "ContentDBSizeInMB",
                 name: "Content DB Size",
