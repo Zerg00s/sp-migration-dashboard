@@ -3,26 +3,28 @@
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
 [![Build Status](https://dev.azure.com/zergs/Migration%20Dashboard/_apis/build/status/Build.sp-migration-dashboard?branchName=master)](https://dev.azure.com/zergs/Migration%20Dashboard/_build/latest?definitionId=5&branchName=master)
- 
-![](IMG/search.png)
+![search](IMG/search.png)
+
 # SharePoint Migration Dashboard
+
 Planning to migrate your SharePoint server farm to SharePoint Online? Then you absolutely must install this dashboard.
 
 <br/>
 
 ## Reasons for Setting up the Migration Dashboard
 
- - SharePoint migrations to Microsoft 365 can be a nightmare to plan and organize
- - You want to keep track of your migration progress
- - Dashboard is a self-service portal designed to provide SharePoint site owners with all migration-related questions
- - Save time on reading [SharePoint Migration Assessment Tool (SMAT)](https://www.microsoft.com/en-us/download/details.aspx?id=53598&WT.mc_id=rss_alldownloads_all) reports. Migration Dashboard presents SMAT data in a human readable form that will be available both for the migration team and site owners.
+- SharePoint migrations to Microsoft 365 can be a nightmare to plan and organize
+- You want to keep track of your migration progress
+- Dashboard is a self-service portal designed to provide SharePoint site owners with all migration-related questions
+- Save time on reading [SharePoint Migration Assessment Tool (SMAT)](https://www.microsoft.com/en-us/download/details.aspx?id=53598&WT.mc_id=rss_alldownloads_all) reports. Migration Dashboard presents SMAT data in a human readable form that will be available both for the migration team and site owners.
 
 ![](IMG/siteInfo.png)
 
 <br/>
 
 ## Watch a Demo 
-[![](IMG/video.png)](https://youtu.be/6FwCIA-aaPM)
+
+[![video](IMG/video.png)](https://youtu.be/6FwCIA-aaPM)
 
 <br/>
 
@@ -41,22 +43,21 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 
 1. Download and unzip [latest release](https://github.com/Zerg00s/sp-migration-dashboard/releases/download/1.0/sp-migration-dashboard.Release.zip)
 
-1. Run `Install-Module PnP.Powershell -RequiredVersion 1.12.0 -Scope "CurrentUser" -AllowClobber -Force` to install the legacy PnP.PowerShell module.
+1. Run `Install-Module SharePointPnPPowerShellOnline -Scope "CurrentUser" -AllowClobber -Force` to install the legacy PnP.PowerShell module.
 
 1. In SharePoint Online:
 
-   *  [Create App Catalog Site Collection](https://docs.microsoft.com/en-us/sharepoint/use-app-catalog#step-1-create-the-app-catalog-site-collection) if not already created
-   *  Navigate to the SharePoint App catalog > **Apps for SharePoint** library
+   * [Create App Catalog Site Collection](https://docs.microsoft.com/en-us/sharepoint/use-app-catalog#step-1-create-the-app-catalog-site-collection) if not already created
+   * Navigate to the SharePoint App catalog > **Apps for SharePoint** library
    * Drag and drop `sp-migration-dashboard.sppkg` to the library  
 ![](IMG/drag-and-drop.png)
    * Create an empty site collection for hosting Migration Dashboard.
    * Add the "Migration Dashboard" app to this site collection.
    ![](IMG/add-app.png)
-   * Add Migration Dashboard webpart to the home page.   
+   * Add Migration Dashboard webpart to the home page.
    ![](IMG/webpart.png)
 
-4. Deploy Dashboard Lists and Libraries by running `Deploy-Dashboard.ps1`
-
+1. Deploy Dashboard Lists and Libraries by running `Deploy-Dashboard.ps1`
 
 ### Upload Data to the Dashboard
 
@@ -68,6 +69,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 <br/>
 
 ## 💡 Known issue: Details View does not show fields ⚠️
+
 If the "View Details" does not show any fields except for Title. Apply the following fix:
 
 - Go to Site Contents
@@ -77,10 +79,10 @@ If the "View Details" does not show any fields except for Title. Apply the follo
 - Select all columns by pressing SHIFT and Left Mouse click
 - Click Add
 
-
 ## Migration Dashboard Architecture
 
 The Dashboard is a lightweight solution that includes the following components
+
 - Communication SharePoint site.
 - SharePoint Framework (SPFx) webpart.
 - No heavy dependencies or external APIs.
@@ -91,16 +93,17 @@ The Dashboard is a lightweight solution that includes the following components
  <br/>
 
 ## Build the Package
+
 You can always take the [latest release from here](https://github.com/Zerg00s/sp-migration-dashboard/releases/download/1.0/sp-migration-dashboard.Release.zip). But you can also build the package manually.
 
-### Prerequisites
+### Development Prerequisites
 
 - Install [Node.js LTS 10.x](https://nodejs.org/dist/latest-v10.x/)
 - Install gulp by running `npm install gulp -g`
 
 ### Build the Migration Dashboard Package
 
-```
+```cmd
 npm install
 gulp bundle --ship
 gulp package-solution --ship
@@ -108,12 +111,10 @@ gulp package-solution --ship
 
 Navigate to the folder `\sp-migration-dashboard\sharepoint\solution\` and confirm that the .sppg file is there:
 
-![](IMG/package.png)
+![package](IMG/package.png)
 
  <br/>
 
 ## Migration Dashboard in Action
 
-![](IMG/tabs.gif)
-
-
+![tabs](IMG/tabs.gif)
