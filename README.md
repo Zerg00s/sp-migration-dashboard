@@ -41,7 +41,7 @@ Planning to migrate your SharePoint server farm to SharePoint Online? Then you a
 
 ### Deployment Steps
 
-1. Download and unzip [latest release](https://github.com/Zerg00s/sp-migration-dashboard/releases/download/1.0/sp-migration-dashboard.Release.zip)
+1. Download and unzip the [latest release](https://github.com/Zerg00s/sp-migration-dashboard/releases)
 
 1. Run `Install-Module SharePointPnPPowerShellOnline -Scope "CurrentUser" -AllowClobber -Force` to install the legacy PnP.PowerShell module.
 
