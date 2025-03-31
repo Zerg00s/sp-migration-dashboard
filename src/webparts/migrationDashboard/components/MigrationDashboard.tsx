@@ -19,8 +19,6 @@ interface State {
   loading: boolean;
 }
 export default class MigrationDashboard extends React.Component<IMigrationDashboardProps, State> {
-
-
   constructor(p: IMigrationDashboardProps) {
     super(p);
     this.state = {

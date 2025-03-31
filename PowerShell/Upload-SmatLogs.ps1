@@ -6,7 +6,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host "Provide" -NoNewline
-Write-Host " Full Path to SMAT Logs Folder: " -ForegroundColor Yellow -NoNewline
+Write-Host " Full Path to SMAT Logs Folder. The folder should contain the SMAT.log file: " -ForegroundColor Yellow -NoNewline
 $SmatLogsFolder = Read-Host
 $SmatFiles = Get-ChildItem $SmatLogsFolder
 
@@ -27,7 +27,7 @@ switch($SPMajorVersion){
         Write-Host "SharePoint 2013"
     }
     16{
-        Write-Host "SharePoint 2016 or SharePoint 2019 or SP2021?"
+        Write-Host "SharePoint 2016 or SharePoint 2019 or SP SE?"
     }
 }
 #======================================================================

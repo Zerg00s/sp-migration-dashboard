@@ -24,7 +24,7 @@ export default class GeneralControlPanel extends React.Component<ControlPanelPro
     public render() {
         let currentSiteSettingsButton = null;
         if(this.props.dataSourceType == "SharePoint"){ 
-            currentSiteSettingsButton = <SiteSettingsButton key={this.props.currentSite.SiteUrl} SiteUrl={this.props.currentSite.SiteUrl} Title="Source Site Settings" />};
+            currentSiteSettingsButton = <SiteSettingsButton key={this.props.currentSite.SiteUrl} SiteUrl={this.props.currentSite.SiteUrl} Title="Source Site Settings" />;}
         return (
             <Stack className={styles.stack} horizontal tokens={this.wrapStackTokens}>
                 <ViewDetailsButton currentSite={this.props.currentSite} context={this.props.context} />

@@ -161,19 +161,19 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
             return items;
         }
         let name = "Site URL";
-        let note = "Source site URL"
-        let iconName = "Link"
+        let note = "Source site URL";
+        let iconName = "Link";
 
         if (props.dataSourceType === "FileShare") {
             name = "UNC Path";
             note = "Source UNC Path";
-            iconName = "FabricFolderLink"
+            iconName = "FabricFolderLink";
         }
 
         if (props.dataSourceType === "OneDrive") {
             name = "User's Mail";
             note = "Source Google Drive, Box or Dropbox";
-            iconName = "ArrangeByFrom"
+            iconName = "ArrangeByFrom";
         }
         items.push({
             key: "Title",
@@ -225,7 +225,7 @@ export default class GeneralInfoSection extends React.Component<GeneralInfoSecti
                 note: "",
                 iconName: "NumberSymbol"
             });
-        };
+        }
         items.push({
             key: "TotalItemCount",
             name: "Total Items Count",

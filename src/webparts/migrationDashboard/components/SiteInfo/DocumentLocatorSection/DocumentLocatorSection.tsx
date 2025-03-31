@@ -34,15 +34,15 @@ export default class DocumentLocatorSection extends React.Component<DocumentLoca
 
     }
 
-    composeUrl = (urlParts: string[] ) => {
+    public composeUrl = (urlParts: string[] ) => {
         const resultUrl = urlParts
             .filter(Boolean) // Remove falsy values (null, undefined, empty string, etc.)
             .map(part => part.replace(/\\/g, '/').replace(/^\/|\/$/g, '')) // Normalize each part
             .join('/'); // Join parts with a single slash
-        return resultUrl
+        return resultUrl;
     }
 
-    handleNewSearchValue = (newValue: string) => {
+    public handleNewSearchValue = (newValue: string) => {
         // TODO: Determine if the source is a UNC Path
         // TODO: Determine if target has a document library and/or folder as a target
            

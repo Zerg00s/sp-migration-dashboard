@@ -15,7 +15,7 @@ Write-Host " for hosting Migration Dashboard: " -NoNewline
 $TargetSiteCollectionUrl = Read-Host
 if ($null -eq $TargetSiteCollectionUrl) { exit; }
 
-Connect-PnPOnline -Interactive -Url $TargetSiteCollectionUrl
-Invoke-PnPSiteTemplate -Path ".\Provisioning_Templates\Dashboard_Lists.xml"
-
+Connect-PnPOnline -UseWebLogin -Url $TargetSiteCollectionUrl
+# Invoke-PnPSiteTemplate -Path ".\Provisioning_Templates\Dashboard_Lists.xml"
+Apply-PnPProvisioningTemplate -Path ".\Provisioning_Templates\Dashboard_Lists.xml"
 Write-Host "Lists and Libraries have been deployed" -ForegroundColor Green

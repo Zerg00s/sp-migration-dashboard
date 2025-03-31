@@ -41,78 +41,6 @@ span.drag {
   flex-wrap: wrap;
 }
 
-.PersonaWrapper {
-  margin: 10px 10px;
-  width: 320px;
-  display: flex;
-  align-items: center;
-
-  .textIcon {
-    visibility: hidden;
-  }
-
-  &:hover .textIcon {
-    visibility: visible;
-  }
-}
-
-.stakeholderPersona {
-  padding: 10px 0;
-  margin: 1px 0;
-  border: dashed #444 1px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-}
-
-.sectionButton {
-  font-size: small;
-  background-color: green;
-}
-
-.svgImage {
-  max-width: 700px;
-  margin-top: 90px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 95%;
-}
-
-.svgImageStats {
-  max-width: 700px;
-  margin-top: 90px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 65%;
-}
-
-.richTextButton {
-  margin-right: 20px;
-  margin-top: 10px;
-}
-
-.detailsPanel {
-  :global {
-
-    .ms-Panel-scrollableContent,
-    .ms-Panel-content {
-      height: 100%;
-    }
-
-    .ms-Panel-scrollableContent {
-      overflow: hidden;
-    }
-  }
-}
-
-.stakeholdersContainer {
-  font-size: 14px;
-  margin: 20px;
-  padding-bottom: 14px;
-}
-
 .migrationDashboard {
   .textIcon {
     min-width: 30px;
@@ -201,7 +129,7 @@ span.drag {
     }
   }
 
-  /* WEBPART TITLE */
+  /* WEB PART TITLE */
   .webpartTitle {
     textarea {
       font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
@@ -218,4 +146,75 @@ span.drag {
       font-weight: 600 !important;
     }
   }
+}
+
+.PersonaWrapper {
+  margin: 10px 10px;
+  width: 320px;
+  display: flex;
+  align-items: center;
+
+  .textIcon {
+    visibility: hidden;
+  }
+
+  &:hover .textIcon {
+    visibility: visible;
+  }
+}
+
+.stakeholderPersona {
+  padding: 10px 0;
+  margin: 1px 0;
+  border: dashed #444 1px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.sectionButton {
+  font-size: small;
+  background-color: green;
+}
+
+.svgImage {
+  max-width: 700px;
+  margin-top: 90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+.svgImageStats {
+  max-width: 700px;
+  margin-top: 90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
+}
+
+.richTextButton {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.detailsPanel {
+  :global {
+    .ms-Panel-scrollableContent,
+    .ms-Panel-content {
+      height: 100%;
+    }
+
+    .ms-Panel-scrollableContent {
+      overflow: hidden;
+    }
+  }
+}
+
+.stakeholdersContainer {
+  font-size: 14px;
+  margin: 20px;
+  padding-bottom: 14px;
 }
