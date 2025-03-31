@@ -107,9 +107,6 @@
             </Field>
             <Field Type="Note" DisplayName="Stakeholders" Description="Stakeholder emails, separated with a semicolon" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="3" RichText="FALSE" Sortable="FALSE" ID="{ef810921-335e-4c49-bc72-b4695e476be4}" SourceID="{{listid:Sites Report}}" StaticName="Stakeholders" Name="Stakeholders" ColName="ntext5" RowOrdinal="0" />
           </pnp:Fields>
-          <pnp:Webhooks>
-            <pnp:Webhook ServerNotificationUrl="https://canadacentral1.pushnp.svc.ms/notifications?token=6c89d0d2-c219-41ba-b4f0-a02d2de53e56" ExpiresInDays="1" />
-          </pnp:Webhooks>
         </pnp:ListInstance>
       </pnp:Lists>
     </pnp:ProvisioningTemplate>
